@@ -20,6 +20,15 @@ jobs:
       - name: Use repository source
         uses: actions/checkout@v3
 
+      - name: Setting .env
+        run: |
+          echo "REACT_APP_apiKey=${{secrets.REACT_APP_apiKey}}" >> .env
+          echo "REACT_APP_authDomain=${{secrets.REACT_APP_authDomain}}" >> .env
+          echo "REACT_APP_projectId=${{secrets.REACT_APP_projectId}}" >> .env
+          echo "REACT_APP_storageBucket=${{secrets.REACT_APP_storageBucket}}" >> .env
+          echo "REACT_APP_messagingSenderId=${{secrets.REACT_APP_messagingSenderId}}" >> .env
+          echo "REACT_APP_appId=${{secrets.REACT_APP_appId}}" >> .env
+
       # node.js 런타임을 사용합니다.
       - name: Use node.js
         uses: actions/setup-node@v3
@@ -68,5 +77,5 @@ jobs:
       # 빌드된 파일들(./build)을 gh-pages 브랜치로 배포합니다.
       - uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GH_TOKEN }}
           publish_dir: ./build
