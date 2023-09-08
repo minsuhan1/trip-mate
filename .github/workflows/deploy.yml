@@ -22,12 +22,12 @@ jobs:
 
       - name: Setting .env
         run: |
-          echo "REACT_APP_apiKey=${{secrets.REACT_APP_apiKey}}" >> .env
-          echo "REACT_APP_authDomain=${{secrets.REACT_APP_authDomain}}" >> .env
-          echo "REACT_APP_projectId=${{secrets.REACT_APP_projectId}}" >> .env
-          echo "REACT_APP_storageBucket=${{secrets.REACT_APP_storageBucket}}" >> .env
-          echo "REACT_APP_messagingSenderId=${{secrets.REACT_APP_messagingSenderId}}" >> .env
-          echo "REACT_APP_appId=${{secrets.REACT_APP_appId}}" >> .env
+          echo "REACT_APP_apiKey=${{secrets.REACT_APP_APIKEY}}" >> .env
+          echo "REACT_APP_authDomain=${{secrets.REACT_APP_AUTHDOMAIN}}" >> .env
+          echo "REACT_APP_projectId=${{secrets.REACT_APP_PROJECTID}}" >> .env
+          echo "REACT_APP_storageBucket=${{secrets.REACT_APP_STORAGEBUCKET}}" >> .env
+          echo "REACT_APP_messagingSenderId=${{secrets.REACT_APP_MESSAGINGSENDERID}}" >> .env
+          echo "REACT_APP_appId=${{secrets.REACT_APP_APPID}}" >> .env
 
       # node.js 런타임을 사용합니다.
       - name: Use node.js
