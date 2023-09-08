@@ -3,9 +3,11 @@ import { initializeApp } from "firebase/app";
 import {
   GoogleAuthProvider,
   getAuth,
+  getRedirectResult,
   signInWithRedirect,
   signOut as signOutFirebase,
 } from "firebase/auth";
+import { Navigate } from "react-router";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -36,8 +38,10 @@ export const signOut = () => {
 export const signIn = () => {
   const provider = new GoogleAuthProvider();
   signInWithRedirect(auth, provider)
-    .then((result) => {
-      console.log(result);
+    .then(() => {
+      getRedirectResult(auth).then((result) => {
+        console.log(result);
+      });
     })
     .catch((error) => {
       console.log("singIn Error");
