@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { signIn } from "../services/firebase";
 import { useAuthState } from "../contexts/auth-context";
 import { Navigate } from "react-router-dom";
@@ -8,7 +9,21 @@ import logo from "../assets/images/logo.png";
 import FlexContainer from "../styles/flexContainer";
 import * as S from "../styles/Login.styled";
 
+// vh를 브라우저 상하단 메뉴를 제외한 화면 크기를 기반으로 설정
+function setScreenSize() {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`); //"--vh"라는 속성으로 정의해준다.
+}
+
+// 화면 사이즈가 바뀌면 vh 다시 계산
+window.addEventListener("resize", () => setScreenSize());
+
 function LoginPage() {
+  // 처음 마운트될때 vh 값을 계산
+  useEffect(() => {
+    setScreenSize();
+  });
+
   // 인증 상태 가져오기
   const authCtx = useAuthState();
 

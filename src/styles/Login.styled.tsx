@@ -3,7 +3,8 @@ import background from "../assets/images/background_login.jpg";
 
 export const Background = styled.div`
   width: 100vw;
-  height: 100vh;
+  // 100vh를 브라우저 상하단 메뉴를 제외한 화면 크기를 기준으로 함
+  height: calc(var(--vh, 1vh) * 100);
   background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.7)),
     url(${background});
   background-size: cover;
@@ -19,7 +20,7 @@ export const Main = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 50vh;
+  height: 50%;
 `;
 
 export const Logo = styled.img`
