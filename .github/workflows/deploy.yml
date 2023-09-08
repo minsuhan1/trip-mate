@@ -20,7 +20,7 @@ jobs:
       - name: Use repository source
         uses: actions/checkout@v3
 
-      # node.js 런타임을 사용합니다.
+        # node.js 런타임을 사용합니다.
       - name: Use node.js
         uses: actions/setup-node@v3
         with:
@@ -28,6 +28,7 @@ jobs:
 
       - name: Setting .env
         env:
+          env:
           REACT_APP_apiKey: ${{secrets.REACT_APP_APIKEY}}
           REACT_APP_authDomain: ${{secrets.REACT_APP_AUTHDOMAIN}}
           REACT_APP_projectId: ${{secrets.REACT_APP_PROJECTID}}
