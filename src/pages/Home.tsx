@@ -11,7 +11,7 @@ const HomePage = function () {
   switch (authCtx.state) {
     case "loading":
       // 로딩페이지
-      return <div>로그인 중..</div>;
+      return <div>로그인 중...</div>;
     case "loaded":
       if (authCtx.isAuthenticated) {
         return (
