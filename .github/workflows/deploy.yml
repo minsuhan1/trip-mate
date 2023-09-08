@@ -1,7 +1,9 @@
 name: Deploy
 
 on:
+  # push시 실행
   push:
+    # 빌드할 브랜치
     branches: ["main"]
 
   workflow_dispatch:
@@ -9,6 +11,10 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    # 빌드 시 경고 무시
+    env:
+      CI: false
     permissions:
       contents: write
     concurrency:
