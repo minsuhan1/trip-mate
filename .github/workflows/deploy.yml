@@ -1,3 +1,11 @@
+name: Deploy
+
+on:
+  push:
+    branches: ["step1"]
+
+  workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
