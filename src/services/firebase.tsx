@@ -4,6 +4,7 @@ import {
   GoogleAuthProvider,
   getAuth,
   signInWithPopup,
+  signInWithRedirect,
   signOut as signOutFirebase,
 } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -35,7 +36,7 @@ export const signOut = () => {
 // Google 로그인
 export const signIn = () => {
   const provider = new GoogleAuthProvider();
-  signInWithPopup(auth, provider)
+  signInWithRedirect(auth, provider)
     .then((result) => {
       console.log(result);
     })

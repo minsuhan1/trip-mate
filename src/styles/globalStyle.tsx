@@ -20,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   button {
+    color: #000;
     &:hover {
       cursor: pointer;
     }
