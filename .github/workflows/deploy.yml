@@ -20,20 +20,20 @@ jobs:
       - name: Use repository source
         uses: actions/checkout@v3
 
-      - name: Setting .env
-        run: |
-          echo "REACT_APP_apiKey=${{secrets.REACT_APP_APIKEY}}" >> .env
-          echo "REACT_APP_authDomain=${{secrets.REACT_APP_AUTHDOMAIN}}" >> .env
-          echo "REACT_APP_projectId=${{secrets.REACT_APP_PROJECTID}}" >> .env
-          echo "REACT_APP_storageBucket=${{secrets.REACT_APP_STORAGEBUCKET}}" >> .env
-          echo "REACT_APP_messagingSenderId=${{secrets.REACT_APP_MESSAGINGSENDERID}}" >> .env
-          echo "REACT_APP_appId=${{secrets.REACT_APP_APPID}}" >> .env
-
       # node.js 런타임을 사용합니다.
       - name: Use node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18 # 프로젝트에서 사용하는 node.js 버전을 사용하세요.
+
+      - name: Setting .env
+        env:
+          REACT_APP_apiKey: ${{secrets.REACT_APP_APIKEY}}
+          REACT_APP_authDomain: ${{secrets.REACT_APP_AUTHDOMAIN}}
+          REACT_APP_projectId: ${{secrets.REACT_APP_PROJECTID}}
+          REACT_APP_storageBucket: ${{secrets.REACT_APP_STORAGEBUCKET}}
+          REACT_APP_messagingSenderId: ${{secrets.REACT_APP_MESSAGINGSENDERID}}
+          REACT_APP_appId: ${{secrets.REACT_APP_APPID}}
 
       # node_modules 폴더를 캐싱합니다.
       # 이게 없으면 workflow를 실행할 때 마다 node_modules를 다시 생성합니다.
