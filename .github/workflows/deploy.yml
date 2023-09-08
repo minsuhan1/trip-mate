@@ -28,7 +28,9 @@ jobs:
           echo "REACT_APP_storageBucket=${{secrets.REACT_APP_STORAGEBUCKET}}" >> .env
           echo "REACT_APP_messagingSenderId=${{secrets.REACT_APP_MESSAGINGSENDERID}}" >> .env
           echo "REACT_APP_appId=${{secrets.REACT_APP_APPID}}" >> .env
-
+        env:
+          REACT_APP_apiKey: ${{secrets.REACT_APP_APIKEY}}
+          REACT_APP_authDomain: ${{secrets.REACT_APP_AUTHDOMAIN}}
       # node.js 런타임을 사용합니다.
       - name: Use node.js
         uses: actions/setup-node@v3
