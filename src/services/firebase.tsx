@@ -39,6 +39,7 @@ export const signIn = () => {
   const provider = new GoogleAuthProvider();
   signInWithRedirect(auth, provider)
     .then(() => {
+      // 페이지가 바뀌어서 문제가되는가?
       getRedirectResult(auth).then((result) => {
         console.log(result);
       });
