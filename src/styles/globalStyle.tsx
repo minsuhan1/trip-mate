@@ -19,6 +19,19 @@ const GlobalStyle = createGlobalStyle`
     font-family: "Helvetica", "Arial", sans-serif;
   }
 
+  body::after{
+	/* 소스만 다운받고 화면은 나태내지 않는다. (숨김 처리) */
+    position:absolute; 
+    width:0; 
+    height:0; 
+    overflow:hidden; 
+    z-index:-1;
+    
+    /* load images */
+    content: url('images/login-bg/1.jpg')
+  }; /* 필요한 이미지 소스들 다운 */
+
+
   button {
     color: #000;
     &:hover {

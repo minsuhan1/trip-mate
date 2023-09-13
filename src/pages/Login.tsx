@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { signIn } from "../services/firebase";
 import { useAuthState } from "../contexts/auth-context";
 import { Navigate } from "react-router-dom";
@@ -31,7 +30,11 @@ function LoginPage() {
       <S.Background>
         <S.Overlay>
           <S.Main>
-            <S.Logo src={logo} />
+            <header>
+              <S.Logo src={logo} />
+              <p>여행의 모든 순간을</p>
+              <p>계획하다</p>
+            </header>
             <FlexContainer gapValue={10}>
               <AuthButton
                 onClick={handleLogin}
