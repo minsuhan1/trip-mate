@@ -9,7 +9,7 @@ interface AuthButtonProps {
 }
 
 const StyledButton = styled.button`
-  width: 80vw;
+  width: 90vw;
   border-radius: 4px;
   background-color: ${(props) => props.color};
   display: flex;
@@ -21,7 +21,7 @@ const StyledButton = styled.button`
     padding-right: 46px;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 600;
   }
 `;

@@ -9,21 +9,7 @@ import logo from "../assets/images/logo.png";
 import FlexContainer from "../styles/flexContainer";
 import * as S from "../styles/Login.styled";
 
-// vh를 브라우저 상하단 메뉴를 제외한 화면 크기를 기반으로 설정
-function setScreenSize() {
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty("--vh", `${vh}px`); //"--vh"라는 속성으로 정의해준다.
-}
-
-// 화면 사이즈가 바뀌면 vh 다시 계산
-window.addEventListener("resize", () => setScreenSize());
-
 function LoginPage() {
-  // 처음 마운트될때 vh 값을 계산
-  useEffect(() => {
-    setScreenSize();
-  });
-
   // 인증 상태 가져오기
   const authCtx = useAuthState();
 
@@ -43,28 +29,30 @@ function LoginPage() {
   return (
     <>
       <S.Background>
-        <S.Main>
-          <S.Logo src={logo} />
-          <FlexContainer gapValue={10}>
-            <AuthButton
-              onClick={handleLogin}
-              text="구글로 로그인"
-              icon={GoogleIcon}
-              color="#FFFFFF"
-            />
-            <AuthButton
-              onClick={handleLogin}
-              text="카카오로 로그인"
-              icon={KakaoIcon}
-              color="#FEE500"
-            />
-          </FlexContainer>
-        </S.Main>
-        <S.Footer>
-          <FlexContainer>
-            {`\u00A9 ${year}. TRIP-MATE. All rights reserved.`}
-          </FlexContainer>
-        </S.Footer>
+        <S.Overlay>
+          <S.Main>
+            <S.Logo src={logo} />
+            <FlexContainer gapValue={10}>
+              <AuthButton
+                onClick={handleLogin}
+                text="구글로 로그인"
+                icon={GoogleIcon}
+                color="#FFFFFF"
+              />
+              <AuthButton
+                onClick={handleLogin}
+                text="카카오로 로그인"
+                icon={KakaoIcon}
+                color="#FEE500"
+              />
+              <S.Footer>
+                <FlexContainer>
+                  {`\u00A9 ${year}. TRIP-MATE. All rights reserved.`}
+                </FlexContainer>
+              </S.Footer>
+            </FlexContainer>
+          </S.Main>
+        </S.Overlay>
       </S.Background>
     </>
   );
