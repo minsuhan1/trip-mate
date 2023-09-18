@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import LoginPage from "./pages/Login";
-import HomePage from "./pages/Home";
-import NotFound from "./pages/NotFound";
+import LoginPage from "./components/pages/LoginPage/Login";
+import HomePage from "./components/pages/HomePage/Home";
+import NotFound from "./components/pages/NotFoundPage/NotFound";
 
 // vh를 브라우저 상하단 메뉴를 제외한 화면 크기를 기반으로 설정
 function setScreenSize() {

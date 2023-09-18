@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import FlexContainer from "../styles/flexContainer";
+import FlexContainer from "../../../styles/flexContainer";
 
 function NotFound() {
   return (

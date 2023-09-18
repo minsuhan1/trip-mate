@@ -1,6 +1,6 @@
-import { useAuthState } from "../contexts/auth-context";
+import { useAuthState } from "../../../contexts/auth-context";
 import { Navigate } from "react-router-dom";
-import { signOut } from "../services/firebase";
+import { signOut } from "../../../services/firebase";
 
 const HomePage = function () {
   const authCtx = useAuthState();

@@ -1,12 +1,12 @@
-import { signIn } from "../services/firebase";
-import { useAuthState } from "../contexts/auth-context";
+import { signIn } from "../../../services/firebase";
+import { useAuthState } from "../../../contexts/auth-context";
 import { Navigate } from "react-router-dom";
-import AuthButton from "../components/AuthButton/AuthButton";
-import GoogleIcon from "../assets/images/icon_google.svg";
-import KakaoIcon from "../assets/images/icon_kakao.svg";
-import logo from "../assets/images/logo.png";
-import FlexContainer from "../styles/flexContainer";
-import * as S from "../styles/Login.styled";
+import AuthButton from "../HomePage/AuthButton";
+import GoogleIcon from "../../../assets/images/icons/icon_google.svg";
+import KakaoIcon from "../../../assets/images/icons/icon_kakao.svg";
+import logo from "../../../assets/images/logo.png";
+import FlexContainer from "../../../styles/flexContainer";
+import * as S from "./Login.styled";
 
 function LoginPage() {
   // 인증 상태 가져오기
