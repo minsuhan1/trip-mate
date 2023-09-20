@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/trip-mate/static/js/main.533b42ec.js",
+    "main.js": "/trip-mate/static/js/main.bf6ded39.js",
     "static/media/logo.png": "/trip-mate/static/media/logo.ebd06f4c291ae3f88b7e.png",
     "static/media/icon_google.svg": "/trip-mate/static/media/icon_google.40e14597c5d984a14eaf0d65dd0c7868.svg",
     "index.html": "/trip-mate/index.html",
     "static/media/icon_kakao.svg": "/trip-mate/static/media/icon_kakao.a7334f30a3963e7bf9182c66fe40e76b.svg",
-    "main.533b42ec.js.map": "/trip-mate/static/js/main.533b42ec.js.map"
+    "main.bf6ded39.js.map": "/trip-mate/static/js/main.bf6ded39.js.map"
   },
   "entrypoints": [
-    "static/js/main.533b42ec.js"
+    "static/js/main.bf6ded39.js"
   ]
 }
