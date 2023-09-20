@@ -1,9 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+
 import { AuthContextProvider } from "./contexts/auth-context";
-import { BrowserRouter } from "react-router-dom";
 import GlobalStyle from "./styles/globalStyle";
+import { Provider } from "react-redux";
+import { store } from "./store/index";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -11,9 +14,11 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <BrowserRouter basename={process.env.PUBLIC_URL}>
-    <GlobalStyle />
-    <AuthContextProvider>
-      <App />
-    </AuthContextProvider>
+    <Provider store={store}>
+      <GlobalStyle />
+      <AuthContextProvider>
+        <App />
+      </AuthContextProvider>
+    </Provider>
   </BrowserRouter>
 );

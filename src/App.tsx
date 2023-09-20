@@ -1,8 +1,15 @@
 import React, { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
-import LoginPage from "./components/pages/LoginPage/Login";
-import HomePage from "./components/pages/HomePage/Home";
-import NotFound from "./components/pages/NotFoundPage/NotFound";
+import { Route, Routes } from "react-router-dom";
+import { useAuthState } from "./contexts/auth-context";
+import { useAppDispatch } from "./hooks/useApp";
+
+import RootPage from "./pages/RootPage";
+import LoginPage from "./pages/auth/LoginPage";
+import HomePage from "./pages/home/HomePage";
+import ProfileEditPage, { loader } from "./pages/profile/ProfileEditPage";
+import NotFound from "./pages/NotFoundPage";
+import ErrorPage from "./pages/ErrorPage";
+import PrivateRoutes from "./pages/PrivateRoutes";
 
 // vh를 브라우저 상하단 메뉴를 제외한 화면 크기를 기반으로 설정
 function setScreenSize() {
@@ -19,13 +26,26 @@ function App() {
     setScreenSize();
   }, []);
 
+  const authCtx = useAuthState();
+  const dispatch = useAppDispatch();
+
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<RootPage />} errorElement={<ErrorPage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="*" element={<NotFound />} />
+
+      {/* PrivateRoutes를 적용할 Route끼리 모은다 */}
+      <Route element={<PrivateRoutes />}>
+        <Route
+          path="/profile/edit"
+          element={<ProfileEditPage />}
+          loader={loader(authCtx, dispatch)}
+        />
+        <Route path="/home" element={<HomePage />} />
+      </Route>
 
       {/* Not Found Page */}
-      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

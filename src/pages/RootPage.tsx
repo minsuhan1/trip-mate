@@ -1,12 +1,8 @@
-import { useAuthState } from "../../../contexts/auth-context";
+import { useAuthState } from "../contexts/auth-context";
 import { Navigate } from "react-router-dom";
-import { signOut } from "../../../services/firebase";
 
-const HomePage = function () {
+const RootPage = function () {
   const authCtx = useAuthState();
-  const handleLogout = () => {
-    signOut();
-  };
 
   switch (authCtx.state) {
     case "loading":
@@ -14,12 +10,7 @@ const HomePage = function () {
       return <div>로그인 중...</div>;
     case "loaded":
       if (authCtx.isAuthenticated) {
-        return (
-          <>
-            <div>HomePage</div>
-            <button onClick={handleLogout}>로그아웃</button>
-          </>
-        );
+        return <Navigate to="/home" replace />;
       } else {
         return <Navigate to="/login" replace />;
       }
@@ -29,4 +20,4 @@ const HomePage = function () {
   }
 };
 
-export default HomePage;
+export default RootPage;

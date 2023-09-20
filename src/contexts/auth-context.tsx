@@ -8,7 +8,7 @@ import { auth } from "../services/firebase";
  * isAuthenticated: 인증정보 존재여부
  * user: 현재 유저 객체(User)
  */
-type AuthState =
+export type AuthState =
   | { state: "loading" }
   | { state: "loaded"; isAuthenticated: true; user: User }
   | { state: "loaded"; isAuthenticated: false; user: null }

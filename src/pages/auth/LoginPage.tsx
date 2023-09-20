@@ -1,12 +1,12 @@
-import { signIn } from "../../../services/firebase";
-import { useAuthState } from "../../../contexts/auth-context";
+import { signIn } from "../../utils/auth/firebase";
+import { useAuthState } from "../../contexts/auth-context";
 import { Navigate } from "react-router-dom";
-import AuthButton from "../HomePage/AuthButton";
-import GoogleIcon from "../../../assets/images/icons/icon_google.svg";
-import KakaoIcon from "../../../assets/images/icons/icon_kakao.svg";
-import logo from "../../../assets/images/logo.png";
-import FlexContainer from "../../../styles/flexContainer";
-import * as S from "./Login.styled";
+import AuthButton from "../../components/auth/AuthButton";
+import GoogleIcon from "../../assets/images/icons/icon_google.svg";
+import KakaoIcon from "../../assets/images/icons/icon_kakao.svg";
+import logo from "../../assets/images/logo.png";
+import FlexContainer from "../../styles/flexContainer";
+import * as S from "./LoginPage.styled";
 
 function LoginPage() {
   // 인증 상태 가져오기
@@ -20,12 +20,9 @@ function LoginPage() {
     signIn();
   };
 
-  // 로그인 상태인 경우 홈으로 redirect
-  if (authCtx.state === "loaded" && authCtx.isAuthenticated === true) {
-    return <Navigate to="/" replace />;
-  }
-
-  return (
+  return authCtx.state === "loaded" && authCtx.isAuthenticated === true ? (
+    <Navigate to="/profile/edit" />
+  ) : (
     <>
       <S.Background>
         <S.Overlay>
