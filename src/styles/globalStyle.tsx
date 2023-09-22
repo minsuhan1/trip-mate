@@ -1,6 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+  :root {
+    --primary-color: #75BAE0;
+    --secondary-color: #9FC9DF;
+    --third-color: #E07575;
+  }
+
   *, *::before, *::after {
     box-sizing: border-box;
   }
@@ -33,13 +39,10 @@ const GlobalStyle = createGlobalStyle`
 
 
   button {
+    background: none;
     color: #000;
     &:hover {
       cursor: pointer;
-    }
-
-    &:active {
-      filter: brightness(0.85);
     }
 
     * {

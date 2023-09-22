@@ -1,8 +1,9 @@
 import { useAppSelector } from "../../hooks/useApp";
 import { getProfileInfo } from "../../store/profileReducer";
 import { AuthState } from "../../contexts/auth-context";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { AppDispatch } from "../../store";
+import NavBar from "../../components/common/NavBar";
 
 export const loader =
   (authCtx: AuthState, dispatch: AppDispatch) => async () => {
@@ -15,11 +16,23 @@ export const loader =
 
 function ProfileEditPage() {
   const profile = useAppSelector((state) => state.profileReducer);
+  const navigate = useNavigate();
 
   return profile.state?.id ? (
     <Navigate to="/home" />
   ) : (
-    <div>프로필 생성 페이지</div>
+    <div>
+      <NavBar
+        backItemTitle="취소"
+        topItemTitle="프로필 생성"
+        doneItemTitle="완료"
+        onBackHandler={() => {}}
+        onDoneHandler={() => {
+          // test
+          navigate("/home");
+        }}
+      />
+    </div>
   );
 }
 
