@@ -22,7 +22,7 @@ function NavBar(props: NavBarProps) {
       <div className="bold">{props.topItemTitle}</div>
 
       {/* right */}
-      <button className="bold" onClick={props.onDoneHandler}>
+      <button className="bold done-item" onClick={props.onDoneHandler}>
         {props.doneItemTitle}
       </button>
     </StyledNavBar>
