@@ -4,6 +4,8 @@ import { AuthState } from "../../contexts/auth-context";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AppDispatch } from "../../store";
 import NavBar from "../../components/common/NavBar";
+import { signOut } from "../../utils/auth/firebase";
+import ProfileEditForm from "../../components/profile/ProfileEditForm";
 
 export const loader =
   (authCtx: AuthState, dispatch: AppDispatch) => async () => {
@@ -26,12 +28,15 @@ function ProfileEditPage() {
         backItemTitle="취소"
         topItemTitle="프로필 생성"
         doneItemTitle="완료"
-        onBackHandler={() => {}}
+        onBackHandler={() => {
+          signOut();
+        }}
         onDoneHandler={() => {
           // test
           navigate("/home");
         }}
       />
+      <ProfileEditForm />
     </div>
   );
 }

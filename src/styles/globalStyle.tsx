@@ -49,6 +49,11 @@ const GlobalStyle = createGlobalStyle`
       cursor: pointer;
     }
   }
+
+  input {
+    border: none;
+    outline: none;
+  }
 `;
 
 export default GlobalStyle;
