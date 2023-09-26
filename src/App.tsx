@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import {
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
 import { useAuthState } from "./contexts/auth-context";
 import { useAppDispatch } from "./hooks/useApp";
 
@@ -29,25 +34,30 @@ function App() {
   const authCtx = useAuthState();
   const dispatch = useAppDispatch();
 
-  return (
-    <Routes>
-      <Route path="/" element={<RootPage />} errorElement={<ErrorPage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="*" element={<NotFound />} />
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <>
+        <Route path="/" element={<RootPage />} errorElement={<ErrorPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="*" element={<NotFound />} />
 
-      {/* PrivateRoutes를 적용할 Route끼리 모은다 */}
-      <Route element={<PrivateRoutes />}>
-        <Route
-          path="/profile/edit"
-          element={<ProfileEditPage />}
-          loader={loader(authCtx, dispatch)}
-        />
-        <Route path="/home" element={<HomePage />} />
-      </Route>
+        {/* PrivateRoutes를 적용할 Route끼리 모은다 */}
+        <Route element={<PrivateRoutes />}>
+          <Route
+            path="/profile/edit"
+            element={<ProfileEditPage />}
+            loader={loader(authCtx, dispatch)}
+          />
+          <Route path="/home" element={<HomePage />} />
+        </Route>
 
-      {/* Not Found Page */}
-    </Routes>
+        {/* Not Found Page */}
+      </>
+    ),
+    { basename: process.env.PUBLIC_URL }
   );
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;

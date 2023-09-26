@@ -1,13 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getProfile } from "../utils/profile/getProfile";
+import { updateProfile } from "../utils/profile/updateProfile";
 
 // 프로필 정보 타입
 export interface ProfileInfo {
   id: string;
   nickname: string;
-  image: string;
-  created_at: Date;
-  updated_at: Date;
+  image?: string;
+  created_at: number; // timestamp
+  updated_at: number; // timestamp
 }
 
 // 프로필 상태 타입
@@ -28,6 +29,13 @@ export const getProfileInfo = createAsyncThunk(
   }
 );
 
+export const updateProfileInfo = createAsyncThunk(
+  "UPDATE_PROFILE_INFO",
+  async (args: { uid: string; data: ProfileInfo }, thunkAPI) => {
+    return updateProfile(args.uid, args.data);
+  }
+);
+
 export const profileSlice = createSlice({
   name: "profileInfo",
   initialState,
@@ -38,6 +46,11 @@ export const profileSlice = createSlice({
         status: "loaded",
         state: action.payload,
       };
+    });
+
+    builder.addCase(updateProfileInfo.fulfilled, (state, action) => {
+      state.status = "loaded";
+      state.state = action.payload;
     });
   },
 });

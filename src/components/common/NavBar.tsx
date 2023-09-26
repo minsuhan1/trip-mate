@@ -6,7 +6,6 @@ interface NavBarProps {
   topItemTitle: string;
   doneItemTitle: string;
   onBackHandler: React.MouseEventHandler;
-  onDoneHandler: React.MouseEventHandler;
 }
 
 function NavBar(props: NavBarProps) {
@@ -22,7 +21,7 @@ function NavBar(props: NavBarProps) {
       <div className="bold">{props.topItemTitle}</div>
 
       {/* right */}
-      <button className="bold done-item" onClick={props.onDoneHandler}>
+      <button type="submit" form="form" className="bold done-item">
         {props.doneItemTitle}
       </button>
     </StyledNavBar>

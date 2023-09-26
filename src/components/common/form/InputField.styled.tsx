@@ -5,6 +5,7 @@ export const StyledDiv = styled.div`
   flex-direction: column;
 
   input {
+    font-size: 1.6rem;
     box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
     padding: 16px 8px;
     border-radius: 4px;
@@ -26,6 +27,7 @@ export const StyledDiv = styled.div`
   }
 
   label {
+    font-size: 1.2rem;
     color: rgba(0, 0, 0, 0.6);
     align-self: start;
     background-color: #fff;

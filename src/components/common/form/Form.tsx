@@ -1,6 +1,7 @@
 import React from "react";
 import useForm from "../../../hooks/useForm";
 import { FormContext } from "../../../contexts/form-context";
+import styled from "styled-components";
 
 interface IFormProps {
   children: React.ReactNode;
@@ -18,13 +19,21 @@ export interface IFormValue {
   getFieldProps: (name: string) => {};
 }
 
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+`;
+
 function Form({ children, props }: IFormProps) {
   const formValue: IFormValue = useForm(props);
 
   // Provider에 폼 데이터를 전달
   return (
     <FormContext.Provider value={formValue}>
-      <form onSubmit={formValue.handleSubmit}>{children}</form>
+      <StyledForm onSubmit={formValue.handleSubmit} id="form">
+        {children}
+      </StyledForm>
     </FormContext.Provider>
   );
 }

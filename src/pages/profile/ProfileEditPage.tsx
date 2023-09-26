@@ -1,7 +1,7 @@
 import { useAppSelector } from "../../hooks/useApp";
 import { getProfileInfo } from "../../store/profileReducer";
 import { AuthState } from "../../contexts/auth-context";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { AppDispatch } from "../../store";
 import NavBar from "../../components/common/NavBar";
 import { signOut } from "../../utils/auth/firebase";
@@ -18,7 +18,6 @@ export const loader =
 
 function ProfileEditPage() {
   const profile = useAppSelector((state) => state.profileReducer);
-  const navigate = useNavigate();
 
   return profile.state?.id ? (
     <Navigate to="/home" />
@@ -31,12 +30,8 @@ function ProfileEditPage() {
         onBackHandler={() => {
           signOut();
         }}
-        onDoneHandler={() => {
-          // test
-          navigate("/home");
-        }}
       />
-      <ProfileEditForm />
+      <ProfileEditForm profile={profile} />
     </div>
   );
 }
