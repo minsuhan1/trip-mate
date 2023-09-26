@@ -16,7 +16,7 @@ const RootPage = function () {
       }
     case "error":
       // 에러페이지
-      return <div>에러 페이지</div>;
+      return <Navigate to="/login" replace />;
   }
 };
 
