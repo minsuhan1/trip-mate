@@ -11,10 +11,11 @@ import { useAppDispatch } from "./hooks/useApp";
 import RootPage from "./pages/RootPage";
 import LoginPage from "./pages/auth/LoginPage";
 import HomePage from "./pages/home/HomePage";
-import ProfileEditPage, { loader } from "./pages/profile/ProfileEditPage";
+import ProfileEditPage from "./pages/profile/ProfileEditPage";
 import NotFound from "./pages/NotFoundPage";
 import ErrorPage from "./pages/ErrorPage";
 import PrivateRoutes from "./pages/PrivateRoutes";
+import { getProfileInfo } from "./store/profileReducer";
 
 // vh를 브라우저 상하단 메뉴를 제외한 화면 크기를 기반으로 설정
 function setScreenSize() {
@@ -34,6 +35,17 @@ function App() {
   const authCtx = useAuthState();
   const dispatch = useAppDispatch();
 
+  // 프로필 정보 로더
+  const profileLoader = async () => {
+    console.log("loader");
+    if (authCtx.state === "loaded" && authCtx.isAuthenticated === true) {
+      await dispatch(getProfileInfo(authCtx.user.uid));
+      return null;
+    }
+    return null;
+  };
+
+  // Router
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
@@ -46,9 +58,9 @@ function App() {
           <Route
             path="/profile/edit"
             element={<ProfileEditPage />}
-            loader={loader(authCtx, dispatch)}
+            loader={profileLoader}
           />
-          <Route path="/home" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} loader={profileLoader} />
         </Route>
 
         {/* Not Found Page */}
