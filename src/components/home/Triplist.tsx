@@ -8,8 +8,8 @@ const DUMMY_DATA = [
       title: "TITLE",
       image: undefined,
       user_id: "some-user-id",
-      start_date: new Date("2023-10-4").getTime(),
-      end_date: new Date("2023-10-16").getTime(),
+      start_date: new Date("2023/10/4").getTime(),
+      end_date: new Date("2023/10/16").getTime(),
     },
   },
   {
@@ -18,8 +18,8 @@ const DUMMY_DATA = [
       title: "TITLE",
       image: undefined,
       user_id: "some-user-id",
-      start_date: new Date("2023-10-6").getTime(),
-      end_date: new Date("2023-10-14").getTime(),
+      start_date: new Date("2023/10/6").getTime(),
+      end_date: new Date("2023/10/14").getTime(),
     },
   },
   {
@@ -28,8 +28,8 @@ const DUMMY_DATA = [
       title: "TITLE",
       image: undefined,
       user_id: "some-user-id",
-      start_date: new Date("2023-10-23").getTime(),
-      end_date: new Date("2023-10-25").getTime(),
+      start_date: new Date("2023/10/23").getTime(),
+      end_date: new Date("2023/10/25").getTime(),
     },
   },
   {
@@ -38,8 +38,8 @@ const DUMMY_DATA = [
       title: "TITLE",
       image: "image-data",
       user_id: "some-user-id",
-      start_date: new Date("2023-9-23").getTime(),
-      end_date: new Date("2023-9-23").getTime(),
+      start_date: new Date("2023/9/23").getTime(),
+      end_date: new Date("2023/9/23").getTime(),
     },
   },
 ];
