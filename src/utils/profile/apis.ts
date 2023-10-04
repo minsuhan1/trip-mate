@@ -4,7 +4,7 @@ import { ProfileInfo } from "../../store/profileReducer";
 
 class ProfileAPI {
   static get = async (uid: string) => {
-    const docRef = doc(db, `${uid}/profile`);
+    const docRef = doc(db, `uid/${uid}/profile/${uid}`);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
@@ -16,7 +16,7 @@ class ProfileAPI {
   };
 
   static update = async (uid: string, data: ProfileInfo) => {
-    const docRef = doc(db, `${uid}/profile`);
+    const docRef = doc(db, `uid/${uid}/profile/${uid}`);
     await setDoc(docRef, data);
     return data;
   };

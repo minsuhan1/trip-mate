@@ -12,8 +12,8 @@ const reducers = combineReducers({
 const persistConfig = {
   key: "root",
   storage, // 로컬스토리지에 저장
-  // whitelist: 지정된 store를 저장
-  // blacklist: 지정된 store를 저장에서 제외
+  // whitelist: 지정된 reducer를 저장
+  // blacklist: 지정된 reducer를 저장에서 제외
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

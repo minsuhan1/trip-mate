@@ -37,7 +37,6 @@ function App() {
 
   // 프로필 정보 로더
   const profileLoader = async () => {
-    console.log("loader");
     if (authCtx.state === "loaded" && authCtx.isAuthenticated === true) {
       await dispatch(getProfileInfo(authCtx.user.uid));
       return null;

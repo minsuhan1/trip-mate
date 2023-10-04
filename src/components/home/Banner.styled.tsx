@@ -4,7 +4,7 @@ export const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 30%;
+  height: 35%;
 
   main {
     background-color: var(--primary-color);
@@ -62,7 +62,7 @@ export const StyledDiv = styled.div`
     background-color: var(--secondary-color);
     border-radius: 45px;
     padding: 0 16px;
-    height: 44px;
+    height: 48px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
 
     &:active {

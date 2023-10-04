@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   :root {
     --primary-color: #75BAE0;
+    --primary-color-rgb: rgba(117, 186, 224);
     --secondary-color: #D6EBF7;
     --third-color: #E07575;
   }
@@ -53,6 +54,10 @@ const GlobalStyle = createGlobalStyle`
   input {
     border: none;
     outline: none;
+  }
+
+  ul, ol {
+    list-style: none;
   }
 `;
 
