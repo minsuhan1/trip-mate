@@ -1,14 +1,14 @@
 import { useState, useRef } from "react";
 import { useAppDispatch } from "../../hooks/useApp";
-import { Profile, updateProfileInfo } from "../../store/profileReducer";
+import { IProfileState, updateProfileInfo } from "../../store/profileReducer";
 import { useAuthState } from "../../contexts/auth-context";
 import ProfileIcon from "../../assets/icons/profile.svg";
-import { StyledImageUploadContainer } from "./ProfileEditform.styled";
+import { StyledImageUploadContainer } from "./ProfileEditForm.styled";
 import InputField from "../common/form/InputField";
 import Form from "../common/form/Form";
 import ErrorMessage from "../common/form/ErrorMessage";
 
-function ProfileEditForm({ profile }: { profile: Profile }) {
+function ProfileEditForm({ profile }: { profile: IProfileState }) {
   // 프로필 이미지 상태
   const [imageSrc, setImageSrc]: any = useState(profile.state?.image || null);
   const imgRef = useRef<HTMLInputElement>(null);
@@ -81,7 +81,7 @@ function ProfileEditForm({ profile }: { profile: Profile }) {
       }}
     >
       <StyledImageUploadContainer>
-        <img src={imageSrc ? imageSrc : ProfileIcon} alt="profile-img"></img>
+        <img src={imageSrc ? imageSrc : ProfileIcon} alt="profile-img" />
         {!imageSrc && <label htmlFor="profileImg">프로필 이미지 추가</label>}
         {imageSrc && <label onClick={resetImageSrc}>프로필 이미지 제거</label>}
 

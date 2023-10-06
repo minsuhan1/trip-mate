@@ -14,7 +14,7 @@ function HomePage() {
   return (
     <StyledMain>
       <Banner nickname={profile?.nickname} listNum={2} />
-      <Triplist></Triplist>
+      <Triplist />
       <button onClick={handleLogout}>로그아웃</button>
     </StyledMain>
   );

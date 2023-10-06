@@ -36,6 +36,7 @@ export const Info = styled.div`
   }
 
   h1 {
+    font-size: 1.6rem;
     height: 25%;
   }
 
@@ -52,6 +53,7 @@ export const Dday = styled.div<{ $day: number }>`
   label {
     border-radius: 10px;
     font-size: 1.4rem;
+    letter-spacing: 0.5px;
     padding: 6px 10px;
     color: ${(props) => {
       if (props.$day === 0) return "#970000";

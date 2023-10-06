@@ -11,7 +11,8 @@ interface TripProp {
 }
 
 function Trip(props: TripProp) {
-  const remainingDays = calcRemainingDays(props.start_date);
+  const remainingDays = calcRemainingDays(props.start_date); // D-DAY
+  const today = Date.now();
 
   return (
     <Element>
@@ -21,14 +22,18 @@ function Trip(props: TripProp) {
       <Info>
         <Dday $day={remainingDays}>
           <label>
-            D{remainingDays > 0 ? "-" : "+"}
-            {Math.abs(remainingDays)}
+            {props.start_date <= today && today < props.end_date
+              ? "NOW"
+              : (remainingDays > 0 ? `D-` : `D+`) +
+                `${Math.abs(remainingDays)}`}
           </label>
         </Dday>
         <h1>{props.title}</h1>
         <span>
-          {new Intl.DateTimeFormat().format(props.start_date)} ~{" "}
-          {new Intl.DateTimeFormat().format(props.end_date)}
+          {new Intl.DateTimeFormat().format(props.start_date)}{" "}
+          {props.start_date < props.end_date
+            ? `~ ${new Intl.DateTimeFormat().format(props.end_date)}`
+            : ""}
         </span>
       </Info>
     </Element>

@@ -14,7 +14,7 @@ function ProfileEditPage() {
       <NavBar
         backItemTitle="취소"
         topItemTitle="프로필 생성"
-        doneItemTitle="완료"
+        doneItemTitle="저장"
         onBackHandler={() => {
           signOut();
         }}

@@ -2,6 +2,7 @@ import { StyledDiv } from "./Banner.styled";
 import { ReactComponent as Plus } from "../../assets/icons/plus.svg";
 import { ReactComponent as ProfileOutlined } from "../../assets/icons/profile-outlined.svg";
 import logo from "../../assets/images/logo.png";
+import { useNavigate } from "react-router-dom";
 
 interface BannerProp {
   nickname: string | undefined;
@@ -9,6 +10,12 @@ interface BannerProp {
 }
 
 function Banner({ nickname, listNum }: BannerProp) {
+  const navigate = useNavigate();
+
+  const btnCreateHandler = () => {
+    navigate("/create");
+  };
+
   return (
     <StyledDiv>
       <main>
@@ -23,7 +30,7 @@ function Banner({ nickname, listNum }: BannerProp) {
           {listNum}개의 여행을 앞두고 있어요!
         </h1>
       </main>
-      <button>
+      <button onClick={btnCreateHandler}>
         <Plus width={20} />
         <label>여행일정 생성</label>
       </button>

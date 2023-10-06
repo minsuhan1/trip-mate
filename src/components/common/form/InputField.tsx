@@ -16,7 +16,12 @@ function InputField(props: InputFieldProps) {
   return (
     <StyledDiv>
       <label>{props.label}</label>
-      <input {...props} {...getFieldProps(props.name)} />
+      <input
+        {...props}
+        {...getFieldProps(props.name)}
+        data-placeholder={props.type === "date" && props.placeholder}
+        required={props.type === "date" && true}
+      />
       {props.iconPath ? (
         <img src={props.iconPath} alt="icon" width={20} />
       ) : null}

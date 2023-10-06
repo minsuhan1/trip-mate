@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import ProfileAPI from "../utils/profile/apis";
+import { PURGE } from "redux-persist";
 
-// 프로필 정보 타입
-export interface ProfileInfo {
+// 프로필 정보 인터페이스
+export interface IProfile {
   id: string;
   nickname: string;
   image?: string;
@@ -10,14 +11,14 @@ export interface ProfileInfo {
   updated_at: number; // timestamp
 }
 
-// 프로필 상태 타입
-export interface Profile {
+// 프로필 상태 인터페이스
+export interface IProfileState {
   status: "loading" | "loaded" | "error";
-  state: ProfileInfo | undefined;
+  state: IProfile | undefined;
 }
 
 // 프로필 상태 초기값
-const initialState: Profile = {
+const initialState: IProfileState = {
   status: "loading",
   state: undefined,
 };
@@ -33,7 +34,7 @@ export const getProfileInfo = createAsyncThunk(
 // 프로필 정보를 업데이트하는 비동기 작업을 수행하는 thunk
 export const updateProfileInfo = createAsyncThunk(
   "UPDATE_PROFILE_INFO",
-  async (args: { uid: string; data: ProfileInfo }, thunkAPI) => {
+  async (args: { uid: string; data: IProfile }, thunkAPI) => {
     return ProfileAPI.update(args.uid, args.data);
   }
 );
@@ -55,5 +56,8 @@ export const profileSlice = createSlice({
       state.status = "loaded";
       state.state = action.payload;
     });
+
+    // 초기화하고싶은 상태가 있는 slice마다 아래를 추가
+    builder.addCase(PURGE, () => initialState);
   },
 });

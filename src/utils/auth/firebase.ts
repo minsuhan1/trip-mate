@@ -1,3 +1,4 @@
+import { persistor } from "../..";
 import { auth } from "../../services/firebase";
 import {
   GoogleAuthProvider,
@@ -12,6 +13,11 @@ export const signOut = () => {
     .catch((error) => {
       throw new Error("signOutFirebase Error");
     });
+
+  // redux persist가 localStorage에 저장한 상태 clear
+  setTimeout(async () => {
+    await persistor.purge();
+  }, 200);
 };
 
 // Google 로그인

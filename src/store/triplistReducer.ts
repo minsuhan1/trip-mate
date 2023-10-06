@@ -1,0 +1,81 @@
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import TripAPI from "../utils/trip/apis";
+import { PURGE } from "redux-persist";
+
+// 여행일정 데이터 인터페이스
+export interface ITripData {
+  title: string;
+  user_id: string;
+  image?: string;
+  start_date: number;
+  end_date: number;
+  created_at: number; // timestamp
+  updated_at: number; // timestamp
+}
+// 여행 일정 인터페이스
+export interface ITrip {
+  id: string;
+  data: ITripData;
+}
+
+// 여행 일정 목록 인터페이스
+// [{id: ..., data: ...}, ...]
+export interface ITriplist extends Array<ITrip> {}
+
+// 여행 일정 목록 상태 인터페이스
+export interface ITriplistState {
+  status: "loading" | "loaded" | "error";
+  state: ITriplist | undefined;
+}
+
+// 여행 일정 목록 상태 초기값
+const initialState: ITriplistState = {
+  status: "loading",
+  state: undefined,
+};
+
+// 여행 일정 목록을 가져오는 비동기 작업을 수행하는 thunk
+export const getTriplist = createAsyncThunk(
+  "GET_TRIPLIST",
+  async (uid: string, thunkAPI) => {
+    return TripAPI.get(uid);
+  }
+);
+
+// 여행 일정을 추가하는 비동기 작업을 수행하는 thunk
+export const addTrip = createAsyncThunk(
+  "CREATE_TRIP",
+  async (args: { uid: string; data: ITripData }, thunkAPI) => {
+    return TripAPI.add(args.uid, args.data);
+  }
+);
+
+// 여행 일정을 업데이트하는 비동기 작업을 수행하는 thunk
+export const updateTrip = createAsyncThunk(
+  "UPDATE_TRIP",
+  async (args: { uid: string; data: ITrip; id: string }, thunkAPI) => {
+    // update
+  }
+);
+
+// 여행 일정 목록 상태 slice
+export const triplistSlice = createSlice({
+  name: "triplist",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(getTriplist.fulfilled, (state, action) => {
+      state.status = "loaded";
+      state.state = action.payload;
+    });
+
+    builder.addCase(addTrip.fulfilled, (state, action) => {
+      // 생성된 id의 여행 데이터를 상태에 추가
+      const { id, data } = action.payload;
+      state.state?.push({ id, data });
+    });
+
+    // 초기화하고싶은 상태가 있는 slice마다 아래를 추가
+    builder.addCase(PURGE, () => initialState);
+  },
+});

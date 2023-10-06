@@ -18,6 +18,19 @@ export const StyledDiv = styled.div`
       border: none;
       box-shadow: inset 0 0 0 2px var(--primary-color);
     }
+
+    // input type='date' 일 경우 placeholder 보이기 위한 설정
+    &[type="date"]::before {
+      content: attr(data-placeholder);
+      width: 100%;
+      font-family: "Arial";
+      color: rgba(0, 0, 0, 0.25);
+    }
+
+    &[type="date"]:focus::before,
+    &[type="date"]:valid::before {
+      display: none;
+    }
   }
 
   &:focus-within {

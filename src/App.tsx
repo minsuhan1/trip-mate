@@ -6,7 +6,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import { useAuthState } from "./contexts/auth-context";
-import { useAppDispatch } from "./hooks/useApp";
+import { useAppDispatch, useAppSelector } from "./hooks/useApp";
 
 import RootPage from "./pages/RootPage";
 import LoginPage from "./pages/auth/LoginPage";
@@ -16,6 +16,8 @@ import NotFound from "./pages/NotFoundPage";
 import ErrorPage from "./pages/ErrorPage";
 import PrivateRoutes from "./pages/PrivateRoutes";
 import { getProfileInfo } from "./store/profileReducer";
+import TripEditPage from "./pages/trip/TripEditPage";
+import { getTriplist } from "./store/triplistReducer";
 
 // vh를 브라우저 상하단 메뉴를 제외한 화면 크기를 기반으로 설정
 function setScreenSize() {
@@ -34,11 +36,32 @@ function App() {
 
   const authCtx = useAuthState();
   const dispatch = useAppDispatch();
+  const profile = useAppSelector((state) => state.profileReducer);
+  const triplist = useAppSelector((state) => state.triplistReducer);
 
   // 프로필 정보 로더
   const profileLoader = async () => {
-    if (authCtx.state === "loaded" && authCtx.isAuthenticated === true) {
+    // 로그인 상태이고 프로필 정보가 확인되지 않은 경우 디스패치
+    if (
+      authCtx.state === "loaded" &&
+      authCtx.isAuthenticated === true &&
+      profile.status !== "loaded"
+    ) {
       await dispatch(getProfileInfo(authCtx.user.uid));
+      return null;
+    }
+    return null;
+  };
+
+  // 여행일정목록 로더
+  const triplistLoader = async () => {
+    // 로그인 상태이고 프로필 정보가 확인되지 않은 경우 디스패치
+    if (
+      authCtx.state === "loaded" &&
+      authCtx.isAuthenticated === true &&
+      triplist.status !== "loaded"
+    ) {
+      await dispatch(getTriplist(authCtx.user.uid));
       return null;
     }
     return null;
@@ -48,7 +71,12 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route path="/" element={<RootPage />} errorElement={<ErrorPage />} />
+        <Route
+          index
+          path="/"
+          element={<RootPage />}
+          errorElement={<ErrorPage />}
+        />
         <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<NotFound />} />
 
@@ -59,7 +87,8 @@ function App() {
             element={<ProfileEditPage />}
             loader={profileLoader}
           />
-          <Route path="/home" element={<HomePage />} loader={profileLoader} />
+          <Route path="/home" element={<HomePage />} loader={triplistLoader} />
+          <Route path="/create" element={<TripEditPage />} />
         </Route>
 
         {/* Not Found Page */}
