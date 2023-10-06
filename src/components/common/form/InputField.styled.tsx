@@ -9,6 +9,7 @@ export const StyledDiv = styled.div`
     box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
     padding: 16px 8px;
     border-radius: 4px;
+    -webkit-appearance: none;
 
     &::placeholder {
       color: rgba(0, 0, 0, 0.25);
