@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useAppSelector } from "../../hooks/useApp";
 import { ITrip } from "../../store/triplistReducer";
 import Trip from "./Trip";
@@ -13,16 +14,74 @@ function Triplist() {
     );
   }
 
+  const initTrips = triplist;
+  const [trips, setTrips] = useState(initTrips);
+  const [tabIdx, setTabIdx] = useState(0);
+
+  const filterTrips = (type: "all" | "incoming" | "past") => {
+    const today = new Date(
+      new Date().getFullYear(),
+      new Date().getMonth(),
+      new Date().getDate()
+    ).getTime();
+    let results = initTrips;
+
+    if (type === "all") {
+      setTabIdx(0);
+    }
+    if (type === "incoming") {
+      setTabIdx(1);
+      results = initTrips?.filter((trip) => trip.data.start_date > today);
+    }
+    if (type === "past") {
+      setTabIdx(2);
+      results = initTrips?.filter((trip) => trip.data.start_date < today);
+    }
+
+    setTrips(results);
+  };
+
+  const menuArr = [
+    {
+      label: "전체",
+      onClick: () => {
+        filterTrips("all");
+      },
+    },
+    {
+      label: "다가올 여행",
+      onClick: () => {
+        filterTrips("incoming");
+      },
+    },
+    {
+      label: "다녀온 여행",
+      onClick: () => {
+        filterTrips("past");
+      },
+    },
+  ];
+
   return (
     <Container>
       <TabMenu>
-        <Tab $focused={true}>전체</Tab>
+        {menuArr.map((menu, idx) => {
+          return (
+            <Tab
+              $focused={idx === tabIdx ? true : false}
+              onClick={menu.onClick}
+            >
+              {menu.label}
+            </Tab>
+          );
+        })}
+        {/* <Tab $focused={true}>전체</Tab>
         <Tab>다가올 여행</Tab>
-        <Tab>다녀온 여행</Tab>
+        <Tab>다녀온 여행</Tab> */}
       </TabMenu>
       <List>
-        {triplist && triplist.length > 0 ? (
-          triplist.map((data: ITrip) => (
+        {trips && trips.length > 0 ? (
+          trips.map((data: ITrip) => (
             <Trip
               key={data.id}
               id={data.id}
