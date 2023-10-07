@@ -6,12 +6,20 @@ import { Container, List, Tab, TabMenu } from "./Triplist.styled";
 
 function Triplist() {
   let triplist = useAppSelector((state) => state.triplistReducer).state;
+  const today = new Date(
+    new Date().getFullYear(),
+    new Date().getMonth(),
+    new Date().getDate()
+  ).getTime();
 
   if (triplist && triplist.length > 0) {
-    // 날짜가 빠른 순으로 여행일정목록을 정렬
-    triplist = [...triplist].sort(
-      (a: ITrip, b: ITrip) => a.data.start_date - b.data.start_date
-    );
+    // 1. 날짜가 빠른 순으로 여행일정목록을 정렬
+    // 2. 전체 목록에서 다녀온 여행들만 맨 뒤로 옮김
+    // [진행중 or 다가오는 여행 목록].concat([다녀온 여행 목록])
+    triplist = [...triplist]
+      .sort((a: ITrip, b: ITrip) => a.data.start_date - b.data.start_date)
+      .filter((trip) => trip.data.end_date >= today)
+      .concat(triplist?.filter((trip) => trip.data.end_date < today));
   }
 
   const initTrips = triplist;
@@ -19,12 +27,9 @@ function Triplist() {
   const [tabIdx, setTabIdx] = useState(0);
 
   const filterTrips = (type: "all" | "incoming" | "past") => {
-    const today = new Date(
-      new Date().getFullYear(),
-      new Date().getMonth(),
-      new Date().getDate()
-    ).getTime();
-    let results = initTrips;
+    let results = initTrips
+      ?.filter((trip) => trip.data.end_date >= today)
+      .concat(initTrips?.filter((trip) => trip.data.end_date < today));
 
     if (type === "all") {
       setTabIdx(0);
@@ -35,7 +40,7 @@ function Triplist() {
     }
     if (type === "past") {
       setTabIdx(2);
-      results = initTrips?.filter((trip) => trip.data.start_date < today);
+      results = initTrips?.filter((trip) => trip.data.end_date < today);
     }
 
     setTrips(results);
@@ -68,6 +73,7 @@ function Triplist() {
         {menuArr.map((menu, idx) => {
           return (
             <Tab
+              key={idx}
               $focused={idx === tabIdx ? true : false}
               onClick={menu.onClick}
             >

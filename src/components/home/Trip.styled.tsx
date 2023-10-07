@@ -47,7 +47,7 @@ export const Info = styled.div`
   }
 `;
 
-export const Dday = styled.div<{ $day: number }>`
+export const Dday = styled.div<{ $color: string[] }>`
   height: 50%;
 
   label {
@@ -55,15 +55,7 @@ export const Dday = styled.div<{ $day: number }>`
     font-size: 1.4rem;
     letter-spacing: 0.5px;
     padding: 6px 10px;
-    color: ${(props) => {
-      if (props.$day === 0) return "#970000";
-      if (0 < props.$day && props.$day < 10) return "#5500C1";
-      if (props.$day >= 10 || props.$day < 0) return "#000000";
-    }};
-    background-color: ${(props) => {
-      if (props.$day === 0) return "#FFCACA";
-      if (0 < props.$day && props.$day < 10) return "#E0D8FF";
-      if (props.$day >= 10 || props.$day < 0) return "#D9D9D9";
-    }};
+    color: ${(props) => props.$color[0]};
+    background-color: ${(props) => props.$color[1]};
   }
 `;

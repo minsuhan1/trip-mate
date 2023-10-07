@@ -20,7 +20,15 @@ function Trip(props: TripProp) {
         <img src={props.image || defaultImg} alt="trip-pic" />
       </Image>
       <Info>
-        <Dday $day={remainingDays}>
+        <Dday
+          $color={
+            props.start_date <= today && today < props.end_date
+              ? ["#970000", "#FFCACA"]
+              : props.start_date > today
+              ? ["#5500C1", "#E0D8FF"]
+              : ["#000000", "#D9D9D9"]
+          }
+        >
           <label>
             {props.start_date <= today && today < props.end_date
               ? "NOW"

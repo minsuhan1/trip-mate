@@ -8,6 +8,7 @@ import { NoImage, StyledImageUploadContainer } from "./TripEditForm.styled";
 import { ReactComponent as CameraIcon } from "../../assets/icons/camera.svg";
 import { addTrip } from "../../store/triplistReducer";
 import { useNavigate } from "react-router-dom";
+import { MILLISEC_1DAY } from "../../constants/constants";
 
 function TripEditForm() {
   // 대표 이미지 상태
@@ -73,8 +74,8 @@ function TripEditForm() {
           data: {
             user_id: uid,
             title: values.title,
-            start_date: new Date(values.start_date).getTime(),
-            end_date: new Date(values.end_date).getTime(),
+            start_date: new Date(values.start_date).setHours(0, 0, 0),
+            end_date: new Date(values.end_date).setHours(23, 59, 59),
             image: imageSrc,
             created_at: Date.now(),
             updated_at: Date.now(),
