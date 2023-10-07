@@ -19,6 +19,11 @@ function InputField(props: InputFieldProps) {
       <input
         {...props}
         {...getFieldProps(props.name)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+          }
+        }}
         data-placeholder={props.type === "date" && props.placeholder}
         required={props.type === "date" && true}
       />
