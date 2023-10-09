@@ -4,6 +4,8 @@ export const Container = styled.div`
   width: 100%;
   height: 65%;
   padding: 0 10px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const TabMenu = styled.div`
@@ -27,7 +29,7 @@ export const Tab = styled.button<{ $focused?: boolean }>`
 `;
 
 export const List = styled.ul`
-  height: calc(100% - 60px);
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 20px;

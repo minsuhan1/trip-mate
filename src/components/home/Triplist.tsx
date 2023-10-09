@@ -3,6 +3,7 @@ import { useAppSelector } from "../../hooks/useApp";
 import { ITrip } from "../../store/triplistReducer";
 import Trip from "./Trip";
 import { Container, List, Tab, TabMenu } from "./Triplist.styled";
+import Empty from "./Empty";
 
 function Triplist() {
   let triplist = useAppSelector((state) => state.triplistReducer).state;
@@ -81,13 +82,10 @@ function Triplist() {
             </Tab>
           );
         })}
-        {/* <Tab $focused={true}>전체</Tab>
-        <Tab>다가올 여행</Tab>
-        <Tab>다녀온 여행</Tab> */}
       </TabMenu>
-      <List>
-        {trips && trips.length > 0 ? (
-          trips.map((data: ITrip) => (
+      {trips && trips.length > 0 ? (
+        <List>
+          {trips.map((data: ITrip) => (
             <Trip
               key={data.id}
               id={data.id}
@@ -96,11 +94,11 @@ function Triplist() {
               start_date={data.data.start_date}
               end_date={data.data.end_date}
             />
-          ))
-        ) : (
-          <div>No content</div>
-        )}
-      </List>
+          ))}
+        </List>
+      ) : (
+        <Empty />
+      )}
     </Container>
   );
 }
