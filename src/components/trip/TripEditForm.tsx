@@ -8,7 +8,6 @@ import { NoImage, StyledImageUploadContainer } from "./TripEditForm.styled";
 import { ReactComponent as CameraIcon } from "../../assets/icons/camera.svg";
 import { addTrip } from "../../store/triplistReducer";
 import { useNavigate } from "react-router-dom";
-import { MILLISEC_1DAY } from "../../constants/constants";
 
 function TripEditForm() {
   // 대표 이미지 상태

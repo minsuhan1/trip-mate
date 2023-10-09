@@ -27,7 +27,9 @@ function Banner({ nickname, listNum }: BannerProp) {
         </nav>
         <h1>
           안녕하세요, {nickname}님<br></br>
-          {listNum}개의 여행을 앞두고 있어요!
+          {listNum > 0
+            ? `${listNum}개의 여행을 앞두고 있어요!`
+            : "즐거운 여행 계획을 세워보세요"}
         </h1>
       </main>
       <button onClick={btnCreateHandler}>
