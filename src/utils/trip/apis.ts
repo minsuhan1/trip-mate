@@ -15,7 +15,7 @@ class TripAPI {
       });
       return trips;
     } else {
-      return undefined;
+      return [];
     }
   };
 
