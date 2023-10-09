@@ -72,6 +72,9 @@ export const triplistSlice = createSlice({
     builder.addCase(addTrip.fulfilled, (state, action) => {
       // 생성된 id의 여행 데이터를 상태에 추가
       const { id, data } = action.payload;
+      if (state.state === undefined) {
+        state.state = [];
+      }
       state.state?.push({ id, data });
     });
 

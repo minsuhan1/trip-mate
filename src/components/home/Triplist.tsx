@@ -98,7 +98,7 @@ function Triplist() {
             />
           ))
         ) : (
-          <div></div>
+          <div>No content</div>
         )}
       </List>
     </Container>
