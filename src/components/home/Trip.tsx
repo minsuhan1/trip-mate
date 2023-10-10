@@ -1,6 +1,7 @@
 import { calcRemainingDays } from "../../utils/common";
 import { Dday, Element, Image, Info } from "./Trip.styled";
 import defaultImg from "../../assets/images/trip-default-img.webp";
+import { useNavigate } from "react-router-dom";
 
 interface TripProp {
   id: string;
@@ -13,9 +14,14 @@ interface TripProp {
 function Trip(props: TripProp) {
   const remainingDays = calcRemainingDays(props.start_date); // D-DAY
   const today = Date.now();
+  const navigate = useNavigate();
 
   return (
-    <Element>
+    <Element
+      onClick={() => {
+        navigate(`/trip/${props.id}`);
+      }}
+    >
       <Image>
         <img src={props.image || defaultImg} alt="trip-pic" />
       </Image>

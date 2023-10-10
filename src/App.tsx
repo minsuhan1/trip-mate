@@ -18,6 +18,8 @@ import PrivateRoutes from "./pages/PrivateRoutes";
 import { getProfileInfo } from "./store/profileReducer";
 import TripEditPage from "./pages/trip/TripEditPage";
 import { getTriplist } from "./store/triplistReducer";
+import BottomNav from "./layouts/bottom-nav/BottomNav";
+import MainPage from "./pages/schedule/MainPage";
 
 // vh를 브라우저 상하단 메뉴를 제외한 화면 크기를 기반으로 설정
 function setScreenSize() {
@@ -89,6 +91,10 @@ function App() {
           />
           <Route path="/home" element={<HomePage />} loader={triplistLoader} />
           <Route path="/create" element={<TripEditPage />} />
+
+          <Route element={<BottomNav />}>
+            <Route path="/trip/:id" element={<MainPage />} />
+          </Route>
         </Route>
 
         {/* Not Found Page */}
