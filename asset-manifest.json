@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/trip-mate/static/js/main.7f99441b.js",
+    "main.js": "/trip-mate/static/js/main.81b3e9bf.js",
     "static/media/triplist-empty.svg": "/trip-mate/static/media/triplist-empty.0256a009b5a48d238a8be1952a5086ef.svg",
     "static/media/trip-default-img.webp": "/trip-mate/static/media/trip-default-img.eae1d3d0ba0fa4d29f2e.webp",
     "static/media/logo.png": "/trip-mate/static/media/logo.ebd06f4c291ae3f88b7e.png",
@@ -8,13 +8,18 @@
     "static/media/camera.svg": "/trip-mate/static/media/camera.4ddb2ed6e4a7a6409ce001a8e36ed141.svg",
     "index.html": "/trip-mate/index.html",
     "static/media/icon_kakao.svg": "/trip-mate/static/media/icon_kakao.a7334f30a3963e7bf9182c66fe40e76b.svg",
+    "static/media/map.svg": "/trip-mate/static/media/map.5c200e8ff1c115aca915382d8b6cc977.svg",
     "static/media/profile.svg": "/trip-mate/static/media/profile.03ce053981169a696ff6db998c51b3b1.svg",
+    "static/media/checklist.svg": "/trip-mate/static/media/checklist.c94dfa10e7e8bbf3d8573d1386a2175a.svg",
+    "static/media/wallet.svg": "/trip-mate/static/media/wallet.42d04f0a5be23106f184e6f5afcd0a9c.svg",
+    "static/media/calendar.svg": "/trip-mate/static/media/calendar.20effb029451a29a438eddd629b1e296.svg",
     "static/media/profile-outlined.svg": "/trip-mate/static/media/profile-outlined.82fece514a4339b6879904a53d990782.svg",
+    "static/media/ellipsis-vertical.svg": "/trip-mate/static/media/ellipsis-vertical.042bc198dad0ac0b41ba882f7bc7d6fa.svg",
     "static/media/chevron-left.svg": "/trip-mate/static/media/chevron-left.e6ef43d38f1152134483724d256e019c.svg",
     "static/media/plus.svg": "/trip-mate/static/media/plus.db2d19c7c596d74a46a92f3468b835d0.svg",
-    "main.7f99441b.js.map": "/trip-mate/static/js/main.7f99441b.js.map"
+    "main.81b3e9bf.js.map": "/trip-mate/static/js/main.81b3e9bf.js.map"
   },
   "entrypoints": [
-    "static/js/main.7f99441b.js"
+    "static/js/main.81b3e9bf.js"
   ]
 }
