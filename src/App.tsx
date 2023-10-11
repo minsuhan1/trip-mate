@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useCallback } from "react";
 import {
   Route,
   RouterProvider,
@@ -42,32 +42,24 @@ function App() {
   const triplist = useAppSelector((state) => state.triplistReducer);
 
   // 프로필 정보 로더
-  const profileLoader = async () => {
+  const profileLoader = useCallback(async () => {
     // 로그인 상태이고 프로필 정보가 확인되지 않은 경우 디스패치
-    if (
-      authCtx.state === "loaded" &&
-      authCtx.isAuthenticated === true &&
-      profile.status !== "loaded"
-    ) {
+    if (authCtx.user && profile.status !== "loaded") {
       await dispatch(getProfileInfo(authCtx.user.uid));
       return null;
     }
     return null;
-  };
+  }, [authCtx.user, profile.status]);
 
   // 여행일정목록 로더
-  const triplistLoader = async () => {
+  const triplistLoader = useCallback(async () => {
     // 로그인 상태이고 프로필 정보가 확인되지 않은 경우 디스패치
-    if (
-      authCtx.state === "loaded" &&
-      authCtx.isAuthenticated === true &&
-      triplist.status !== "loaded"
-    ) {
+    if (authCtx.user && triplist.status !== "loaded") {
       await dispatch(getTriplist(authCtx.user.uid));
       return null;
     }
     return null;
-  };
+  }, [authCtx.user, triplist.status]);
 
   // Router
   const router = useMemo(() => {
@@ -107,7 +99,7 @@ function App() {
       ),
       { basename: process.env.PUBLIC_URL }
     );
-  }, []);
+  }, [profileLoader, triplistLoader]);
 
   return <RouterProvider router={router} />;
 }
