@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import TripAPI from "../utils/trip/apis";
 import { PURGE } from "redux-persist";
 
-// 여행일정 데이터 인터페이스
+// 여행 데이터 인터페이스
 export interface ITripData {
   title: string;
   user_id: string;
@@ -12,13 +12,13 @@ export interface ITripData {
   created_at: number; // timestamp
   updated_at: number; // timestamp
 }
-// 여행 일정 인터페이스
+// 여행 인터페이스
 export interface ITrip {
   id: string;
   data: ITripData;
 }
 
-// 여행 일정 목록 인터페이스
+// 여행 목록 인터페이스
 // [{id: ..., data: ...}, ...]
 export interface ITriplist extends Array<ITrip> {}
 
@@ -28,13 +28,13 @@ export interface ITriplistState {
   state: ITriplist | undefined;
 }
 
-// 여행 일정 목록 상태 초기값
+// 여행 목록 상태 초기값
 const initialState: ITriplistState = {
   status: "loading",
   state: undefined,
 };
 
-// 여행 일정 목록을 가져오는 비동기 작업을 수행하는 thunk
+// 여행 목록을 가져오는 비동기 작업을 수행하는 thunk
 export const getTriplist = createAsyncThunk(
   "GET_TRIPLIST",
   async (uid: string, thunkAPI) => {
@@ -42,7 +42,7 @@ export const getTriplist = createAsyncThunk(
   }
 );
 
-// 여행 일정을 추가하는 비동기 작업을 수행하는 thunk
+// 여행을 추가하는 비동기 작업을 수행하는 thunk
 export const addTrip = createAsyncThunk(
   "CREATE_TRIP",
   async (args: { uid: string; data: ITripData }, thunkAPI) => {
@@ -50,7 +50,7 @@ export const addTrip = createAsyncThunk(
   }
 );
 
-// 여행 일정을 업데이트하는 비동기 작업을 수행하는 thunk
+// 여행을 업데이트하는 비동기 작업을 수행하는 thunk
 export const updateTrip = createAsyncThunk(
   "UPDATE_TRIP",
   async (args: { uid: string; data: ITrip; id: string }, thunkAPI) => {
@@ -58,7 +58,15 @@ export const updateTrip = createAsyncThunk(
   }
 );
 
-// 여행 일정 목록 상태 slice
+// 여행을 삭제하는 비동기 작업을 수행하는 thunk
+export const deleteTrip = createAsyncThunk(
+  "DELETE_TRIP",
+  async (args: { uid: string; id: string }, thunkAPI) => {
+    return TripAPI.delete(args.uid, args.id);
+  }
+);
+
+// 여행 목록 상태 slice
 export const triplistSlice = createSlice({
   name: "triplist",
   initialState,
@@ -73,6 +81,12 @@ export const triplistSlice = createSlice({
       // 생성된 id의 여행 데이터를 상태에 추가
       const { id, data } = action.payload;
       state.state?.push({ id, data });
+    });
+
+    builder.addCase(deleteTrip.fulfilled, (state, action) => {
+      const deleted_id = action.payload;
+      // 삭제한 id의 여행 데이터를 상태에서 제거
+      state.state = state.state?.filter((trip) => trip.id !== deleted_id);
     });
 
     // 초기화하고싶은 상태가 있는 slice마다 아래를 추가

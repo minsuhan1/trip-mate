@@ -1,5 +1,5 @@
-import Banner from "./Banner";
-import List from "./List";
+import Banner from "../../components/schedule/Banner";
+import List from "../../components/schedule/List";
 
 function MainPage() {
   return (

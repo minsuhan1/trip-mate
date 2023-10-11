@@ -81,7 +81,7 @@ function TripEditForm() {
           },
         })
       ).then(() => {
-        navigate(-1);
+        navigate("/home");
       });
     }
   };

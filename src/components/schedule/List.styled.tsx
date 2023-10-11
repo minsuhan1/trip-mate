@@ -8,5 +8,5 @@ export const StyledDiv = styled.div`
   width: 100%;
   height: 65%;
   background-color: #fff;
-  border-radius: 45px 45px 0 0;
+  border-radius: 40px 40px 0 0;
 `;

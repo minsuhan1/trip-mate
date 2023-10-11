@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import {
   Route,
   RouterProvider,
@@ -70,38 +70,44 @@ function App() {
   };
 
   // Router
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <>
-        <Route
-          index
-          path="/"
-          element={<RootPage />}
-          errorElement={<ErrorPage />}
-        />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="*" element={<NotFound />} />
-
-        {/* PrivateRoutes를 적용할 Route끼리 모은다 */}
-        <Route element={<PrivateRoutes />}>
+  const router = useMemo(() => {
+    return createBrowserRouter(
+      createRoutesFromElements(
+        <>
           <Route
-            path="/profile/edit"
-            element={<ProfileEditPage />}
-            loader={profileLoader}
+            index
+            path="/"
+            element={<RootPage />}
+            errorElement={<ErrorPage />}
           />
-          <Route path="/home" element={<HomePage />} loader={triplistLoader} />
-          <Route path="/create" element={<TripEditPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="*" element={<NotFound />} />
 
-          <Route element={<BottomNav />}>
-            <Route path="/trip/:id" element={<MainPage />} />
+          {/* PrivateRoutes를 적용할 Route끼리 모은다 */}
+          <Route element={<PrivateRoutes />}>
+            <Route
+              path="/profile/edit"
+              element={<ProfileEditPage />}
+              loader={profileLoader}
+            />
+            <Route
+              path="/home"
+              element={<HomePage />}
+              loader={triplistLoader}
+            />
+            <Route path="/create" element={<TripEditPage />} />
+
+            <Route element={<BottomNav />}>
+              <Route path="/trip/:tripId" element={<MainPage />} />
+            </Route>
           </Route>
-        </Route>
 
-        {/* Not Found Page */}
-      </>
-    ),
-    { basename: process.env.PUBLIC_URL }
-  );
+          {/* Not Found Page */}
+        </>
+      ),
+      { basename: process.env.PUBLIC_URL }
+    );
+  }, []);
 
   return <RouterProvider router={router} />;
 }

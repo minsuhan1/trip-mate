@@ -15,7 +15,7 @@ export const StyledButton = styled.button`
 
   ul {
     position: absolute;
-    width: 100px;
+    width: 80px;
     right: 50%;
     top: 110%;
   }
