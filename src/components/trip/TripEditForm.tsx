@@ -8,6 +8,7 @@ import { NoImage, StyledImageUploadContainer } from "./TripEditForm.styled";
 import { ReactComponent as CameraIcon } from "../../assets/icons/camera.svg";
 import { addTrip, updateTrip } from "../../store/triplistReducer";
 import { useNavigate } from "react-router-dom";
+import { TIME_ZONE_KR } from "../../constants/constants";
 
 function TripEditForm(props: { id?: string }) {
   // Redux dispatcher, 인증 상태
@@ -24,18 +25,18 @@ function TripEditForm(props: { id?: string }) {
   // 폼 초기값
   const initFormValues = {
     title: trip_editing?.title || "",
+    // '2023-10-13T00:00:00.000Z' -> 'YYYY-MM-DD'
+    // 9시간(ms)을 더해주어야 시차가 맞는다
     start_date: trip_editing
-      ? new Date(trip_editing.start_date)
-          .toLocaleDateString()
-          .replace(/\./g, "")
-          .replace(/\s/g, "-")
-      : "",
+      ? new Date(trip_editing.start_date + TIME_ZONE_KR)
+          .toISOString()
+          .split("T")[0]
+      : new Date(Date.now() + TIME_ZONE_KR).toISOString().split("T")[0],
     end_date: trip_editing
-      ? new Date(trip_editing.end_date)
-          .toLocaleDateString()
-          .replace(/\./g, "")
-          .replace(/\s/g, "-")
-      : "",
+      ? new Date(trip_editing.end_date + TIME_ZONE_KR)
+          .toISOString()
+          .split("T")[0]
+      : new Date(Date.now() + TIME_ZONE_KR).toISOString().split("T")[0],
   };
   const initImgSrc = trip_editing?.image || null;
 
@@ -92,8 +93,7 @@ function TripEditForm(props: { id?: string }) {
     if (authCtx.user) {
       const uid = authCtx.user.uid;
       if (props.id && trip_editing) {
-        // 여행 수정 액션
-
+        /* [여행 정보 수정] */
         // 폼에 입력된 값
         const formValues = {
           title: values.title,
@@ -123,6 +123,7 @@ function TripEditForm(props: { id?: string }) {
           navigate(`/trip/${props.id}`);
         });
       } else {
+        /* [새 여행 생성] */
         // 새 여행 생성 액션
         dispatch(
           addTrip({

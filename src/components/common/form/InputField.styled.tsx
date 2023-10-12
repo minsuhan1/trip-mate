@@ -9,7 +9,6 @@ export const StyledDiv = styled.div`
     box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
     padding: 16px 8px;
     border-radius: 4px;
-    -webkit-appearance: none;
 
     &::placeholder {
       color: rgba(0, 0, 0, 0.25);
@@ -21,7 +20,13 @@ export const StyledDiv = styled.div`
     }
 
     // input type='date' 일 경우 placeholder 보이기 위한 설정
-    &[type="date"]::before {
+    &[type="date"] {
+      -webkit-appearance: none;
+      background-color: inherit;
+      height: 50px;
+    }
+
+    /* &[type="date"]::before {
       content: attr(data-placeholder);
       width: 100%;
       font-family: "Arial";
@@ -31,7 +36,7 @@ export const StyledDiv = styled.div`
     &[type="date"]:focus::before,
     &[type="date"]:valid::before {
       display: none;
-    }
+    } */
   }
 
   &:focus-within {
