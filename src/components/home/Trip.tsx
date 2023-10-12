@@ -2,6 +2,7 @@ import { calcRemainingDays } from "../../utils/common";
 import { Dday, Element, Image, Info } from "./Trip.styled";
 import defaultImg from "../../assets/images/trip-default-img.webp";
 import { useNavigate } from "react-router-dom";
+import { MILLISEC_1DAY } from "../../constants/constants";
 
 interface TripProp {
   id: string;
@@ -44,8 +45,9 @@ function Trip(props: TripProp) {
         </Dday>
         <h1>{props.title}</h1>
         <span>
+          {/* end_date는 23시 59분 59초로 설정되어 있어서 해당 밀리초만큼 빼야함 */}
           {new Intl.DateTimeFormat().format(props.start_date)}{" "}
-          {props.start_date < props.end_date
+          {props.start_date < props.end_date - (MILLISEC_1DAY - 1)
             ? `~ ${new Intl.DateTimeFormat().format(props.end_date)}`
             : ""}
         </span>

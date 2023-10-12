@@ -74,7 +74,7 @@ function App() {
           />
           <Route path="/login" element={<LoginPage />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/create" element={<TripEditPage />} />
+
           {/* PrivateRoutes를 적용할 Route끼리 모은다 */}
           <Route element={<PrivateRoutes />}>
             <Route
@@ -87,7 +87,7 @@ function App() {
               element={<HomePage />}
               loader={triplistLoader}
             />
-            {/* <Route path="/create" element={<TripEditPage />} /> */}
+            <Route path="/create" element={<TripEditPage />} />
 
             <Route element={<BottomNav />}>
               <Route path="/trip/:tripId" element={<MainPage />} />
