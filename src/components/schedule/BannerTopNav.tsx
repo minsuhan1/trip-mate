@@ -26,7 +26,7 @@ function BannerTopNav() {
   const tripId = params.tripId;
 
   const onDelete = async () => {
-    if (authCtx.state === "loaded" && authCtx.user && tripId) {
+    if (authCtx.user && tripId) {
       if (window.confirm("여행 일정을 삭제할까요?")) {
         await dispatch(deleteTrip({ uid: authCtx.user.uid, id: tripId }));
         navigate("/home");
@@ -74,7 +74,7 @@ function BannerTopNav() {
                   {
                     label: "수정",
                     onClick: () => {
-                      navigate("/home");
+                      navigate(`/create?id=${tripId}`);
                     },
                   },
                   { label: "삭제", onClick: onDelete },

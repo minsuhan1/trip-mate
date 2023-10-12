@@ -5,6 +5,7 @@ import {
   doc,
   getDocs,
   setDoc,
+  updateDoc,
 } from "firebase/firestore";
 import { ITripData, ITriplist } from "../../store/triplistReducer";
 
@@ -36,6 +37,15 @@ class TripAPI {
   };
 
   // 여행 수정하기
+  static update = async (
+    uid: string,
+    id: string,
+    data: { [key: string]: any }
+  ) => {
+    await updateDoc(doc(db, `users/${uid}/trips/${id}`), data);
+
+    return { id: id, data: data };
+  };
 
   // 여행 삭제하기
   static delete = async (uid: string, id: string) => {

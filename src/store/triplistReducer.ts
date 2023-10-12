@@ -4,6 +4,7 @@ import { PURGE } from "redux-persist";
 
 // 여행 데이터 인터페이스
 export interface ITripData {
+  [key: string]: any;
   title: string;
   user_id: string;
   image?: string;
@@ -53,8 +54,11 @@ export const addTrip = createAsyncThunk(
 // 여행을 업데이트하는 비동기 작업을 수행하는 thunk
 export const updateTrip = createAsyncThunk(
   "UPDATE_TRIP",
-  async (args: { uid: string; data: ITrip; id: string }, thunkAPI) => {
-    // update
+  async (
+    args: { uid: string; data: { [key: string]: any }; id: string },
+    thunkAPI
+  ) => {
+    return TripAPI.update(args.uid, args.id, args.data);
   }
 );
 
@@ -87,6 +91,17 @@ export const triplistSlice = createSlice({
       const deleted_id = action.payload;
       // 삭제한 id의 여행 데이터를 상태에서 제거
       state.state = state.state?.filter((trip) => trip.id !== deleted_id);
+    });
+
+    builder.addCase(updateTrip.fulfilled, (state, action) => {
+      // 수정한 여행 id, 수정 내용
+      const { id, data } = action.payload;
+      // 수정된 내용을 상태에 반영
+      state.state?.forEach((trip, idx) => {
+        if (trip.id === id) {
+          trip.data = { ...trip.data, ...data };
+        }
+      });
     });
 
     // 초기화하고싶은 상태가 있는 slice마다 아래를 추가

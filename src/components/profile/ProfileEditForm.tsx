@@ -53,7 +53,7 @@ function ProfileEditForm({ profile }: { profile: IProfileState }) {
 
   // 폼 제출 메서드
   const handleSubmit = (values: { nickname: string; description: string }) => {
-    if (authCtx.state === "loaded" && authCtx.user) {
+    if (authCtx.user) {
       const uid = authCtx.user.uid;
       dispatch(
         updateProfileInfo({

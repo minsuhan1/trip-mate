@@ -1,17 +1,46 @@
 import { useRef, useState } from "react";
 import { useAuthState } from "../../contexts/auth-context";
-import { useAppDispatch } from "../../hooks/useApp";
+import { useAppDispatch, useAppSelector } from "../../hooks/useApp";
 import Form from "../common/form/Form";
 import InputField from "../common/form/InputField";
 import ErrorMessage from "../common/form/ErrorMessage";
 import { NoImage, StyledImageUploadContainer } from "./TripEditForm.styled";
 import { ReactComponent as CameraIcon } from "../../assets/icons/camera.svg";
-import { addTrip } from "../../store/triplistReducer";
+import { addTrip, updateTrip } from "../../store/triplistReducer";
 import { useNavigate } from "react-router-dom";
 
-function TripEditForm() {
+function TripEditForm(props: { id?: string }) {
+  // Redux dispatcher, 인증 상태
+  const dispatch = useAppDispatch();
+  const authCtx = useAuthState();
+  const navigate = useNavigate();
+  const triplist = useAppSelector((state) => state.triplistReducer.state);
+
+  // (수정 페이지인 경우) 수정할 여행정보
+  const trip_editing = props.id
+    ? triplist?.find((trip) => trip.id === props.id)?.data
+    : null;
+
+  // 폼 초기값
+  const initFormValues = {
+    title: trip_editing?.title || "",
+    start_date: trip_editing
+      ? new Date(trip_editing.start_date)
+          .toLocaleDateString()
+          .replace(/\./g, "")
+          .replace(/\s/g, "-")
+      : "",
+    end_date: trip_editing
+      ? new Date(trip_editing.end_date)
+          .toLocaleDateString()
+          .replace(/\./g, "")
+          .replace(/\s/g, "-")
+      : "",
+  };
+  const initImgSrc = trip_editing?.image || null;
+
   // 대표 이미지 상태
-  const [imageSrc, setImageSrc]: any = useState(null);
+  const [imageSrc, setImageSrc]: any = useState(initImgSrc);
   const imgRef = useRef<HTMLInputElement>(null);
 
   // 업로드 후 이미지를 DataUrl로 변환하여 상태 업데이트
@@ -33,11 +62,6 @@ function TripEditForm() {
   const resetImageSrc = () => {
     setImageSrc(null);
   };
-
-  // Redux dispatcher, 인증 상태
-  const dispatch = useAppDispatch();
-  const authCtx = useAuthState();
-  const navigate = useNavigate();
 
   // 폼 values 인터페이스
   interface IValues {
@@ -65,35 +89,65 @@ function TripEditForm() {
 
   // 폼 제출 메서드
   const handleSubmit = (values: IValues) => {
-    if (authCtx.state === "loaded" && authCtx.user) {
+    if (authCtx.user) {
       const uid = authCtx.user.uid;
-      dispatch(
-        addTrip({
-          uid: uid,
-          data: {
-            user_id: uid,
-            title: values.title,
-            start_date: new Date(values.start_date).setHours(0, 0, 0),
-            end_date: new Date(values.end_date).setHours(23, 59, 59),
-            image: imageSrc,
-            created_at: Date.now(),
-            updated_at: Date.now(),
-          },
-        })
-      ).then(() => {
-        navigate("/home");
-      });
+      if (props.id && trip_editing) {
+        // 여행 수정 액션
+
+        // 폼에 입력된 값
+        const formValues = {
+          title: values.title,
+          start_date: new Date(values.start_date).setHours(0, 0, 0),
+          end_date: new Date(values.end_date).setHours(23, 59, 59),
+          image: imageSrc,
+        };
+
+        // 폼에 입력된 값과 수정 전 여행 정보를 비교하여 수정된 부분만 추출한다.
+        const difference = Object.fromEntries(
+          Object.entries(formValues).filter(
+            ([key, val]) => key in trip_editing && trip_editing[key] !== val
+          )
+        );
+
+        // 수정된 부분 + 수정 시각 데이터를 전달하여 수정 액션 디스패치
+        dispatch(
+          updateTrip({
+            uid: uid,
+            id: props.id,
+            data: {
+              ...difference,
+              updated_at: Date.now(),
+            },
+          })
+        ).then(() => {
+          navigate(`/trip/${props.id}`);
+        });
+      } else {
+        // 새 여행 생성 액션
+        dispatch(
+          addTrip({
+            uid: uid,
+            data: {
+              user_id: uid,
+              title: values.title,
+              start_date: new Date(values.start_date).setHours(0, 0, 0),
+              end_date: new Date(values.end_date).setHours(23, 59, 59),
+              image: imageSrc,
+              created_at: Date.now(),
+              updated_at: Date.now(),
+            },
+          })
+        ).then(() => {
+          navigate("/home");
+        });
+      }
     }
   };
 
   return (
     <Form
       props={{
-        initialValues: {
-          title: "",
-          start_date: "",
-          end_date: "",
-        },
+        initialValues: initFormValues,
         validate: validate,
         onSubmit: handleSubmit,
       }}
