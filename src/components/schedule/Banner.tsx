@@ -19,9 +19,9 @@ function Banner() {
       <div className="info">
         <p>
           {/* end_date는 23시 59분 59초로 설정되어 있어서 해당 밀리초만큼 빼야함 */}
-          {new Date(tripData.start_date).toLocaleDateString("kr")}{" "}
+          {new Date(tripData.start_date).toLocaleDateString("ko-KR")}{" "}
           {tripData.start_date < tripData.end_date - (MILLISEC_1DAY - 1)
-            ? `~ ${new Date(tripData.end_date).toLocaleDateString("kr")}`
+            ? `~ ${new Date(tripData.end_date).toLocaleDateString("ko-KR")}`
             : ""}
         </p>
         <h1>{tripData.title}</h1>

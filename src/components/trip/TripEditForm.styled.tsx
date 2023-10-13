@@ -47,6 +47,6 @@ export const NoImage = styled.div`
 
   span {
     font-size: 1.2rem;
-    font-weight: bold;
+    font-weight: 500;
   }
 `;

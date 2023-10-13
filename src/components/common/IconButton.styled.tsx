@@ -16,7 +16,7 @@ export const StyledButton = styled.button`
   ul {
     position: absolute;
     width: 80px;
-    right: 50%;
-    top: 110%;
+    right: 0%;
+    top: 120%;
   }
 `;

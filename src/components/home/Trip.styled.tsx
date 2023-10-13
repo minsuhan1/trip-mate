@@ -53,6 +53,7 @@ export const Dday = styled.div<{ $color: string[] }>`
   label {
     border-radius: 10px;
     font-size: 1.4rem;
+    font-weight: 500;
     letter-spacing: 0.5px;
     padding: 6px 10px;
     color: ${(props) => props.$color[0]};

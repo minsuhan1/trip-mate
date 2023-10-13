@@ -28,10 +28,10 @@ export const StyledDiv = styled.div<{ $background: string }>`
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
     p {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
     }
     h1 {
-      font-size: 2.2rem;
+      font-size: 2.8rem;
       font-weight: 800;
     }
   }

@@ -71,6 +71,7 @@ export const StyledDiv = styled.div`
 
     label {
       font-size: 1.6rem;
+      font-weight: 500;
       display: inline-block;
       padding: 0 0 0.2em;
       margin-top: 0.1em;

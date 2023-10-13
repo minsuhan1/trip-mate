@@ -40,6 +40,7 @@ const GlobalStyle = createGlobalStyle`
 
 
   button {
+    font-family: inherit;
     background: none;
     color: #000;
     &:hover {
