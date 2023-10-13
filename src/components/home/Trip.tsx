@@ -46,9 +46,9 @@ function Trip(props: TripProp) {
         <h1>{props.title}</h1>
         <span>
           {/* end_date는 23시 59분 59초로 설정되어 있어서 해당 밀리초만큼 빼야함 */}
-          {new Intl.DateTimeFormat().format(props.start_date)}{" "}
+          {new Date(props.start_date).toLocaleDateString("kr")}{" "}
           {props.start_date < props.end_date - (MILLISEC_1DAY - 1)
-            ? `~ ${new Intl.DateTimeFormat().format(props.end_date)}`
+            ? `~ ${new Date(props.end_date).toLocaleDateString("kr")}`
             : ""}
         </span>
       </Info>

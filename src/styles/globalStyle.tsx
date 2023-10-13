@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: "Helvetica", "Arial", sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
   }
 
   body::after{

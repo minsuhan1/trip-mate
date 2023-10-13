@@ -34,7 +34,7 @@ function BannerTopNav() {
     }
   };
 
-  // 외부 영역 클릭 시 모달 닫기
+  // 외부 영역 클릭 시 드롭다운 메뉴 닫기
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       if (
