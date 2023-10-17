@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../../hooks/useApp";
 import { useAuthState } from "../../../contexts/auth-context";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { MILLISEC_1DAY, TIME_ZONE_KR } from "../../../constants/constants";
+import { addSchedule } from "../../../store/scheduleReducer";
 
 function ScheduleEditForm(props: { id?: string; day?: string }) {
   // Redux dispatcher, 인증 상태
@@ -77,6 +78,30 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
     /**
      * [!!!] input[type='datetime_local']은 클라이언트의 타임존을 기준으로 동작함
      */
+    if (authCtx.user && tripId) {
+      const uid = authCtx.user.uid;
+      if (props.id) {
+        /* [스케줄 수정] */
+      } else {
+        /* [새 스케줄 생성] */
+        dispatch(
+          addSchedule({
+            uid: uid,
+            data: {
+              trip_id: tripId,
+              title: values.title,
+              description: values.description,
+              start_time: new Date(values.start_time).getTime(),
+              end_time: new Date(values.end_time).getTime(),
+              created_at: Date.now(),
+              updated_at: Date.now(),
+            },
+          })
+        ).then(() => {
+          navigate(`/trip/${tripId}`);
+        });
+      }
+    }
   };
 
   return tripData ? (

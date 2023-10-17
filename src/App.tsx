@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useCallback } from "react";
 import {
+  LoaderFunctionArgs,
   Route,
   RouterProvider,
   createBrowserRouter,
@@ -21,6 +22,7 @@ import { getTriplist } from "./store/triplistReducer";
 import BottomNav from "./layouts/bottom-nav/BottomNav";
 import MainPage from "./pages/schedule/MainPage";
 import ScheduleEditPage from "./pages/schedule/ScheduleEditPage";
+import { getScheduleList } from "./store/scheduleReducer";
 
 // vh를 브라우저 상하단 메뉴를 제외한 화면 크기를 기반으로 설정
 function setScreenSize() {
@@ -37,10 +39,13 @@ function App() {
     setScreenSize();
   }, []);
 
+  // 인증 상태 컨텍스트
   const authCtx = useAuthState();
+  // Redux dispatch, states
   const dispatch = useAppDispatch();
   const profile = useAppSelector((state) => state.profileReducer);
   const triplist = useAppSelector((state) => state.triplistReducer);
+  const scheduleList = useAppSelector((state) => state.scheduleListReducer);
 
   // 프로필 정보 로더
   const profileLoader = useCallback(async () => {
@@ -61,6 +66,25 @@ function App() {
     }
     return null;
   }, [authCtx.user, triplist.status]);
+
+  // 스케줄 로더: 현재 여행id에 대한 스케줄 목록을 로드한다
+  const scheduleListLoader = useCallback(
+    async ({ params }: LoaderFunctionArgs) => {
+      // 새 스케줄 목록을 가져오는 조건
+      // - 현재 스케줄의 tripId와 페이지 param의 tripId가 다른 경우
+      if (authCtx.user && params && params.tripId !== scheduleList.tripId) {
+        await dispatch(
+          getScheduleList({
+            uid: authCtx.user.uid,
+            tripId: params.tripId as string,
+          })
+        );
+        return null;
+      }
+      return null;
+    },
+    [authCtx.user, scheduleList.tripId]
+  );
 
   // Router
   const router = useMemo(() => {
@@ -91,7 +115,11 @@ function App() {
             <Route path="/create" element={<TripEditPage />} />
 
             <Route element={<BottomNav />}>
-              <Route path="/trip/:tripId" element={<MainPage />} />
+              <Route
+                path="/trip/:tripId"
+                element={<MainPage />}
+                loader={scheduleListLoader}
+              />
             </Route>
 
             <Route

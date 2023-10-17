@@ -32,12 +32,14 @@ export interface IScheduleList extends Array<ISchedule> {}
 // 스케줄 목록 상태 인터페이스
 export interface IScheduleListState {
   status: "loading" | "loaded" | "error";
+  tripId: string | undefined;
   state: IScheduleList | undefined;
 }
 
 // 스케줄 목록 상태 초기값
 const initialState: IScheduleListState = {
   status: "loading",
+  tripId: undefined,
   state: undefined,
 };
 
@@ -45,7 +47,8 @@ const initialState: IScheduleListState = {
 export const getScheduleList = createAsyncThunk(
   "GET_SCHEDULE_LIST",
   async (args: { uid: string; tripId: string }, thunkAPI) => {
-    return ScheduleAPI.get(args.uid, args.tripId);
+    const data = await ScheduleAPI.get(args.uid, args.tripId);
+    return { data, tripId: args.tripId };
   }
 );
 
@@ -89,7 +92,8 @@ export const scheduleListSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getScheduleList.fulfilled, (state, action) => {
       state.status = "loaded";
-      state.state = action.payload;
+      state.tripId = action.payload.tripId;
+      state.state = action.payload.data;
     });
 
     builder.addCase(addSchedule.fulfilled, (state, action) => {

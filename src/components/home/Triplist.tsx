@@ -74,14 +74,14 @@ function Triplist() {
       <TabMenu menuArr={menuArr} curTabIdx={tabIdx} />
       {trips && trips.length > 0 ? (
         <List>
-          {trips.map((data: ITrip) => (
+          {trips.map((trip: ITrip) => (
             <Trip
-              key={data.id}
-              id={data.id}
-              image={data.data.image}
-              title={data.data.title}
-              start_date={data.data.start_date}
-              end_date={data.data.end_date}
+              key={trip.id}
+              id={trip.id}
+              image={trip.data.image}
+              title={trip.data.title}
+              start_date={trip.data.start_date}
+              end_date={trip.data.end_date}
             />
           ))}
         </List>

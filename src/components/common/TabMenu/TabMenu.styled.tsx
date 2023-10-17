@@ -3,7 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   gap: 10px;
-  overflow-x: scroll;
+  overflow-y: scroll;
+  align-items: center;
+  height: 50px;
 
   // 스크롤바 표시 숨기기
   // Chrome, Safari, Opera, Edge

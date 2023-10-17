@@ -1,11 +1,11 @@
 import Banner from "../../components/schedule/Banner";
-import List from "../../components/schedule/List";
+import ScheduleList from "../../components/schedule/ScheduleList";
 
 function MainPage() {
   return (
     <>
       <Banner />
-      <List />
+      <ScheduleList />
     </>
   );
 }
