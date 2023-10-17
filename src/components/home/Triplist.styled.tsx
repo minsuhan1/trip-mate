@@ -8,26 +8,6 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
-export const TabMenu = styled.div`
-  display: flex;
-  gap: 10px;
-`;
-
-export const Tab = styled.button<{ $focused?: boolean }>`
-  height: 40px;
-  color: var(--primary-color);
-  font-size: 1.4rem;
-  background-color: rgba(117, 186, 224, 0.08);
-  border-radius: 45px;
-  padding: 10px 12px;
-  box-shadow: ${(props) =>
-    props.$focused ? "inset 0 0 0 1px var(--primary-color)" : "none"};
-
-  &:active {
-    background-color: rgba(117, 186, 224, 0.12);
-  }
-`;
-
 export const List = styled.ul`
   flex-grow: 1;
   display: flex;

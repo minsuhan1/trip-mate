@@ -1,5 +1,5 @@
 import { StyledNavBar } from "./NavBar.styled";
-import { ReactComponent as ChevronLeft } from "../../assets/icons/chevron-left.svg";
+import { ReactComponent as ChevronLeft } from "../../../assets/icons/chevron-left.svg";
 
 interface NavBarProps {
   backItemTitle: string;

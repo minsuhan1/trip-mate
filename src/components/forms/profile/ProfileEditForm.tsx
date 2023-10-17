@@ -1,12 +1,15 @@
 import { useState, useRef } from "react";
-import { useAppDispatch } from "../../hooks/useApp";
-import { IProfileState, updateProfileInfo } from "../../store/profileReducer";
-import { useAuthState } from "../../contexts/auth-context";
-import ProfileIcon from "../../assets/icons/profile.svg";
+import { useAppDispatch } from "../../../hooks/useApp";
+import {
+  IProfileState,
+  updateProfileInfo,
+} from "../../../store/profileReducer";
+import { useAuthState } from "../../../contexts/auth-context";
+import ProfileIcon from "../../../assets/icons/profile.svg";
 import { StyledImageUploadContainer } from "./ProfileEditForm.styled";
-import InputField from "../common/form/InputField";
-import Form from "../common/form/Form";
-import ErrorMessage from "../common/form/ErrorMessage";
+import InputField from "../../common/Form/InputField";
+import Form from "../../common/Form/Form";
+import ErrorMessage from "../../common/Form/ErrorMessage";
 
 function ProfileEditForm({ profile }: { profile: IProfileState }) {
   // 프로필 이미지 상태

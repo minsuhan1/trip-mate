@@ -1,8 +1,8 @@
 import { useAppSelector } from "../../hooks/useApp";
 import { Navigate } from "react-router-dom";
-import NavBar from "../../components/common/NavBar";
+import NavBar from "../../components/common/NavBar/NavBar";
 import { signOut } from "../../utils/auth/firebase";
-import ProfileEditForm from "../../components/profile/ProfileEditForm";
+import ProfileEditForm from "../../components/forms/profile/ProfileEditForm";
 
 function ProfileEditPage() {
   const profile = useAppSelector((state) => state.profileReducer);

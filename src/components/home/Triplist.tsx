@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useAppSelector } from "../../hooks/useApp";
 import { ITrip } from "../../store/triplistReducer";
 import Trip from "./Trip";
-import { Container, List, Tab, TabMenu } from "./Triplist.styled";
+import { Container, List } from "./Triplist.styled";
 import Empty from "./Empty";
+import TabMenu from "../common/TabMenu/TabMenu";
 
 function Triplist() {
   let triplist = useAppSelector((state) => state.triplistReducer).state;
@@ -70,19 +71,7 @@ function Triplist() {
 
   return (
     <Container>
-      <TabMenu>
-        {menuArr.map((menu, idx) => {
-          return (
-            <Tab
-              key={idx}
-              $focused={idx === tabIdx ? true : false}
-              onClick={menu.onClick}
-            >
-              {menu.label}
-            </Tab>
-          );
-        })}
-      </TabMenu>
+      <TabMenu menuArr={menuArr} curTabIdx={tabIdx} />
       {trips && trips.length > 0 ? (
         <List>
           {trips.map((data: ITrip) => (

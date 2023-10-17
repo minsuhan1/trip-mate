@@ -3,11 +3,13 @@ import { profileSlice } from "./profileReducer";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { triplistSlice } from "./triplistReducer";
+import { scheduleListSlice } from "./scheduleReducer";
 
 // 리듀서 설정
 const reducers = combineReducers({
   profileReducer: profileSlice.reducer,
   triplistReducer: triplistSlice.reducer,
+  scheduleListReducer: scheduleListSlice.reducer,
 });
 
 // redux-persist를 통한 상태 로컬 저장 설정

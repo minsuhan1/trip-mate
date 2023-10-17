@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
-import IconButton from "../common/IconButton";
+import IconButton from "../common/IconButton/IconButton";
 import { ReactComponent as ChevIconLeft } from "../../assets/icons/chevron-left.svg";
 import { ReactComponent as EllipsisVerticalIcon } from "../../assets/icons/ellipsis-vertical.svg";
-import DropdownMenu from "../common/DropdownMenu";
+import DropdownMenu from "../common/DropdownMenu/DropdownMenu";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuthState } from "../../contexts/auth-context";
 import { deleteTrip } from "../../store/triplistReducer";

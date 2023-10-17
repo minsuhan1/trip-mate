@@ -1,14 +1,14 @@
 import { useRef, useState } from "react";
-import { useAuthState } from "../../contexts/auth-context";
-import { useAppDispatch, useAppSelector } from "../../hooks/useApp";
-import Form from "../common/form/Form";
-import InputField from "../common/form/InputField";
-import ErrorMessage from "../common/form/ErrorMessage";
+import { useAuthState } from "../../../contexts/auth-context";
+import { useAppDispatch, useAppSelector } from "../../../hooks/useApp";
+import Form from "../../common/Form/Form";
+import InputField from "../../common/Form/InputField";
+import ErrorMessage from "../../common/Form/ErrorMessage";
 import { NoImage, StyledImageUploadContainer } from "./TripEditForm.styled";
-import { ReactComponent as CameraIcon } from "../../assets/icons/camera.svg";
-import { addTrip, updateTrip } from "../../store/triplistReducer";
+import { ReactComponent as CameraIcon } from "../../../assets/icons/camera.svg";
+import { addTrip, updateTrip } from "../../../store/triplistReducer";
 import { useNavigate } from "react-router-dom";
-import { TIME_ZONE_KR } from "../../constants/constants";
+import { TIME_ZONE_KR } from "../../../constants/constants";
 
 function TripEditForm(props: { id?: string }) {
   // Redux dispatcher, 인증 상태

@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import NavBar from "../../components/common/NavBar";
-import TripEditForm from "../../components/trip/TripEditForm";
+import NavBar from "../../components/common/NavBar/NavBar";
+import TripEditForm from "../../components/forms/trip/TripEditForm";
 
 function TripEditPage() {
   const navigate = useNavigate();

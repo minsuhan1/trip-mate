@@ -8,5 +8,6 @@ export const StyledDiv = styled.div`
   width: 100%;
   height: 65%;
   background-color: #fff;
-  border-radius: 40px 40px 0 0;
+  border-radius: 30px 30px 0 0;
+  padding: 15px 15px 0 15px;
 `;

@@ -20,6 +20,7 @@ import TripEditPage from "./pages/trip/TripEditPage";
 import { getTriplist } from "./store/triplistReducer";
 import BottomNav from "./layouts/bottom-nav/BottomNav";
 import MainPage from "./pages/schedule/MainPage";
+import ScheduleEditPage from "./pages/schedule/ScheduleEditPage";
 
 // vh를 브라우저 상하단 메뉴를 제외한 화면 크기를 기반으로 설정
 function setScreenSize() {
@@ -92,6 +93,11 @@ function App() {
             <Route element={<BottomNav />}>
               <Route path="/trip/:tripId" element={<MainPage />} />
             </Route>
+
+            <Route
+              path="/trip/:tripId/schedule/create"
+              element={<ScheduleEditPage />}
+            />
           </Route>
 
           {/* Not Found Page */}
