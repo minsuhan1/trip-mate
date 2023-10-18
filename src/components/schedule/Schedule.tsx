@@ -113,7 +113,7 @@ function Schedule(props: ScheduleProp) {
                 <EditIcon width={"85%"} />
               </IconButton>
               <IconButton onClick={onDelete}>
-                <XMarkIcon />
+                <XMarkIcon width={"100%"} />
               </IconButton>
             </nav>
           </Menu>

@@ -81,14 +81,27 @@ function ScheduleList() {
       throttle = setTimeout(() => {
         throttle = null;
         if (listRef.current) {
+          // 현재 스크롤 값
           let currentScrollPos = listRef.current.scrollTop;
+
+          // 사파리 scroll bounce 대응
+          // - scrollTop < 0인 경우 리턴
+          // - 스크롤 값이 최대 스크롤 값을 넘으면 리턴
+          if (
+            currentScrollPos < 0 ||
+            listRef.current.scrollTop >
+              listRef.current.scrollHeight - listRef.current.clientHeight
+          )
+            return;
+
+          // 스크롤 down/up 처리
           if (prevScrollPos < currentScrollPos) {
             fab.style.bottom = "-100px";
           } else {
             fab.style.bottom = "100px";
           }
+
           prevScrollPos = currentScrollPos;
-          console.log(prevScrollPos, currentScrollPos);
         }
       }, 200);
     }

@@ -57,7 +57,7 @@ function BannerTopNav() {
             navigate("/home");
           }}
         >
-          <ChevIconLeft />
+          <ChevIconLeft width={"100%"} />
         </IconButton>
       </div>
       <div>
@@ -67,7 +67,7 @@ function BannerTopNav() {
               setViewMenu(!viewMenu);
             }}
           >
-            <EllipsisVerticalIcon />
+            <EllipsisVerticalIcon width={"100%"} />
             {viewMenu && (
               <DropdownMenu
                 menuArr={[
