@@ -1,9 +1,10 @@
 {
   "files": {
-    "main.js": "/trip-mate/static/js/main.46647b38.js",
+    "main.js": "/trip-mate/static/js/main.22a4d986.js",
     "static/media/triplist-empty.svg": "/trip-mate/static/media/triplist-empty.0256a009b5a48d238a8be1952a5086ef.svg",
     "static/media/trip-default-img.webp": "/trip-mate/static/media/trip-default-img.eae1d3d0ba0fa4d29f2e.webp",
     "static/media/logo.png": "/trip-mate/static/media/logo.ebd06f4c291ae3f88b7e.png",
+    "static/media/schedule-empty.svg": "/trip-mate/static/media/schedule-empty.393d412cf4f731abb15865cba3881f27.svg",
     "static/media/icon_google.svg": "/trip-mate/static/media/icon_google.40e14597c5d984a14eaf0d65dd0c7868.svg",
     "index.html": "/trip-mate/index.html",
     "static/media/camera.svg": "/trip-mate/static/media/camera.4ddb2ed6e4a7a6409ce001a8e36ed141.svg",
@@ -14,12 +15,14 @@
     "static/media/wallet.svg": "/trip-mate/static/media/wallet.42d04f0a5be23106f184e6f5afcd0a9c.svg",
     "static/media/calendar.svg": "/trip-mate/static/media/calendar.20effb029451a29a438eddd629b1e296.svg",
     "static/media/profile-outlined.svg": "/trip-mate/static/media/profile-outlined.82fece514a4339b6879904a53d990782.svg",
+    "static/media/edit.svg": "/trip-mate/static/media/edit.00cc7742d2d8d29a7f4fd433246ce0b3.svg",
     "static/media/ellipsis-vertical.svg": "/trip-mate/static/media/ellipsis-vertical.042bc198dad0ac0b41ba882f7bc7d6fa.svg",
     "static/media/chevron-left.svg": "/trip-mate/static/media/chevron-left.e6ef43d38f1152134483724d256e019c.svg",
     "static/media/plus.svg": "/trip-mate/static/media/plus.db2d19c7c596d74a46a92f3468b835d0.svg",
-    "main.46647b38.js.map": "/trip-mate/static/js/main.46647b38.js.map"
+    "static/media/x-mark.svg": "/trip-mate/static/media/x-mark.6157b2f9cef61f43cfb9afb27dae1ef8.svg",
+    "main.22a4d986.js.map": "/trip-mate/static/js/main.22a4d986.js.map"
   },
   "entrypoints": [
-    "static/js/main.46647b38.js"
+    "static/js/main.22a4d986.js"
   ]
 }
