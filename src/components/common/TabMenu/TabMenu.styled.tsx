@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  flex-shrink: 0;
   display: flex;
   gap: 10px;
-  overflow-y: scroll;
+  overflow-x: scroll;
   align-items: center;
   height: 50px;
 

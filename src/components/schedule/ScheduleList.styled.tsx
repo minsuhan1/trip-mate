@@ -14,6 +14,7 @@ export const StyledDiv = styled.div`
 
 export const List = styled.ul`
   flex-grow: 1;
+  height: calc(100% - 50px - 80px - 30px);
   display: flex;
   flex-direction: column;
   gap: 10px;
