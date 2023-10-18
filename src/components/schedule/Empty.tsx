@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { ReactComponent as Illust } from "../../assets/illustrations/triplist-empty.svg";
+import { ReactComponent as Illust } from "../../assets/illustrations/schedule-empty.svg";
 
 const StyledDiv = styled.div`
   width: 100%;
+  height: 100%;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -19,8 +20,8 @@ const StyledDiv = styled.div`
 function Empty() {
   return (
     <StyledDiv>
-      <Illust width={"80%"} height={"35%"} />
-      <p>새로운 여정을 시작해 보세요!</p>
+      <Illust width={"80%"} height={"45%"} />
+      <p>지금 바로 스케줄을 추가해 볼까요?</p>
     </StyledDiv>
   );
 }

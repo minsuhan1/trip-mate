@@ -14,6 +14,7 @@ const Button = styled.button`
   bottom: 100px;
   right: 20px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
 
   &:hover,
   &:active {

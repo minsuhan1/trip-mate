@@ -19,6 +19,9 @@ export const Container = styled.div`
 `;
 
 export const Tab = styled.button<{ $focused?: boolean }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-shrink: 0;
   height: 40px;
   color: var(--primary-color);

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Element = styled.li`
+  position: relative;
   display: flex;
   flex-shrink: 0;
   width: 100%;
@@ -13,6 +14,30 @@ export const Element = styled.li`
   &:hover,
   &:active {
     filter: brightness(95%);
+  }
+`;
+
+// 스케줄 메뉴
+export const Menu = styled.div`
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+
+  animation: fadein 0.3s;
+  -moz-animation: fadein 0.3s; /* Firefox */
+  -webkit-animation: fadein 0.3s; /* Safari and Chrome */
+  -o-animation: fadein 0.3s; /* Opera */
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-right: 10px;
   }
 `;
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import FloatingAddButton from "../common/FloatingAddButton/FloatingAddButton";
 import TabMenu from "../common/TabMenu/TabMenu";
@@ -7,6 +7,7 @@ import { useAppSelector } from "../../hooks/useApp";
 import { MILLISEC_1DAY } from "../../constants/constants";
 import { ISchedule } from "../../store/scheduleReducer";
 import Schedule from "./Schedule";
+import Empty from "./Empty";
 
 function ScheduleList() {
   const navigate = useNavigate();
@@ -69,15 +70,40 @@ function ScheduleList() {
     }
   }, [initSchedules, tabIdx, tripData]);
 
+  // 리스트 스크롤을 내리면 FAB 숨기고, 올리면 다시 표시
+  const listRef = useRef<HTMLUListElement>(null);
+  let prevScrollPos = 0;
+  let throttle: any; // 스로틀링
+  const fab = document.querySelector<HTMLElement>(".floating-btn")!;
+
+  const onScroll = () => {
+    if (!throttle) {
+      throttle = setTimeout(() => {
+        throttle = null;
+        if (listRef.current) {
+          let currentScrollPos = listRef.current.scrollTop;
+          if (prevScrollPos < currentScrollPos) {
+            fab.style.bottom = "-100px";
+          } else {
+            fab.style.bottom = "100px";
+          }
+          prevScrollPos = currentScrollPos;
+          console.log(prevScrollPos, currentScrollPos);
+        }
+      }, 200);
+    }
+  };
+
   return (
     <StyledDiv>
       <TabMenu menuArr={menuArr} curTabIdx={tabIdx} />
       {schedules && schedules.length > 0 ? (
-        <List>
+        <List onScroll={onScroll} ref={listRef}>
           {schedules.map((schedule: ISchedule, idx) => (
             <Schedule
               key={schedule.id}
               id={schedule.id}
+              trip_id={schedule.data.trip_id}
               title={schedule.data.title}
               start_time={schedule.data.start_time}
               end_time={schedule.data.end_time}
@@ -88,7 +114,9 @@ function ScheduleList() {
           ))}
         </List>
       ) : (
-        <div></div>
+        <List>
+          <Empty />
+        </List>
       )}
       <FloatingAddButton
         onClick={() => {

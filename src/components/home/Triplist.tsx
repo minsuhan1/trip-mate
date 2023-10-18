@@ -86,7 +86,9 @@ function Triplist() {
           ))}
         </List>
       ) : (
-        <Empty />
+        <List>
+          <Empty />
+        </List>
       )}
     </Container>
   );

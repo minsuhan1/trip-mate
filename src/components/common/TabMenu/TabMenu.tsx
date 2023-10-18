@@ -18,7 +18,7 @@ function TabMenu(props: ITabMenuProps) {
             $focused={idx === props.curTabIdx ? true : false}
             onClick={menu.onClick}
           >
-            {menu.label}
+            <div>{menu.label}</div>
           </Tab>
         );
       })}
