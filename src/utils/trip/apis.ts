@@ -1,5 +1,7 @@
 import { db } from "../../services/firebase";
 import {
+  DocumentData,
+  QuerySnapshot,
   collection,
   deleteDoc,
   doc,
@@ -49,6 +51,45 @@ class TripAPI {
 
   // 여행 삭제하기
   static delete = async (uid: string, id: string) => {
+    // 1. 하위 컬렉션의 문서들 모두 삭제
+
+    // 삭제한 컬렉션들
+    const collectionNames = ["schedule", "checklist", "expenses"];
+    // 삭제할 문서들을 가져오는 프로미스들의 배열
+    let getDocsPromises: Array<
+      Promise<QuerySnapshot<DocumentData, DocumentData>>
+    > = [];
+    // 문서들을 삭제하는 프로미스들의 배열
+    let deletePromises: Array<Promise<void>> = [];
+    // 삭제할 문서들의 path
+    let refs: Array<string> = [];
+
+    // 삭제할 컬렉션들에서 각각의 문서 집합을 가져오기
+    collectionNames.forEach((name) => {
+      getDocsPromises.push(
+        getDocs(collection(db, `users/${uid}/trips/${id}/${name}`))
+      );
+    });
+    // 각 컬렉션에서 삭제할 문서들
+    // ex) [[스케줄1, 스케줄2, ...], [지출1, 지출2, ...], ...]
+    const res = await Promise.all(getDocsPromises);
+
+    // 삭제할 문서들의 path들을 배열에 추가
+    res.forEach((querySnaps) => {
+      if (querySnaps.docs.length > 0) {
+        querySnaps.docs.forEach((docs) => {
+          refs.push(docs.ref.path);
+        });
+      }
+    });
+
+    // 배열 안의 문서들을 동시에 삭제
+    refs.forEach((ref) => {
+      deletePromises.push(deleteDoc(doc(db, ref)));
+    });
+    await Promise.all(deletePromises);
+
+    // 여행 문서 삭제
     await deleteDoc(doc(db, `users/${uid}/trips/${id}`));
 
     return id;
