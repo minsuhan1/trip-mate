@@ -107,7 +107,7 @@ function Schedule(props: ScheduleProp) {
             <nav className="nav-schedule-menu">
               <IconButton
                 onClick={() => {
-                  // navigate("/home");
+                  navigate(`schedule/create?id=${props.id}`);
                 }}
               >
                 <EditIcon width={"85%"} />
