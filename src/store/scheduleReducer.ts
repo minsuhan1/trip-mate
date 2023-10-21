@@ -15,7 +15,7 @@ export interface IScheduleData {
     longitude: number;
     name: string;
     address: string;
-  };
+  } | null;
   created_at: number;
   updated_at: number;
 }

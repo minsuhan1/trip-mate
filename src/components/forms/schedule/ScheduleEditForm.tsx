@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Form from "../../common/Form/Form";
 import ErrorMessage from "../../common/Form/ErrorMessage";
 import InputField from "../../common/Form/InputField";
@@ -6,6 +7,17 @@ import { useAuthState } from "../../../contexts/auth-context";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { MILLISEC_1DAY, TIME_ZONE_KR } from "../../../constants/constants";
 import { addSchedule, updateSchedule } from "../../../store/scheduleReducer";
+import { ReactComponent as MapPinIcon } from "../../../assets/icons/map-pin.svg";
+import { NoMap, Overlay, StyledMapContainer } from "./ScheduleEditForm.styled";
+import MapSelector from "./MapSelector";
+
+// 장소 정보 인터페이스
+export interface IMapData {
+  name: string;
+  address: string;
+  latitude: number;
+  longitude: number;
+}
 
 function ScheduleEditForm(props: { id?: string; day?: string }) {
   // Redux dispatcher, 인증 상태
@@ -25,6 +37,16 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
   const schedule_editing = props.id
     ? scheduleList?.find((schedule) => schedule.id === props.id)?.data
     : null;
+
+  const [mapData, setMapData] = useState<IMapData | null>(
+    schedule_editing?.map_data ? schedule_editing.map_data : null
+  );
+  const [modal, setModal] = useState<boolean>(false);
+
+  // 장소정보 제거
+  const resetMapData = () => {
+    setMapData(null);
+  };
 
   // 시간 입력창 초기값(시작시간, 종료시간), 최소 및 최대값
   let initStartTime, initEndTime, minTime, maxTime;
@@ -122,6 +144,7 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
           description: values.description,
           start_time: new Date(values.start_time).getTime(),
           end_time: new Date(values.end_time).getTime(),
+          map_data: mapData,
         };
 
         // 폼에 입력된 값과 수정 전 스케줄 정보를 비교하여 수정된 부분만 추춣
@@ -156,6 +179,7 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
               end_time: new Date(values.end_time).getTime(),
               created_at: Date.now(),
               updated_at: Date.now(),
+              map_data: mapData,
             },
           })
         ).then(() => {
@@ -166,49 +190,86 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
   };
 
   return tripData ? (
-    <Form
-      props={{
-        initialValues: initFormValues,
-        validate: validate,
-        onSubmit: handleSubmit,
-      }}
-    >
-      <InputField
-        type="text"
-        name="title"
-        label="제목 *"
-        placeholder="스케줄 제목을 입력해주세요"
-      />
-      <ErrorMessage name="title" />
+    <>
+      <Form
+        props={{
+          initialValues: initFormValues,
+          validate: validate,
+          onSubmit: handleSubmit,
+        }}
+      >
+        <StyledMapContainer>
+          {!mapData ? (
+            <NoMap>
+              <MapPinIcon width={36} />
+              <span>지도에서 여행 장소를 추가할 수 있어요</span>
+            </NoMap>
+          ) : (
+            <div></div>
+          )}
+          {!mapData && (
+            <label
+              onClick={() => {
+                setModal(true);
+              }}
+            >
+              장소 정보 추가
+            </label>
+          )}
+          {mapData && <label onClick={resetMapData}>장소 정보 제거</label>}
+        </StyledMapContainer>
 
-      <InputField
-        type="text"
-        name="description"
-        label="설명"
-        placeholder="간단한 설명이나 메모를 추가할 수 있어요"
-      />
-      <ErrorMessage name="description" />
+        <InputField
+          type="text"
+          name="title"
+          label="제목 *"
+          placeholder="스케줄 제목을 입력해주세요"
+        />
+        <ErrorMessage name="title" />
 
-      <InputField
-        type="datetime-local"
-        name="start_time"
-        label="시작 *"
-        placeholder="스케줄 시작 시간"
-        min={minTime}
-        max={maxTime}
-      />
-      <ErrorMessage name="start_time" />
+        <InputField
+          type="text"
+          name="description"
+          label="설명"
+          placeholder="간단한 설명이나 메모를 추가할 수 있어요"
+        />
+        <ErrorMessage name="description" />
 
-      <InputField
-        type="datetime-local"
-        name="end_time"
-        label="종료 *"
-        placeholder="스케줄 종료 시간"
-        min={minTime}
-        max={maxTime}
-      />
-      <ErrorMessage name="end_time" />
-    </Form>
+        <InputField
+          type="datetime-local"
+          name="start_time"
+          label="시작 *"
+          placeholder="스케줄 시작 시간"
+          min={minTime}
+          max={maxTime}
+        />
+        <ErrorMessage name="start_time" />
+
+        <InputField
+          type="datetime-local"
+          name="end_time"
+          label="종료 *"
+          placeholder="스케줄 종료 시간"
+          min={minTime}
+          max={maxTime}
+        />
+        <ErrorMessage name="end_time" />
+      </Form>
+      {modal && <Overlay />}
+      {modal && (
+        <MapSelector
+          onClose={(e: React.MouseEvent) => {
+            e.preventDefault();
+            setModal(false);
+          }}
+          onSelect={(mapData: IMapData) => {
+            console.log(mapData);
+            setMapData(mapData);
+            setModal(false);
+          }}
+        />
+      )}
+    </>
   ) : (
     <Navigate to="/home" />
   );

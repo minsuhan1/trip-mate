@@ -23,6 +23,7 @@ import BottomNav from "./layouts/bottom-nav/BottomNav";
 import MainPage from "./pages/schedule/MainPage";
 import ScheduleEditPage from "./pages/schedule/ScheduleEditPage";
 import { getScheduleList } from "./store/scheduleReducer";
+import MapSelector from "./components/forms/schedule/MapSelector";
 
 // vh를 브라우저 상하단 메뉴를 제외한 화면 크기를 기반으로 설정
 function setScreenSize() {
@@ -98,7 +99,6 @@ function App() {
             errorElement={<ErrorPage />}
           />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="*" element={<NotFound />} />
 
           {/* PrivateRoutes를 적용할 Route끼리 모은다 */}
           <Route element={<PrivateRoutes />}>
@@ -129,6 +129,7 @@ function App() {
           </Route>
 
           {/* Not Found Page */}
+          <Route path="*" element={<NotFound />} />
         </>
       ),
       { basename: process.env.PUBLIC_URL }
