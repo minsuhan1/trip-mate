@@ -43,9 +43,11 @@ export const MapContainer = styled.div`
     input {
       flex-grow: 1;
       font-size: 1.6rem;
+      -webkit-appearance: none;
     }
 
     label {
+      width: 45px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -75,8 +77,8 @@ export const MapContainer = styled.div`
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    height: 50px;
-    font-size: 1.8rem;
+    height: 40px;
+    font-size: 1.6rem;
     font-weight: 400;
     :first-child {
       font-weight: 800;
@@ -135,7 +137,7 @@ export const MapContainer = styled.div`
     justify-content: center;
     background-color: var(--secondary-color);
     width: 100%;
-    height: 50px;
+    height: 40px;
     padding: 15px;
 
     a {

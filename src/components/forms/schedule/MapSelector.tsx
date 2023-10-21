@@ -313,7 +313,7 @@ function MapSelector(props: MapSelectorProps) {
           <SearchIcon color="#999" height={"45%"} />
           <input
             type="search"
-            placeholder="검색어를 입력해주세요 (ex. 제주도 명소)"
+            placeholder="키워드 입력 (ex. 제주도 명소)"
             onChange={onKeywordChange}
             required
           />
