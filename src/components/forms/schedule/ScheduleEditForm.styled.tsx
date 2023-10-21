@@ -52,8 +52,8 @@ export const NoMap = styled.div`
 `;
 
 export const Overlay = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.75);
   position: absolute;
   top: 0;

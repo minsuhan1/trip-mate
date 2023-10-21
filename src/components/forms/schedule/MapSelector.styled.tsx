@@ -8,8 +8,8 @@ export const MapContainer = styled.div`
 
   display: flex;
   flex-direction: column;
-  width: 95vw;
-  height: 95vh;
+  width: 95%;
+  height: 95%;
 
   border-radius: 15px;
   overflow: hidden;
