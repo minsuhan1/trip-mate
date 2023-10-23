@@ -8,13 +8,14 @@ import { useNavigate } from "react-router-dom";
 import { useAuthState } from "../../contexts/auth-context";
 import { useAppDispatch } from "../../hooks/useApp";
 import { deleteSchedule } from "../../store/scheduleReducer";
+import { ReactComponent as MapPinIcon } from "../../assets/icons/map-pin.svg";
 
 interface ScheduleProp {
   id: string;
   title: string;
   trip_id: string;
   description?: string;
-  address?: string;
+  place_name?: string;
   start_time: number;
   end_time: number;
   isOddIdx: boolean;
@@ -98,7 +99,12 @@ function Schedule(props: ScheduleProp) {
         <Info>
           <h1>{props.title}</h1>
           {props.description && <h2>{props.description}</h2>}
-          {props.address && <p>{props.address}</p>}
+          {props.place_name && (
+            <div id="place_name">
+              <MapPinIcon width={"1.2rem"} />
+              <p>{props.place_name}</p>
+            </div>
+          )}
         </Info>
 
         {/* 클릭시 수정/삭제 메뉴 표시 */}

@@ -43,6 +43,7 @@ export const MapContainer = styled.div`
     input {
       flex-grow: 1;
       font-size: 1.6rem;
+      background-color: #fff;
       -webkit-appearance: none;
     }
 

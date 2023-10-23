@@ -5,7 +5,7 @@ export const Element = styled.li`
   display: flex;
   flex-shrink: 0;
   width: 100%;
-  height: 70px;
+  height: 75px;
   background-color: #f4f4f4;
   border-radius: 8px;
   overflow: hidden;
@@ -66,6 +66,7 @@ export const Info = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 2px;
   height: 100%;
 
   h1 {
@@ -79,6 +80,19 @@ export const Info = styled.div`
     color: #7c7c7c;
   }
 
-  p {
+  #place_name {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 2px;
+
+    svg {
+      padding-top: 2px;
+    }
+
+    p {
+      color: var(--primary-color);
+    }
   }
 `;

@@ -10,6 +10,7 @@ import { addSchedule, updateSchedule } from "../../../store/scheduleReducer";
 import { ReactComponent as MapPinIcon } from "../../../assets/icons/map-pin.svg";
 import { NoMap, Overlay, StyledMapContainer } from "./ScheduleEditForm.styled";
 import MapSelector from "./MapSelector";
+import Map from "./Map";
 
 // 장소 정보 인터페이스
 export interface IMapData {
@@ -205,7 +206,12 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
               <span>지도에서 여행 장소를 추가할 수 있어요</span>
             </NoMap>
           ) : (
-            <div></div>
+            <Map
+              latitude={mapData.latitude}
+              longitude={mapData.longitude}
+              place_name={mapData.name}
+              address={mapData.address}
+            />
           )}
           {!mapData && (
             <label

@@ -120,7 +120,7 @@ function ScheduleList() {
               title={schedule.data.title}
               start_time={schedule.data.start_time}
               end_time={schedule.data.end_time}
-              address={schedule.data.address}
+              place_name={schedule.data.map_data?.name}
               description={schedule.data.description}
               isOddIdx={idx % 2 === 1}
             />
