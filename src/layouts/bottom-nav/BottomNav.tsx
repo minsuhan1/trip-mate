@@ -12,16 +12,16 @@ function BottomNav() {
       <Outlet />
 
       <StyledNav>
-        <NavLink to="/">
+        <NavLink to="">
           <Menu icon={calendarIcon} label="일정" />
         </NavLink>
-        <NavLink to="/">
+        <NavLink to="map">
           <Menu icon={mapIcon} label="지도" />
         </NavLink>
-        <NavLink to="/">
+        <NavLink to="checklist">
           <Menu icon={checklistIcon} label="체크리스트" />
         </NavLink>
-        <NavLink to="/">
+        <NavLink to="expenses">
           <Menu icon={walletIcon} label="가계부" />
         </NavLink>
       </StyledNav>

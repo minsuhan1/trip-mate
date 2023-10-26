@@ -7,6 +7,8 @@ export const StyledNav = styled.nav`
   justify-content: space-evenly;
   align-items: center;
   box-shadow: 0px -1px 20px rgba(0, 0, 0, 0.1);
+
+  background-color: #ffffff55;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 

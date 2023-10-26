@@ -95,7 +95,7 @@ function Schedule(props: ScheduleProp) {
             })}
           </div>
         </Time>
-        {/* 제목, 설명, 주소 */}
+        {/* 제목, 설명, 장소명 */}
         <Info>
           <h1>{props.title}</h1>
           {props.description && <h2>{props.description}</h2>}

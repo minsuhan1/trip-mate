@@ -24,6 +24,7 @@ import MainPage from "./pages/schedule/MainPage";
 import ScheduleEditPage from "./pages/schedule/ScheduleEditPage";
 import { getScheduleList } from "./store/scheduleReducer";
 import MapSelector from "./components/forms/schedule/MapSelector";
+import PlaceOverviewPage from "./pages/place-overview/PlaceOverviewPage";
 
 // vh를 브라우저 상하단 메뉴를 제외한 화면 크기를 기반으로 설정
 function setScreenSize() {
@@ -114,12 +115,14 @@ function App() {
             />
             <Route path="/create" element={<TripEditPage />} />
 
-            <Route element={<BottomNav />}>
-              <Route
-                path="/trip/:tripId"
-                element={<MainPage />}
-                loader={scheduleListLoader}
-              />
+            <Route
+              path="/trip/:tripId"
+              element={<BottomNav />}
+              loader={scheduleListLoader}
+            >
+              <Route index={true} element={<MainPage />} />
+
+              <Route path="/trip/:tripId/map" element={<PlaceOverviewPage />} />
             </Route>
 
             <Route

@@ -18,7 +18,7 @@ export const Container = styled.div`
   scrollbar-width: none; // Firefox
 `;
 
-export const Tab = styled.button<{ $focused?: boolean }>`
+export const Tab = styled.button<{ $focused?: boolean; $shadow?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,13 +26,17 @@ export const Tab = styled.button<{ $focused?: boolean }>`
   height: 40px;
   color: var(--primary-color);
   font-size: 1.4rem;
-  background-color: rgba(117, 186, 224, 0.08);
+  background-color: #f5fbff;
   border-radius: 45px;
   padding: 10px 12px;
   box-shadow: ${(props) =>
-    props.$focused ? "inset 0 0 0 1px var(--primary-color)" : "none"};
+    props.$focused
+      ? `${
+          props.$shadow ? "0 0 8px rgba(0,0,0,0.25), " : ""
+        } inset 0 0 0 1px var(--primary-color)`
+      : `${props.$shadow ? "0 0 8px rgba(0,0,0,0.25) " : ""}`};
 
   &:active {
-    background-color: rgba(117, 186, 224, 0.12);
+    background-color: #eaf7ff;
   }
 `;

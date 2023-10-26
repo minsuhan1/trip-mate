@@ -6,6 +6,7 @@ interface ITabMenuProps {
     onClick: () => void;
   }[];
   curTabIdx: number;
+  shadow?: boolean;
 }
 
 function TabMenu(props: ITabMenuProps) {
@@ -16,6 +17,7 @@ function TabMenu(props: ITabMenuProps) {
           <Tab
             key={idx}
             $focused={idx === props.curTabIdx ? true : false}
+            $shadow={props.shadow ? true : false}
             onClick={menu.onClick}
           >
             <div>{menu.label}</div>
