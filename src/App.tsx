@@ -74,7 +74,7 @@ function App() {
     async ({ params }: LoaderFunctionArgs) => {
       // 새 스케줄 목록을 가져오는 조건
       // - 현재 스케줄의 tripId와 페이지 param의 tripId가 다른 경우
-      if (authCtx.user && params && params.tripId !== scheduleList.tripId) {
+      if (authCtx.user && params && params.tripId) {
         await dispatch(
           getScheduleList({
             uid: authCtx.user.uid,
@@ -85,7 +85,7 @@ function App() {
       }
       return null;
     },
-    [authCtx.user, scheduleList.tripId]
+    [authCtx.user]
   );
 
   // Router
@@ -137,7 +137,7 @@ function App() {
       ),
       { basename: process.env.PUBLIC_URL }
     );
-  }, [profileLoader, triplistLoader]);
+  }, [profileLoader, triplistLoader, scheduleListLoader]);
 
   return <RouterProvider router={router} />;
 }
