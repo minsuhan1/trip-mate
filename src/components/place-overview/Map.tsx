@@ -44,6 +44,14 @@ function Map({ positions }: { positions: { lat: number; lng: number }[] }) {
     }
 
     renderedMap.setBounds(bounds);
+
+    // CleanUp
+    // unmount될 때 마커를 모두 제거
+    return () => {
+      for (let i = 0; i < customOverlays.length; i++) {
+        customOverlays[i].setMap(null);
+      }
+    };
   }, [customOverlays, positions, renderedMap]);
 
   return (
