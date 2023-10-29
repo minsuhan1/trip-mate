@@ -5,7 +5,6 @@ import { MILLISEC_1DAY } from "../../constants/constants";
 import { ISchedule } from "../../store/scheduleReducer";
 import TabMenu from "../../components/common/TabMenu/TabMenu";
 import Map from "../../components/place-overview/Map";
-import List from "../../components/place-overview/List";
 import { Empty, Wrapper } from "./PlaceOverviewPage.styled";
 import { ReactComponent as MapEmptyIllust } from "../../assets/illustrations/map-empty.svg";
 
@@ -95,18 +94,8 @@ function PlaceOverviewPage() {
     <>
       <Wrapper>
         <TabMenu shadow={true} menuArr={menuArr} curTabIdx={tabIdx} />
-        {schedules && schedules.length > 0 && <List schedules={schedules} />}
 
-        {schedules && schedules.length > 0 && (
-          <Map
-            positions={schedules.map((schedule, idx) => {
-              return {
-                lat: schedule.data.map_data!.latitude,
-                lng: schedule.data.map_data!.longitude,
-              };
-            })}
-          />
-        )}
+        {schedules && schedules.length > 0 && <Map schedules={schedules} />}
       </Wrapper>
 
       {schedules && schedules.length === 0 && (
