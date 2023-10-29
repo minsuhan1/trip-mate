@@ -27,7 +27,10 @@ function PlaceOverviewPage() {
   let daysOfTrip; // 여행기간 (N일)
 
   const initSchedules = scheduleList;
-  const [schedules, setSchedules] = useState(initSchedules); // 스케줄 상태
+
+  const [schedules, setSchedules] = useState(
+    initSchedules?.filter((schedule, idx) => schedule.data.map_data)
+  ); // 스케줄 상태
 
   if (tripData) {
     // 여행 기간 구하기
