@@ -72,7 +72,7 @@ function ChecklistPage() {
         <ChevronLeftIcon width={25} onClick={() => navigate("..")} />
         <PlusIcon width={25} onClick={onAdd} />
       </nav>
-      <h1>Checklist</h1>
+      <h1>체크리스트</h1>
       <List list={[...list]} onDelete={onDelete} onToggleDone={onToggleDone} />
     </Container>
   );

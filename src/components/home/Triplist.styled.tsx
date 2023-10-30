@@ -15,13 +15,4 @@ export const List = styled.ul`
   gap: 15px;
   margin-top: 10px;
   overflow-y: auto;
-
-  // 스크롤바 표시 숨기기
-  // Chrome, Safari, Opera, Edge
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  -ms-overflow-style: none; // IE
-  scrollbar-width: none; // Firefox
 `;

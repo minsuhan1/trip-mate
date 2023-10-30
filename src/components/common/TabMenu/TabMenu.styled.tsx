@@ -11,15 +11,6 @@ export const Container = styled.div`
   // overflow-x: scroll로 인해 잘린 shadow 살리기
   margin: 0 -8px;
   padding: 0 8px;
-
-  // 스크롤바 표시 숨기기
-  // Chrome, Safari, Opera, Edge
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  -ms-overflow-style: none; // IE
-  scrollbar-width: none; // Firefox
 `;
 
 export const Tab = styled.button<{ $focused?: boolean; $shadow?: boolean }>`
