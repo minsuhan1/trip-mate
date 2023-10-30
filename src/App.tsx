@@ -25,6 +25,8 @@ import ScheduleEditPage from "./pages/schedule/ScheduleEditPage";
 import { getScheduleList } from "./store/scheduleReducer";
 import MapSelector from "./components/forms/schedule/MapSelector";
 import PlaceOverviewPage from "./pages/place-overview/PlaceOverviewPage";
+import ChecklistPage from "./pages/checklist/ChecklistPage";
+import { getChecklist } from "./store/checklistReducer";
 
 // vh를 브라우저 상하단 메뉴를 제외한 화면 크기를 기반으로 설정
 function setScreenSize() {
@@ -61,7 +63,7 @@ function App() {
 
   // 여행일정목록 로더
   const triplistLoader = useCallback(async () => {
-    // 로그인 상태이고 프로필 정보가 확인되지 않은 경우 디스패치
+    // 로그인 상태이고 여행일정목록이 확인되지 않은 경우 디스패치
     if (authCtx.user && triplist.status !== "loaded") {
       await dispatch(getTriplist(authCtx.user.uid));
       return null;
@@ -77,6 +79,23 @@ function App() {
       if (authCtx.user && params && params.tripId) {
         await dispatch(
           getScheduleList({
+            uid: authCtx.user.uid,
+            tripId: params.tripId as string,
+          })
+        );
+        return null;
+      }
+      return null;
+    },
+    [authCtx.user]
+  );
+
+  // 체크리스트 로더
+  const checklistLoader = useCallback(
+    async ({ params }: LoaderFunctionArgs) => {
+      if (authCtx.user && params.tripId) {
+        await dispatch(
+          getChecklist({
             uid: authCtx.user.uid,
             tripId: params.tripId as string,
           })
@@ -116,6 +135,11 @@ function App() {
             <Route path="/create" element={<TripEditPage />} />
 
             <Route
+              path="/trip/:tripId/schedule/create"
+              element={<ScheduleEditPage />}
+            />
+
+            <Route
               path="/trip/:tripId"
               element={<BottomNav />}
               loader={scheduleListLoader}
@@ -123,12 +147,13 @@ function App() {
               <Route index={true} element={<MainPage />} />
 
               <Route path="/trip/:tripId/map" element={<PlaceOverviewPage />} />
-            </Route>
 
-            <Route
-              path="/trip/:tripId/schedule/create"
-              element={<ScheduleEditPage />}
-            />
+              <Route
+                path="/trip/:tripId/checklist"
+                element={<ChecklistPage />}
+                loader={checklistLoader}
+              />
+            </Route>
           </Route>
 
           {/* Not Found Page */}
@@ -137,7 +162,7 @@ function App() {
       ),
       { basename: process.env.PUBLIC_URL }
     );
-  }, [profileLoader, triplistLoader, scheduleListLoader]);
+  }, [profileLoader, triplistLoader, scheduleListLoader, checklistLoader]);
 
   return <RouterProvider router={router} />;
 }
