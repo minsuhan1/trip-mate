@@ -10,6 +10,7 @@ import { StyledImageUploadContainer } from "./ProfileEditForm.styled";
 import InputField from "../../common/Form/InputField";
 import Form from "../../common/Form/Form";
 import ErrorMessage from "../../common/Form/ErrorMessage";
+import { compressImage } from "../../../utils/common";
 
 function ProfileEditForm({ profile }: { profile: IProfileState }) {
   // 프로필 이미지 상태
@@ -17,13 +18,14 @@ function ProfileEditForm({ profile }: { profile: IProfileState }) {
   const imgRef = useRef<HTMLInputElement>(null);
 
   // 업로드 후 이미지를 DataUrl로 변환하여 상태 업데이트
-  const onUpload = () => {
+  const onUpload = async () => {
     if (!imgRef.current?.files) return;
 
     const file = imgRef.current.files[0] || null;
     if (file) {
+      const compressedFile = await compressImage(file);
       const reader = new FileReader();
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(compressedFile!);
 
       reader.onload = () => {
         setImageSrc(reader.result || null); // 파일의 컨텐츠

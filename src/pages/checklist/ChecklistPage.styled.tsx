@@ -14,6 +14,7 @@ export const Container = styled.div`
     justify-content: space-between;
     padding-bottom: 15px;
     margin-left: -5px;
+    margin-right: -2px;
 
     svg {
       cursor: pointer;

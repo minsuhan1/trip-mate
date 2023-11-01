@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { ReactComponent as CalendarIcon } from "../../assets/icons/calendar.svg";
 import { ReactComponent as MapIcon } from "../../assets/icons/map.svg";
 import { ReactComponent as ChecklistIcon } from "../../assets/icons/checklist.svg";

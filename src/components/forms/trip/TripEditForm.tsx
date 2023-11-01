@@ -9,6 +9,7 @@ import { ReactComponent as CameraIcon } from "../../../assets/icons/camera.svg";
 import { addTrip, updateTrip } from "../../../store/triplistReducer";
 import { useNavigate } from "react-router-dom";
 import { TIME_ZONE_KR } from "../../../constants/constants";
+import { compressImage } from "../../../utils/common";
 
 function TripEditForm(props: { id?: string }) {
   // Redux dispatcher, 인증 상태
@@ -45,13 +46,14 @@ function TripEditForm(props: { id?: string }) {
   const imgRef = useRef<HTMLInputElement>(null);
 
   // 업로드 후 이미지를 DataUrl로 변환하여 상태 업데이트
-  const onUpload = () => {
+  const onUpload = async () => {
     if (!imgRef.current?.files) return;
 
     const file = imgRef.current.files[0] || null;
     if (file) {
+      const compressedFile = await compressImage(file);
       const reader = new FileReader();
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(compressedFile!);
 
       reader.onload = () => {
         setImageSrc(reader.result || null); // 파일의 컨텐츠
