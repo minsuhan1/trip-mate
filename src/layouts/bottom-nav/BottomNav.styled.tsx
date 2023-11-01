@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const StyledNav = styled.nav`
@@ -22,5 +23,30 @@ export const StyledNav = styled.nav`
   a {
     text-decoration: none;
     cursor: pointer;
+  }
+`;
+
+export const NavStyle = styled(NavLink)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 70px;
+
+  svg {
+    color: #b3b3b3;
+  }
+
+  label {
+    font-size: 1.2rem;
+    color: #b3b3b3;
+  }
+
+  &.active {
+    svg,
+    label {
+      color: var(--primary-color);
+    }
   }
 `;

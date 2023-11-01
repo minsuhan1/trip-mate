@@ -1,10 +1,9 @@
 import { NavLink, Outlet } from "react-router-dom";
-import Menu from "./Menu";
-import calendarIcon from "../../assets/icons/calendar.svg";
-import mapIcon from "../../assets/icons/map.svg";
-import checklistIcon from "../../assets/icons/checklist.svg";
-import walletIcon from "../../assets/icons/wallet.svg";
-import { StyledNav } from "./BottomNav.styled";
+import { ReactComponent as CalendarIcon } from "../../assets/icons/calendar.svg";
+import { ReactComponent as MapIcon } from "../../assets/icons/map.svg";
+import { ReactComponent as ChecklistIcon } from "../../assets/icons/checklist.svg";
+import { ReactComponent as WalletIcon } from "../../assets/icons/wallet.svg";
+import { NavStyle, StyledNav } from "./BottomNav.styled";
 
 function BottomNav() {
   return (
@@ -12,18 +11,23 @@ function BottomNav() {
       <Outlet />
 
       <StyledNav>
-        <NavLink to="">
-          <Menu icon={calendarIcon} label="일정" />
-        </NavLink>
-        <NavLink to="map">
-          <Menu icon={mapIcon} label="지도" />
-        </NavLink>
-        <NavLink to="checklist">
-          <Menu icon={checklistIcon} label="체크리스트" />
-        </NavLink>
-        <NavLink to="expenses">
-          <Menu icon={walletIcon} label="가계부" />
-        </NavLink>
+        {/* 하위 경로를 포함하지 않고 정확히 root 경로일 때만 활성화하고 싶은 경우 end prop을 추가 */}
+        <NavStyle to="" end>
+          <CalendarIcon width={40} />
+          <label>일정</label>
+        </NavStyle>
+        <NavStyle to="map">
+          <MapIcon width={40} />
+          <label>지도</label>
+        </NavStyle>
+        <NavStyle to="checklist">
+          <ChecklistIcon width={40} />
+          <label>체크리스트</label>
+        </NavStyle>
+        <NavStyle to="expenses">
+          <WalletIcon width={40} />
+          <label>여행경비</label>
+        </NavStyle>
       </StyledNav>
     </>
   );
