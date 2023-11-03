@@ -11,11 +11,15 @@ import InputField from "../../common/Form/InputField";
 import Form from "../../common/Form/Form";
 import ErrorMessage from "../../common/Form/ErrorMessage";
 import { compressImage } from "../../../utils/common";
+import { useLoadingState } from "../../../contexts/loading-context";
 
 function ProfileEditForm({ profile }: { profile: IProfileState }) {
   // 프로필 이미지 상태
   const [imageSrc, setImageSrc]: any = useState(profile.state?.image || null);
   const imgRef = useRef<HTMLInputElement>(null);
+
+  // 로딩 상태
+  const { setLoading } = useLoadingState();
 
   // 업로드 후 이미지를 DataUrl로 변환하여 상태 업데이트
   const onUpload = async () => {
@@ -60,6 +64,7 @@ function ProfileEditForm({ profile }: { profile: IProfileState }) {
   const handleSubmit = (values: { nickname: string; description: string }) => {
     if (authCtx.user) {
       const uid = authCtx.user.uid;
+      setLoading(true);
       dispatch(
         updateProfileInfo({
           uid: uid,
@@ -73,7 +78,9 @@ function ProfileEditForm({ profile }: { profile: IProfileState }) {
             updated_at: Date.now(),
           },
         })
-      );
+      ).then(() => {
+        setLoading(false);
+      });
     }
   };
 

@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import { store } from "./store/index";
 import { PersistGate } from "redux-persist/integration/react";
 import persistStore from "redux-persist/es/persistStore";
+import { LoadingContextProvider } from "./contexts/loading-context";
 
 // redux-persist persistor
 export const persistor = persistStore(store);
@@ -21,7 +22,9 @@ root.render(
     <PersistGate loading={null} persistor={persistor}>
       <GlobalStyle />
       <AuthContextProvider>
-        <App />
+        <LoadingContextProvider>
+          <App />
+        </LoadingContextProvider>
       </AuthContextProvider>
     </PersistGate>
   </Provider>

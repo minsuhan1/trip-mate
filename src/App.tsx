@@ -23,10 +23,10 @@ import BottomNav from "./layouts/bottom-nav/BottomNav";
 import MainPage from "./pages/schedule/MainPage";
 import ScheduleEditPage from "./pages/schedule/ScheduleEditPage";
 import { getScheduleList } from "./store/scheduleReducer";
-import MapSelector from "./components/forms/schedule/MapSelector";
 import PlaceOverviewPage from "./pages/place-overview/PlaceOverviewPage";
 import ChecklistPage from "./pages/checklist/ChecklistPage";
 import { getChecklist } from "./store/checklistReducer";
+import { useLoadingState } from "./contexts/loading-context";
 
 // vh를 브라우저 상하단 메뉴를 제외한 화면 크기를 기반으로 설정
 function setScreenSize() {
@@ -45,17 +45,20 @@ function App() {
 
   // 인증 상태 컨텍스트
   const authCtx = useAuthState();
+  // 로딩 상태 컨텍스트
+  const { setLoading } = useLoadingState();
   // Redux dispatch, states
   const dispatch = useAppDispatch();
   const profile = useAppSelector((state) => state.profileReducer);
   const triplist = useAppSelector((state) => state.triplistReducer);
-  const scheduleList = useAppSelector((state) => state.scheduleListReducer);
 
   // 프로필 정보 로더
   const profileLoader = useCallback(async () => {
     // 로그인 상태이고 프로필 정보가 확인되지 않은 경우 디스패치
     if (authCtx.user && profile.status !== "loaded") {
+      setLoading(true);
       await dispatch(getProfileInfo(authCtx.user.uid));
+      setLoading(false);
       return null;
     }
     return null;
@@ -64,8 +67,10 @@ function App() {
   // 여행일정목록 로더
   const triplistLoader = useCallback(async () => {
     // 로그인 상태이고 여행일정목록이 확인되지 않은 경우 디스패치
-    if (authCtx.user && triplist.status !== "loaded") {
+    if (authCtx.user) {
+      setLoading(true);
       await dispatch(getTriplist(authCtx.user.uid));
+      setLoading(false);
       return null;
     }
     return null;
@@ -77,12 +82,14 @@ function App() {
       // 새 스케줄 목록을 가져오는 조건
       // - 현재 스케줄의 tripId와 페이지 param의 tripId가 다른 경우
       if (authCtx.user && params && params.tripId) {
+        setLoading(true);
         await dispatch(
           getScheduleList({
             uid: authCtx.user.uid,
             tripId: params.tripId as string,
           })
         );
+        setLoading(false);
         return null;
       }
       return null;
@@ -94,12 +101,14 @@ function App() {
   const checklistLoader = useCallback(
     async ({ params }: LoaderFunctionArgs) => {
       if (authCtx.user && params.tripId) {
+        setLoading(true);
         await dispatch(
           getChecklist({
             uid: authCtx.user.uid,
             tripId: params.tripId as string,
           })
         );
+        setLoading(false);
         return null;
       }
       return null;

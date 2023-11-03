@@ -10,11 +10,14 @@ import { addTrip, updateTrip } from "../../../store/triplistReducer";
 import { useNavigate } from "react-router-dom";
 import { TIME_ZONE_KR } from "../../../constants/constants";
 import { compressImage } from "../../../utils/common";
+import { useLoadingState } from "../../../contexts/loading-context";
 
 function TripEditForm(props: { id?: string }) {
-  // Redux dispatcher, 인증 상태
+  // Redux dispatcher, 인증 상태, 로딩 상태
   const dispatch = useAppDispatch();
   const authCtx = useAuthState();
+  const { setLoading } = useLoadingState();
+
   const navigate = useNavigate();
   const triplist = useAppSelector((state) => state.triplistReducer.state);
 
@@ -93,6 +96,7 @@ function TripEditForm(props: { id?: string }) {
   // 폼 제출 메서드
   const handleSubmit = (values: IValues) => {
     if (authCtx.user) {
+      setLoading(true);
       const uid = authCtx.user.uid;
       if (props.id && trip_editing) {
         /* [여행 정보 수정] */
@@ -122,6 +126,7 @@ function TripEditForm(props: { id?: string }) {
             },
           })
         ).then(() => {
+          setLoading(false);
           navigate(`/trip/${props.id}`);
         });
       } else {
@@ -141,6 +146,7 @@ function TripEditForm(props: { id?: string }) {
             },
           })
         ).then(() => {
+          setLoading(false);
           navigate("/home");
         });
       }

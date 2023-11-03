@@ -11,6 +11,7 @@ import { ReactComponent as MapPinIcon } from "../../../assets/icons/map-pin.svg"
 import { NoMap, Overlay, StyledMapContainer } from "./ScheduleEditForm.styled";
 import MapSelector from "./MapSelector";
 import Map from "./Map";
+import { useLoadingState } from "../../../contexts/loading-context";
 
 // 장소 정보 인터페이스
 export interface IMapData {
@@ -24,6 +25,9 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
   // Redux dispatcher, 인증 상태
   const dispatch = useAppDispatch();
   const authCtx = useAuthState();
+
+  // 로딩 상태
+  const { setLoading } = useLoadingState();
 
   const navigate = useNavigate();
   const { tripId } = useParams();
@@ -136,6 +140,7 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
      * [!!!] input[type='datetime_local']은 클라이언트의 타임존을 기준으로 동작함
      */
     if (authCtx.user && tripId) {
+      setLoading(true);
       const uid = authCtx.user.uid;
       if (props.id && schedule_editing) {
         /* [스케줄 수정] */
@@ -165,6 +170,7 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
             data: { ...difference, updated_at: Date.now() },
           })
         ).then(() => {
+          setLoading(false);
           navigate(`/trip/${tripId}`);
         });
       } else {
@@ -184,6 +190,7 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
             },
           })
         ).then(() => {
+          setLoading(false);
           navigate(`/trip/${tripId}`);
         });
       }
