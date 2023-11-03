@@ -5,10 +5,11 @@ export const Element = styled.li`
   flex-shrink: 0;
   width: 100%;
   height: 115px;
-  background-color: #f4f4f4;
-  border-radius: 25px;
+  background-color: #fff;
+  border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
 
   &:active {
     filter: brightness(95%);
@@ -51,7 +52,7 @@ export const Dday = styled.div<{ $color: string[] }>`
   height: 50%;
 
   label {
-    border-radius: 10px;
+    border-radius: 45px;
     font-size: 1.4rem;
     font-weight: 500;
     letter-spacing: 0.5px;

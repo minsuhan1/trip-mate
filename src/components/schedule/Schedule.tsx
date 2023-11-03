@@ -9,6 +9,7 @@ import { useAuthState } from "../../contexts/auth-context";
 import { useAppDispatch } from "../../hooks/useApp";
 import { deleteSchedule } from "../../store/scheduleReducer";
 import { ReactComponent as MapPinIcon } from "../../assets/icons/map-pin.svg";
+import { useLoadingState } from "../../contexts/loading-context";
 
 interface ScheduleProp {
   id: string;
@@ -24,6 +25,7 @@ interface ScheduleProp {
 function Schedule(props: ScheduleProp) {
   const navigate = useNavigate();
   const authCtx = useAuthState();
+  const { setLoading } = useLoadingState();
   const dispatch = useAppDispatch();
 
   // 스케줄 메뉴 제어를 위한 상태
@@ -53,13 +55,16 @@ function Schedule(props: ScheduleProp) {
   const onDelete = () => {
     if (authCtx.user) {
       if (window.confirm(`'${props.title}' 스케줄을 삭제할까요?`)) {
+        setLoading(true);
         dispatch(
           deleteSchedule({
             uid: authCtx.user.uid,
             tripId: props.trip_id,
             id: props.id,
           })
-        );
+        ).then(() => {
+          setLoading(false);
+        });
       }
     }
   };

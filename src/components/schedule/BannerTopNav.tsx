@@ -8,6 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAuthState } from "../../contexts/auth-context";
 import { deleteTrip } from "../../store/triplistReducer";
 import { useAppDispatch } from "../../hooks/useApp";
+import { useLoadingState } from "../../contexts/loading-context";
 
 export const TopNav = styled.nav`
   width: 100%;
@@ -18,6 +19,7 @@ export const TopNav = styled.nav`
 
 function BannerTopNav() {
   const authCtx = useAuthState();
+  const { setLoading } = useLoadingState();
   const dispatch = useAppDispatch();
   const [viewMenu, setViewMenu] = useState<boolean>(false);
   const dropDownRef = useRef<HTMLDivElement>(null);
@@ -28,7 +30,11 @@ function BannerTopNav() {
   const onDelete = async () => {
     if (authCtx.user && tripId) {
       if (window.confirm("여행 일정을 삭제할까요?")) {
+        setLoading(true);
+
         await dispatch(deleteTrip({ uid: authCtx.user.uid, id: tripId }));
+
+        setLoading(false);
         navigate("/home");
       }
     }
