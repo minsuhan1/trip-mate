@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-import { Color, Element, Info, Menu, Time } from "./Schedule.styled";
+import { Color, Element, Info, Menu, Time } from "./styles/Schedule.styled";
 import IconButton from "../common/IconButton/IconButton";
 import { ReactComponent as EditIcon } from "../../assets/icons/edit.svg";
 import { ReactComponent as XMarkIcon } from "../../assets/icons/x-mark.svg";

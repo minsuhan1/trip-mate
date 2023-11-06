@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useAppSelector } from "../../hooks/useApp";
-import { StyledDiv } from "./Banner.styled";
+import { StyledDiv } from "./styles/Banner.styled";
 import defaultImg from "../../assets/images/trip-default-img.webp";
 import BannerTopNav from "./BannerTopNav";
 import { MILLISEC_1DAY } from "../../constants/constants";

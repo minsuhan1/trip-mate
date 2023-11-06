@@ -1,5 +1,5 @@
 import { calcRemainingDays } from "../../utils/common";
-import { Dday, Element, Image, Info } from "./Trip.styled";
+import { Dday, Element, Image, Info } from "./styles/Trip.styled";
 import defaultImg from "../../assets/images/trip-default-img.webp";
 import { useNavigate } from "react-router-dom";
 import { MILLISEC_1DAY } from "../../constants/constants";

@@ -1,7 +1,7 @@
 import React from "react";
 import { ISchedule, IScheduleList } from "../../store/scheduleReducer";
 import Info from "./Info";
-import { StyledSlider } from "./List.styled";
+import { StyledSlider } from "./styles/List.styled";
 
 function List({
   schedules,

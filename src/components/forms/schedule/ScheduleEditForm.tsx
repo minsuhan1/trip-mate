@@ -8,7 +8,11 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { MILLISEC_1DAY, TIME_ZONE_KR } from "../../../constants/constants";
 import { addSchedule, updateSchedule } from "../../../store/scheduleReducer";
 import { ReactComponent as MapPinIcon } from "../../../assets/icons/map-pin.svg";
-import { NoMap, Overlay, StyledMapContainer } from "./ScheduleEditForm.styled";
+import {
+  NoMap,
+  Overlay,
+  StyledMapContainer,
+} from "./styles/ScheduleEditForm.styled";
 import MapSelector from "./MapSelector";
 import Map from "./Map";
 import { useLoadingState } from "../../../contexts/loading-context";

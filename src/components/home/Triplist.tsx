@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAppSelector } from "../../hooks/useApp";
 import { ITrip } from "../../store/triplistReducer";
 import Trip from "./Trip";
-import { Container, List } from "./Triplist.styled";
+import { Container, List } from "./styles/Triplist.styled";
 import Empty from "./Empty";
 import TabMenu from "../common/TabMenu/TabMenu";
 

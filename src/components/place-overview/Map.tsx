@@ -1,5 +1,5 @@
 import { useCallback, useState, useEffect, useRef } from "react";
-import { MapContainer } from "./Map.styled";
+import { MapContainer } from "./styles/Map.styled";
 import { IScheduleList } from "../../store/scheduleReducer";
 import List from "./List";
 

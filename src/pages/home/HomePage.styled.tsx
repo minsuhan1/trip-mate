@@ -30,14 +30,17 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 40px;
+    margin-bottom: 10px;
 
     & .profile {
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-top: 2px;
 
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       background: linear-gradient(
         128deg,
         rgba(195, 195, 195, 1) 0%,
@@ -67,7 +70,6 @@ export const Container = styled.div`
     .header-title {
       font-size: 2.8rem;
       font-weight: 800;
-      margin-bottom: 10px;
     }
   }
 `;

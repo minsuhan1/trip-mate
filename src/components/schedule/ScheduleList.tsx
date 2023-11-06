@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import FloatingAddButton from "../common/FloatingAddButton/FloatingAddButton";
 import TabMenu from "../common/TabMenu/TabMenu";
-import { StyledDiv, List } from "./ScheduleList.styled";
+import { StyledDiv, List } from "./styles/ScheduleList.styled";
 import { useAppSelector } from "../../hooks/useApp";
 import { MILLISEC_1DAY } from "../../constants/constants";
 import { ISchedule } from "../../store/scheduleReducer";

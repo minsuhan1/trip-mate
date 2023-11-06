@@ -1,6 +1,6 @@
 import { IScheduleData } from "../../store/scheduleReducer";
 import { ReactComponent as MapPinIcon } from "../../assets/icons/map-pin.svg";
-import { Container } from "./Info.styled";
+import { Container } from "./styles/Info.styled";
 
 function Info({ schedule, idx }: { schedule: IScheduleData; idx: number }) {
   return (
