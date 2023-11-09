@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { ReactComponent as SearchIcon } from "../../../assets/icons/search.svg";
 import { ReactComponent as XMarkIcon } from "../../../assets/icons/x-mark.svg";
-import { MapContainer } from "./styles/MapSelector.styled";
-import { IMapData } from "./ScheduleEditForm";
+import { MapContainer } from "./MapSelector.styled";
+import { IMapData } from "../../forms/schedule/ScheduleEditForm";
 
 interface MapSelectorProps {
   onSelect: (mapData: IMapData) => void;
@@ -24,7 +24,7 @@ function MapSelector(props: MapSelectorProps) {
   };
 
   // 폼 제출 시 제출한 검색어 업데이트
-  const onKeywordSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onKeywordSubmit = (e: React.KeyboardEvent) => {
     e.preventDefault();
     if (value === "") {
       alert("검색어를 입력해주세요");
@@ -308,7 +308,15 @@ function MapSelector(props: MapSelectorProps) {
         <div id="pagination"></div>
       </div>
 
-      <form onSubmit={onKeywordSubmit}>
+      <div
+        className="input-wrapper"
+        onKeyDown={(e: React.KeyboardEvent) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            onKeywordSubmit(e);
+          }
+        }}
+      >
         <div>
           <SearchIcon color="#999" height={"45%"} />
           <input
@@ -321,7 +329,7 @@ function MapSelector(props: MapSelectorProps) {
         <label id="btn-close" onClick={props.onClose}>
           <XMarkIcon color="#fff" height={"45%"} />
         </label>
-      </form>
+      </div>
     </MapContainer>
   );
 }

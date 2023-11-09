@@ -7,15 +7,10 @@ import { useAuthState } from "../../../contexts/auth-context";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { MILLISEC_1DAY, TIME_ZONE_KR } from "../../../constants/constants";
 import { addSchedule, updateSchedule } from "../../../store/scheduleReducer";
-import { ReactComponent as MapPinIcon } from "../../../assets/icons/map-pin.svg";
-import {
-  NoMap,
-  Overlay,
-  StyledMapContainer,
-} from "./styles/ScheduleEditForm.styled";
-import MapSelector from "./MapSelector";
-import Map from "./Map";
+import Overlay from "../../common/Overlay/Overlay";
+import MapSelector from "../../common/MapInput/MapSelector";
 import { useLoadingState } from "../../../contexts/loading-context";
+import MapInput from "../../common/MapInput/MapInput";
 
 // 장소 정보 인터페이스
 export interface IMapData {
@@ -50,7 +45,6 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
   const [mapData, setMapData] = useState<IMapData | null>(
     schedule_editing?.map_data ? schedule_editing.map_data : null
   );
-  const [modal, setModal] = useState<boolean>(false);
 
   // 장소정보 제거
   const resetMapData = () => {
@@ -210,31 +204,13 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
           onSubmit: handleSubmit,
         }}
       >
-        <StyledMapContainer>
-          {!mapData ? (
-            <NoMap>
-              <MapPinIcon width={36} />
-              <span>지도에서 여행 장소를 추가할 수 있어요</span>
-            </NoMap>
-          ) : (
-            <Map
-              latitude={mapData.latitude}
-              longitude={mapData.longitude}
-              place_name={mapData.name}
-              address={mapData.address}
-            />
-          )}
-          {!mapData && (
-            <label
-              onClick={() => {
-                setModal(true);
-              }}
-            >
-              장소 정보 추가
-            </label>
-          )}
-          {mapData && <label onClick={resetMapData}>장소 정보 제거</label>}
-        </StyledMapContainer>
+        <MapInput
+          mapData={mapData}
+          onReset={resetMapData}
+          onPlaceSelected={(mapData: IMapData) => {
+            setMapData(mapData);
+          }}
+        />
 
         <InputField
           type="text"
@@ -272,20 +248,6 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
         />
         <ErrorMessage name="end_time" />
       </Form>
-      {modal && <Overlay />}
-      {modal && (
-        <MapSelector
-          onClose={(e: React.MouseEvent) => {
-            e.preventDefault();
-            setModal(false);
-          }}
-          onSelect={(mapData: IMapData) => {
-            console.log(mapData);
-            setMapData(mapData);
-            setModal(false);
-          }}
-        />
-      )}
     </>
   ) : (
     <Navigate to="/home" />

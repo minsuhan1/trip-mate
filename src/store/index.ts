@@ -5,6 +5,7 @@ import storage from "redux-persist/lib/storage";
 import { triplistSlice } from "./triplistReducer";
 import { scheduleListSlice } from "./scheduleReducer";
 import { checklistSlice } from "./checklistReducer";
+import { expenseListSlice } from "./expensesReducer";
 
 // 리듀서 설정
 const reducers = combineReducers({
@@ -12,6 +13,7 @@ const reducers = combineReducers({
   triplistReducer: triplistSlice.reducer,
   scheduleListReducer: scheduleListSlice.reducer,
   checklistReducer: checklistSlice.reducer,
+  expenselistReducer: expenseListSlice.reducer,
 });
 
 // redux-persist를 통한 상태 로컬 저장 설정

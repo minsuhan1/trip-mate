@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Container } from "./styles/Map.styled";
+import { Container } from "./Map.styled";
 
 interface MapProps {
   latitude: number;

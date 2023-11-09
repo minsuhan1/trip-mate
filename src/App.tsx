@@ -27,6 +27,9 @@ import PlaceOverviewPage from "./pages/place-overview/PlaceOverviewPage";
 import ChecklistPage from "./pages/checklist/ChecklistPage";
 import { getChecklist } from "./store/checklistReducer";
 import { useLoadingState } from "./contexts/loading-context";
+import { getExpenseList } from "./store/expensesReducer";
+import ExpensesPage from "./pages/expenses/ExpensesPage";
+import ExpenseEditPage from "./pages/expenses/ExpenseEditPage";
 
 // vh를 브라우저 상하단 메뉴를 제외한 화면 크기를 기반으로 설정
 function setScreenSize() {
@@ -116,6 +119,25 @@ function App() {
     [authCtx.user]
   );
 
+  // 여행경비 로더
+  const expenseListLoader = useCallback(
+    async ({ params }: LoaderFunctionArgs) => {
+      if (authCtx.user && params.tripId) {
+        setLoading(true);
+        await dispatch(
+          getExpenseList({
+            uid: authCtx.user.uid,
+            tripId: params.tripId as string,
+          })
+        );
+        setLoading(false);
+        return null;
+      }
+      return null;
+    },
+    [authCtx.user]
+  );
+
   // Router
   const router = useMemo(() => {
     return createBrowserRouter(
@@ -149,6 +171,11 @@ function App() {
             />
 
             <Route
+              path="/trip/:tripId/expenses/create"
+              element={<ExpenseEditPage />}
+            />
+
+            <Route
               path="/trip/:tripId"
               element={<BottomNav />}
               loader={scheduleListLoader}
@@ -162,6 +189,12 @@ function App() {
                 element={<ChecklistPage />}
                 loader={checklistLoader}
               />
+
+              <Route
+                path="/trip/:tripId/expenses"
+                element={<ExpensesPage />}
+                loader={expenseListLoader}
+              />
             </Route>
           </Route>
 
@@ -171,7 +204,13 @@ function App() {
       ),
       { basename: process.env.PUBLIC_URL }
     );
-  }, [profileLoader, triplistLoader, scheduleListLoader, checklistLoader]);
+  }, [
+    profileLoader,
+    triplistLoader,
+    scheduleListLoader,
+    checklistLoader,
+    expenseListLoader,
+  ]);
 
   return <RouterProvider router={router} />;
 }

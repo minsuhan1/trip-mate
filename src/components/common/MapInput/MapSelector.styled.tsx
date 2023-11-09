@@ -18,7 +18,9 @@ export const MapContainer = styled.div`
   animation: fadein 0.5s forwards;
   transform-origin: center;
 
-  form {
+  z-index: 10;
+
+  .input-wrapper {
     display: flex;
     position: absolute;
     gap: 10px;
