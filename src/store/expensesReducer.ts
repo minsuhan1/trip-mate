@@ -9,6 +9,7 @@ export interface IExpenseData {
   title: string;
   datetime: number;
   type: "항공" | "숙박" | "교통" | "식사" | "쇼핑" | "기타";
+  price: number;
   map_data: {
     latitude: number;
     longitude: number;

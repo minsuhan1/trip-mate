@@ -1,6 +1,14 @@
 import { useState, useEffect } from "react";
 import { Container } from "./Map.styled";
 
+// 장소 정보 인터페이스
+export interface IMapData {
+  name: string;
+  address: string;
+  latitude: number;
+  longitude: number;
+}
+
 interface MapProps {
   latitude: number;
   longitude: number;

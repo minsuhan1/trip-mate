@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Form from "../../common/Form/Form";
 import ErrorMessage from "../../common/Form/ErrorMessage";
 import InputField from "../../common/Form/InputField";
@@ -7,18 +6,8 @@ import { useAuthState } from "../../../contexts/auth-context";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { MILLISEC_1DAY, TIME_ZONE_KR } from "../../../constants/constants";
 import { addSchedule, updateSchedule } from "../../../store/scheduleReducer";
-import Overlay from "../../common/Overlay/Overlay";
-import MapSelector from "../../common/MapInput/MapSelector";
 import { useLoadingState } from "../../../contexts/loading-context";
-import MapInput from "../../common/MapInput/MapInput";
-
-// 장소 정보 인터페이스
-export interface IMapData {
-  name: string;
-  address: string;
-  latitude: number;
-  longitude: number;
-}
+import usePlaceSelector from "../../../hooks/usePlaceSelector";
 
 function ScheduleEditForm(props: { id?: string; day?: string }) {
   // Redux dispatcher, 인증 상태
@@ -42,16 +31,12 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
     ? scheduleList?.find((schedule) => schedule.id === props.id)?.data
     : null;
 
-  const [mapData, setMapData] = useState<IMapData | null>(
+  // 장소선택 훅 사용
+  const [selectedPlace, renderPlaceSelector] = usePlaceSelector(
     schedule_editing?.map_data ? schedule_editing.map_data : null
   );
 
-  // 장소정보 제거
-  const resetMapData = () => {
-    setMapData(null);
-  };
-
-  // 시간 입력창 초기값(시작시간, 종료시간), 최소 및 최대값
+  // 시간 입력필드 초기값(시작시간, 종료시간), 최소 및 최대값
   let initStartTime, initEndTime, minTime, maxTime;
 
   if (props.id && schedule_editing && tripData) {
@@ -148,7 +133,7 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
           description: values.description,
           start_time: new Date(values.start_time).getTime(),
           end_time: new Date(values.end_time).getTime(),
-          map_data: mapData,
+          map_data: selectedPlace,
         };
 
         // 폼에 입력된 값과 수정 전 스케줄 정보를 비교하여 수정된 부분만 추춣
@@ -184,7 +169,7 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
               end_time: new Date(values.end_time).getTime(),
               created_at: Date.now(),
               updated_at: Date.now(),
-              map_data: mapData,
+              map_data: selectedPlace,
             },
           })
         ).then(() => {
@@ -204,13 +189,7 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
           onSubmit: handleSubmit,
         }}
       >
-        <MapInput
-          mapData={mapData}
-          onReset={resetMapData}
-          onPlaceSelected={(mapData: IMapData) => {
-            setMapData(mapData);
-          }}
-        />
+        {renderPlaceSelector()}
 
         <InputField
           type="text"

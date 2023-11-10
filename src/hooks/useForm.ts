@@ -16,7 +16,10 @@ function useForm({
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValues({
       ...values,
-      [e.target.name]: e.target.value,
+      [e.target.name]:
+        e.target.type === "number" && !Number.isNaN(e.target.valueAsNumber)
+          ? e.target.valueAsNumber
+          : e.target.value,
     });
   };
 

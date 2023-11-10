@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IMapData } from "../../forms/schedule/ScheduleEditForm";
+import { IMapData } from "./Map";
 import Map from "./Map";
 import { ReactComponent as MapPinIcon } from "../../../assets/icons/map-pin.svg";
 import { Container, NoMap } from "./MapInput.styled";

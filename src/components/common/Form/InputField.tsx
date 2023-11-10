@@ -26,6 +26,8 @@ function InputField(props: InputFieldProps) {
             e.preventDefault();
           }
         }}
+        inputMode={props.type === "number" ? "numeric" : undefined}
+        pattern={props.type === "number" ? "[0-9]*" : undefined}
         data-placeholder={props.type === "date" && props.placeholder}
         required={props.type === "date" && true}
         min={props.type === "datetime-local" ? props.min : undefined}
