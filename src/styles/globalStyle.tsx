@@ -34,6 +34,8 @@ const GlobalStyle = createGlobalStyle`
   max-width: 100%;
   overflow-x: hidden;
   }
+  
+  overflow-y: scroll;
 
   body::after{
 	/* 소스만 다운받고 화면은 나태내지 않는다. (숨김 처리) */

@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  max-height: calc(100% - 15px - 40px - 40px - 30px - 50px);
   flex-direction: column;
   margin-bottom: 100px;
 
@@ -33,5 +32,6 @@ export const Container = styled.div`
     margin-top: 25px;
     background-color: #fff;
     border-radius: 8px;
+    overflow: hidden;
   }
 `;

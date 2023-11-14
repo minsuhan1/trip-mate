@@ -3,11 +3,12 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 15px;
   position: fixed;
+  padding: 15px;
   width: 100%;
   height: 100%;
   background-color: rgba(242, 242, 247);
+  overflow-y: scroll;
 
   nav {
     display: flex;
