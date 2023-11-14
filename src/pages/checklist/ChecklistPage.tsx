@@ -7,6 +7,7 @@ import List from "../../components/checklist/List";
 import { useAppDispatch, useAppSelector } from "../../hooks/useApp";
 import { IChecklistItem, setChecklist } from "../../store/checklistReducer";
 import { useAuthState } from "../../contexts/auth-context";
+import Spacing from "../../components/common/Spacing/Spacing";
 
 function ChecklistPage() {
   const navigate = useNavigate();
@@ -74,6 +75,7 @@ function ChecklistPage() {
       </nav>
       <h1>체크리스트</h1>
       <List list={[...list]} onDelete={onDelete} onToggleDone={onToggleDone} />
+      <Spacing size={100} />
     </Container>
   );
 }

@@ -78,6 +78,7 @@ function ExpenseDetailPage() {
 
       <Spacing size={50} />
       <button onClick={onDelete}>삭제</button>
+      <Spacing size={100} />
     </Container>
   ) : (
     <div></div>
