@@ -5,7 +5,6 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  aspect-ratio: 16 / 9;
   flex-shrink: 0;
   border-radius: 12px;
 
@@ -14,6 +13,7 @@ export const Container = styled.div`
 
   .total-price,
   .chart {
+    padding: 15px;
     display: flex;
     align-items: center;
   }

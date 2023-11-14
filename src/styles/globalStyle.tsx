@@ -29,6 +29,12 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Noto Sans KR', sans-serif;
   }
 
+  /* 모바일 수평 스크롤 금지 */
+  html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  }
+
   body::after{
 	/* 소스만 다운받고 화면은 나태내지 않는다. (숨김 처리) */
     position:absolute; 
