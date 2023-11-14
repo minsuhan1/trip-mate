@@ -33,6 +33,5 @@ export const Container = styled.div`
     margin-top: 25px;
     background-color: #fff;
     border-radius: 8px;
-    overflow: auto;
   }
 `;
