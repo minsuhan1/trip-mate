@@ -2,7 +2,7 @@ import { useState } from "react";
 import { IMapData } from "./Map";
 import Map from "./Map";
 import { ReactComponent as MapPinIcon } from "../../../assets/icons/map-pin.svg";
-import { Container, NoMap } from "./MapInput.styled";
+import { Container, NoMap } from "./styles/MapInput.styled";
 import Overlay from "../Overlay/Overlay";
 import MapSelector from "./MapSelector";
 
@@ -21,15 +21,10 @@ function MapInput(props: IProps) {
         {!props.mapData ? (
           <NoMap>
             <MapPinIcon width={36} />
-            <span>지도에서 여행 장소를 추가할 수 있어요</span>
+            <span>지도에서 장소를 검색하여 추가할 수 있어요</span>
           </NoMap>
         ) : (
-          <Map
-            latitude={props.mapData.latitude}
-            longitude={props.mapData.longitude}
-            place_name={props.mapData.name}
-            address={props.mapData.address}
-          />
+          <Map {...props.mapData} />
         )}
         {!props.mapData && (
           <label

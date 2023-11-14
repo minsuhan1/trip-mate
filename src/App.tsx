@@ -30,6 +30,7 @@ import { useLoadingState } from "./contexts/loading-context";
 import { getExpenseList } from "./store/expensesReducer";
 import ExpensesPage from "./pages/expenses/ExpensesPage";
 import ExpenseEditPage from "./pages/expenses/ExpenseEditPage";
+import ExpenseDetailPage from "./pages/expenses/ExpenseDetailPage";
 
 // vh를 브라우저 상하단 메뉴를 제외한 화면 크기를 기반으로 설정
 function setScreenSize() {
@@ -65,7 +66,7 @@ function App() {
       return null;
     }
     return null;
-  }, [authCtx.user, profile.status]);
+  }, [authCtx.user, profile.status, setLoading]);
 
   // 여행일정목록 로더
   const triplistLoader = useCallback(async () => {
@@ -77,7 +78,7 @@ function App() {
       return null;
     }
     return null;
-  }, [authCtx.user, triplist.status]);
+  }, [authCtx.user, triplist.status, setLoading]);
 
   // 스케줄 로더: 현재 여행id에 대한 스케줄 목록을 로드한다
   const scheduleListLoader = useCallback(
@@ -97,7 +98,7 @@ function App() {
       }
       return null;
     },
-    [authCtx.user]
+    [authCtx.user, setLoading]
   );
 
   // 체크리스트 로더
@@ -116,7 +117,7 @@ function App() {
       }
       return null;
     },
-    [authCtx.user]
+    [authCtx.user, setLoading]
   );
 
   // 여행경비 로더
@@ -135,7 +136,7 @@ function App() {
       }
       return null;
     },
-    [authCtx.user]
+    [authCtx.user, setLoading]
   );
 
   // Router
@@ -194,6 +195,11 @@ function App() {
                 path="/trip/:tripId/expenses"
                 element={<ExpensesPage />}
                 loader={expenseListLoader}
+              />
+
+              <Route
+                path="/trip/:tripId/expenses/:id"
+                element={<ExpenseDetailPage />}
               />
             </Route>
           </Route>

@@ -8,6 +8,7 @@ import { MILLISEC_1DAY, TIME_ZONE_KR } from "../../../constants/constants";
 import { addSchedule, updateSchedule } from "../../../store/scheduleReducer";
 import { useLoadingState } from "../../../contexts/loading-context";
 import usePlaceSelector from "../../../hooks/usePlaceSelector";
+import { getDifferencesBtwObjects } from "../../../utils/common";
 
 function ScheduleEditForm(props: { id?: string; day?: string }) {
   // Redux dispatcher, 인증 상태
@@ -119,6 +120,15 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
 
   // 폼 제출 메서드
   const handleSubmit = (values: IValues) => {
+    // 폼에 입력된 값
+    const formValues = {
+      title: values.title,
+      description: values.description,
+      start_time: new Date(values.start_time).getTime(),
+      end_time: new Date(values.end_time).getTime(),
+      map_data: selectedPlace,
+    };
+
     /**
      * [!!!] input[type='datetime_local']은 클라이언트의 타임존을 기준으로 동작함
      */
@@ -127,21 +137,11 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
       const uid = authCtx.user.uid;
       if (props.id && schedule_editing) {
         /* [스케줄 수정] */
-        // 폼에 입력된 값
-        const formValues = {
-          title: values.title,
-          description: values.description,
-          start_time: new Date(values.start_time).getTime(),
-          end_time: new Date(values.end_time).getTime(),
-          map_data: selectedPlace,
-        };
 
         // 폼에 입력된 값과 수정 전 스케줄 정보를 비교하여 수정된 부분만 추춣
-        const difference = Object.fromEntries(
-          Object.entries(formValues).filter(
-            ([key, val]) =>
-              key in schedule_editing && schedule_editing[key] !== val
-          )
+        const difference = getDifferencesBtwObjects(
+          formValues,
+          schedule_editing
         );
 
         // 수정된 부분 + 수정 시각 데이터를 전달하여 수정 액션 디스패치
@@ -163,13 +163,9 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
             uid: uid,
             data: {
               trip_id: tripId,
-              title: values.title,
-              description: values.description,
-              start_time: new Date(values.start_time).getTime(),
-              end_time: new Date(values.end_time).getTime(),
               created_at: Date.now(),
               updated_at: Date.now(),
-              map_data: selectedPlace,
+              ...formValues,
             },
           })
         ).then(() => {

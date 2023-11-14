@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
     --primary-color: #75BAE0;
     --primary-color-rgb: rgba(117, 186, 224);
     --secondary-color: #D6EBF7;
+    --secondary-color-lighten: #f5fbff;
     --third-color: #E07575;
   }
 

@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   max-height: calc(100% - 15px - 40px - 40px - 30px - 50px);
   flex-direction: column;
+  margin-bottom: 100px;
 
   .search-box {
     margin-top: 10px;
@@ -33,17 +34,5 @@ export const Container = styled.div`
     background-color: #fff;
     border-radius: 8px;
     overflow: auto;
-
-    li {
-      display: flex;
-      justify-content: space-between;
-      font-size: 1.6rem;
-      font-weight: 400;
-      padding: 16px 12px;
-
-      &:not(:last-child) {
-        border-bottom: 1px solid rgba(242, 242, 247);
-      }
-    }
   }
 `;

@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { IExpenseList } from "../../store/expensesReducer";
-import { Container } from "./List.styled";
+import { Container } from "./styles/List.styled";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search.svg";
+import Item from "./Item";
+import { useNavigate } from "react-router-dom";
 
 interface ListProp {
   list: IExpenseList;
 }
 
 function List(props: ListProp) {
+  const navigate = useNavigate();
+
   // 검색 키워드 관리
   const [keyword, setKeyword] = useState<string>("");
 
@@ -30,10 +34,14 @@ function List(props: ListProp) {
       {/* 리스트 */}
       <ul>
         {filteredList.map((item) => (
-          <li key={item.id}>
-            <div>{item.data.title}</div>
-            <div>{item.data.datetime}</div>
-          </li>
+          <div
+            key={item.id}
+            onClick={() => {
+              navigate(`./${item.id}`);
+            }}
+          >
+            <Item data={item.data} />
+          </div>
         ))}
       </ul>
     </Container>

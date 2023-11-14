@@ -21,7 +21,7 @@ export const Tab = styled.button<{ $focused?: boolean; $shadow?: boolean }>`
   height: 40px;
   color: var(--primary-color);
   font-size: 1.4rem;
-  background-color: #f5fbff;
+  background-color: var(--secondary-color-lighten);
   border-radius: 45px;
   padding: 10px 12px;
   box-shadow: ${(props) =>

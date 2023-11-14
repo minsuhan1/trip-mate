@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ReactComponent as SearchIcon } from "../../../assets/icons/search.svg";
 import { ReactComponent as XMarkIcon } from "../../../assets/icons/x-mark.svg";
-import { MapContainer } from "./MapSelector.styled";
+import { MapContainer } from "./styles/MapSelector.styled";
 import { IMapData } from "./Map";
 
 interface MapSelectorProps {

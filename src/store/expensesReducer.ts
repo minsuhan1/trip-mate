@@ -8,7 +8,7 @@ export interface IExpenseData {
   trip_id: string;
   title: string;
   datetime: number;
-  type: "항공" | "숙박" | "교통" | "식사" | "쇼핑" | "기타";
+  type: "항공" | "숙박" | "교통" | "식비" | "쇼핑" | "기타";
   price: number;
   map_data: {
     latitude: number;
@@ -94,6 +94,14 @@ export const expenseListSlice = createSlice({
       state.status = "loaded";
       state.tripId = action.payload.tripId;
       state.state = action.payload.data;
+    });
+
+    builder.addCase(updateExpense.fulfilled, (state, action) => {
+      state.state?.forEach((expense, idx) => {
+        if (expense.id === action.payload.id) {
+          expense.data = { ...expense.data, ...action.payload.data };
+        }
+      });
     });
 
     // 초기화하고싶은 상태가 있는 slice마다 아래를 추가

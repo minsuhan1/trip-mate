@@ -22,6 +22,7 @@ class ExpensesAPI {
       querySnapshot.forEach((doc) => {
         expenseList.push({ id: doc.id, data: doc.data() as IExpenseData });
       });
+      return expenseList;
     } else {
       return [];
     }
@@ -47,6 +48,8 @@ class ExpensesAPI {
       doc(db, `users/${uid}/trips/${tripId}/expenses/${id}`),
       data
     );
+
+    return { id: id, data: data };
   };
 
   // 여행경비 삭제하기

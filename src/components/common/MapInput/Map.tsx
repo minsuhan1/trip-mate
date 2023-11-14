@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Container } from "./Map.styled";
+import { Container } from "./styles/Map.styled";
 
 // 장소 정보 인터페이스
 export interface IMapData {
@@ -12,7 +12,7 @@ export interface IMapData {
 interface MapProps {
   latitude: number;
   longitude: number;
-  place_name: string;
+  name: string;
   address: string;
 }
 
@@ -52,7 +52,7 @@ function Map(props: MapProps) {
     <Container>
       <main id="map"></main>
       <div id="info">
-        <h1>{props.place_name}</h1>
+        <h1>{props.name}</h1>
         <h2>{props.address}</h2>
       </div>
     </Container>

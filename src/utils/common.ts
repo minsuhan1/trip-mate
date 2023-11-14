@@ -36,3 +36,13 @@ export const compressImage = async (fileSrc: File) => {
     return fileSrc;
   }
 };
+
+// 두 객체를 비교하여 값이 다른 부분만 추출하는 메서드
+export const getDifferencesBtwObjects = (
+  a: { [key: string]: any },
+  b: { [key: string]: any }
+) => {
+  return Object.fromEntries(
+    Object.entries(a).filter(([key, val]) => key in b && b[key] !== val)
+  );
+};

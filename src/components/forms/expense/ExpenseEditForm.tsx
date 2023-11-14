@@ -7,6 +7,10 @@ import Form from "../../common/Form/Form";
 import InputField from "../../common/Form/InputField";
 import ErrorMessage from "../../common/Form/ErrorMessage";
 import usePlaceSelector from "../../../hooks/usePlaceSelector";
+import useTabSelector from "../../../hooks/useTabSelector";
+import Spacing from "../../common/Spacing/Spacing";
+import { getDifferencesBtwObjects } from "../../../utils/common";
+import { addExpense, updateExpense } from "../../../store/expensesReducer";
 
 function ExpenseEditForm(props: { id: string | null }) {
   // Redux dispatcher, 인증 상태
@@ -26,10 +30,21 @@ function ExpenseEditForm(props: { id: string | null }) {
     ? expenseList?.find((expense) => expense.id === props.id)?.data
     : null;
 
+  // 유형
+  const types = ["쇼핑", "항공", "숙박", "교통", "식비", "기타"];
+  // 유형선택 훅 사용
+  const [selectedType, renderTabSelector] = useTabSelector(
+    types,
+    expense_editing
+      ? types.findIndex((type, idx) => type === expense_editing.type)
+      : 0
+  );
+
   // 장소선택 훅 사용
   const [selectedPlace, renderPlaceSelector] = usePlaceSelector(
     expense_editing?.map_data ? expense_editing.map_data : null
   );
+
   // 시간 입력필드 초기값
   let initTime;
 
@@ -74,15 +89,55 @@ function ExpenseEditForm(props: { id: string | null }) {
 
   // 폼 제출 메서드
   const handleSubmit = (values: IValues) => {
-    if (authCtx.user) {
+    // 폼에 입력된 값
+    const formValues = {
+      type: selectedType as "항공" | "숙박" | "교통" | "식비" | "쇼핑" | "기타",
+      title: values.title,
+      datetime: new Date(values.datetime).getTime(),
+      price: values.price,
+      map_data: selectedPlace,
+    };
+
+    if (authCtx.user && tripId) {
       setLoading(true);
       const uid = authCtx.user.uid;
       if (props.id && expense_editing) {
         /* [여행경비 수정] */
-        // 폼에 입력된 값
-        const formValues = {
-          title: values.title,
-        };
+
+        // 폼에 입력된 값과 수정 전 여행경비 정보를 비교하여 수정된 부분만 추춣
+        const difference = getDifferencesBtwObjects(
+          formValues,
+          expense_editing
+        );
+
+        // 수정된 부분 + 수정 시각 데이터를 전달하여 수정 액션 디스패치
+        dispatch(
+          updateExpense({
+            uid: uid,
+            tripId: expense_editing.trip_id,
+            id: props.id,
+            data: { ...difference, updated_at: Date.now() },
+          })
+        ).then(() => {
+          setLoading(false);
+          navigate(-1);
+        });
+      } else {
+        /* [새 여행경비 추가] */
+        dispatch(
+          addExpense({
+            uid: uid,
+            data: {
+              trip_id: tripId,
+              created_at: Date.now(),
+              updated_at: Date.now(),
+              ...formValues,
+            },
+          })
+        ).then(() => {
+          setLoading(false);
+          navigate(-1);
+        });
       }
     }
   };
@@ -96,7 +151,9 @@ function ExpenseEditForm(props: { id: string | null }) {
           onSubmit: handleSubmit,
         }}
       >
-        {renderPlaceSelector()}
+        {renderTabSelector()}
+
+        <Spacing size={10} />
 
         <InputField
           type="text"
@@ -121,6 +178,9 @@ function ExpenseEditForm(props: { id: string | null }) {
           placeholder="숫자만 입력해주세요"
         />
         <ErrorMessage name="price" />
+
+        <Spacing size={20} />
+        {renderPlaceSelector()}
       </Form>
     </>
   );
