@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/trip-mate/static/css/main.f4b2bf6d.css",
-    "main.js": "/trip-mate/static/js/main.1100017a.js",
+    "main.js": "/trip-mate/static/js/main.046dc7b6.js",
     "static/media/map-empty.svg": "/trip-mate/static/media/map-empty.61a4ea09fb5da357d6abb1b0f3674a67.svg",
     "static/media/triplist-empty.svg": "/trip-mate/static/media/triplist-empty.0256a009b5a48d238a8be1952a5086ef.svg",
     "static/media/trip-default-img.webp": "/trip-mate/static/media/trip-default-img.eae1d3d0ba0fa4d29f2e.webp",
@@ -11,12 +11,17 @@
     "static/media/slick.svg": "/trip-mate/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/trip-mate/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/trip-mate/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/meal.svg": "/trip-mate/static/media/meal.eacb2301e4e192ff25ef59dd404fd40d.svg",
     "static/media/slick.woff": "/trip-mate/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/trip-mate/index.html",
+    "static/media/airplane.svg": "/trip-mate/static/media/airplane.d546d605e53011de28085867759f55f8.svg",
     "static/media/camera.svg": "/trip-mate/static/media/camera.4ddb2ed6e4a7a6409ce001a8e36ed141.svg",
+    "static/media/room.svg": "/trip-mate/static/media/room.e9f1b0a51e60b917eb9251246f36efa8.svg",
+    "static/media/transport.svg": "/trip-mate/static/media/transport.bcdad0aae75e9a29cc3e2d94df25e483.svg",
     "static/media/icon_kakao.svg": "/trip-mate/static/media/icon_kakao.a7334f30a3963e7bf9182c66fe40e76b.svg",
     "static/media/map.svg": "/trip-mate/static/media/map.5c200e8ff1c115aca915382d8b6cc977.svg",
     "static/media/profile.svg": "/trip-mate/static/media/profile.03ce053981169a696ff6db998c51b3b1.svg",
+    "static/media/shopping.svg": "/trip-mate/static/media/shopping.faba6f6cf1a4a0af14d1916b5ad89b8f.svg",
     "static/media/checklist.svg": "/trip-mate/static/media/checklist.c94dfa10e7e8bbf3d8573d1386a2175a.svg",
     "static/media/wallet.svg": "/trip-mate/static/media/wallet.42d04f0a5be23106f184e6f5afcd0a9c.svg",
     "static/media/calendar.svg": "/trip-mate/static/media/calendar.20effb029451a29a438eddd629b1e296.svg",
@@ -28,11 +33,12 @@
     "static/media/plus.svg": "/trip-mate/static/media/plus.db2d19c7c596d74a46a92f3468b835d0.svg",
     "static/media/x-mark.svg": "/trip-mate/static/media/x-mark.6157b2f9cef61f43cfb9afb27dae1ef8.svg",
     "static/media/minus.svg": "/trip-mate/static/media/minus.a02b6a1b704235d042256fcd88395cf5.svg",
+    "static/media/etc.svg": "/trip-mate/static/media/etc.89f67f30511c53ddead65fe92f4a21b0.svg",
     "main.f4b2bf6d.css.map": "/trip-mate/static/css/main.f4b2bf6d.css.map",
-    "main.1100017a.js.map": "/trip-mate/static/js/main.1100017a.js.map"
+    "main.046dc7b6.js.map": "/trip-mate/static/js/main.046dc7b6.js.map"
   },
   "entrypoints": [
     "static/css/main.f4b2bf6d.css",
-    "static/js/main.1100017a.js"
+    "static/js/main.046dc7b6.js"
   ]
 }
