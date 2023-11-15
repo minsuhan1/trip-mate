@@ -2,8 +2,6 @@ import { persistor } from "../..";
 import { auth } from "../../services/firebase";
 import {
   GoogleAuthProvider,
-  browserSessionPersistence,
-  setPersistence,
   signInWithPopup,
   signOut as signOutFirebase,
 } from "firebase/auth";
@@ -25,13 +23,10 @@ export const signOut = () => {
 // Google 로그인
 export const signIn = () => {
   const provider = new GoogleAuthProvider();
-  setPersistence(auth, browserSessionPersistence)
-    .then(() => {
-      signInWithPopup(auth, provider)
-        .then((result) => {})
-        .catch((error) => {
-          console.log("singIn Error");
-        });
+  signInWithPopup(auth, provider)
+    .then((result) => {})
+    .catch((error) => {
+      console.log("singIn Error");
     })
     .catch((error) => {
       console.log("signIn Error");

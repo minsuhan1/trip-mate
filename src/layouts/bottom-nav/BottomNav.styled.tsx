@@ -17,7 +17,7 @@ export const StyledNav = styled.nav`
   bottom: 0;
   left: 0;
   right: 0;
-  height: 80px;
+  height: 85px;
 
   // NavLink가 생성한 a 태그 스타일 제거
   a {
