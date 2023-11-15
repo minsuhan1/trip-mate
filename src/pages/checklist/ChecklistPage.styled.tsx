@@ -9,6 +9,7 @@ export const Container = styled.div`
   height: 100%;
   background-color: rgba(242, 242, 247);
   overflow-y: scroll;
+  overflow-x: hidden;
 
   nav {
     display: flex;
