@@ -28,9 +28,7 @@ export const signIn = () => {
   setPersistence(auth, browserSessionPersistence)
     .then(() => {
       signInWithPopup(auth, provider)
-        .then((result) => {
-          console.log(result);
-        })
+        .then((result) => {})
         .catch((error) => {
           console.log("singIn Error");
         });

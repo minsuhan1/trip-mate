@@ -6,8 +6,6 @@ interface Prop {
 }
 
 function Chart({ data, totalPrice }: Prop) {
-  console.log(data);
-
   return (
     <Container>
       <div className="bar">

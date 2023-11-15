@@ -8,7 +8,6 @@ class ProfileAPI {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      console.log(docSnap.data());
       return docSnap.data() as IProfile;
     } else {
       return undefined;
