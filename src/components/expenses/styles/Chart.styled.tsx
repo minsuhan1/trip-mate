@@ -14,25 +14,6 @@ export const Container = styled.div`
     border-radius: 8px;
     overflow: hidden;
     background-color: rgb(230, 230, 230);
-
-    .bar-item:nth-child(1) {
-      background-color: #60a5fa;
-    }
-    .bar-item:nth-child(2) {
-      background-color: #6ee7b7;
-    }
-    .bar-item:nth-child(3) {
-      background-color: #fde047;
-    }
-    .bar-item:nth-child(4) {
-      background-color: #fca5a5;
-    }
-    .bar-item:nth-child(5) {
-      background-color: #fdd3e8;
-    }
-    .bar-item:nth-child(6) {
-      background-color: #c1e2a5;
-    }
   }
 
   .labels {
@@ -46,7 +27,7 @@ export const Container = styled.div`
       gap: 4px;
       align-items: center;
 
-      & div[class^="square"] {
+      & .square {
         margin-top: 2px;
         width: 1.2rem;
         height: 1.2rem;
@@ -60,30 +41,6 @@ export const Container = styled.div`
       & .price {
         font-size: 1.2rem;
       }
-    }
-
-    & .square-0 {
-      background-color: #60a5fa;
-    }
-
-    & .square-1 {
-      background-color: #6ee7b7;
-    }
-
-    & .square-2 {
-      background-color: #fde047;
-    }
-
-    & .square-3 {
-      background-color: #fca5a5;
-    }
-
-    & .square-4 {
-      background-color: #fdd3e8;
-    }
-
-    & .square-5 {
-      background-color: #c1e2a5;
     }
   }
 `;

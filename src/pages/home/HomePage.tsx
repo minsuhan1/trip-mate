@@ -1,13 +1,8 @@
 import Triplist from "../../components/home/Triplist";
 import { useAppSelector } from "../../hooks/useApp";
-import { signOut } from "../../utils/auth/firebase";
 import { ReactComponent as PlusIcon } from "../../assets/icons/plus.svg";
 import { Container } from "./HomePage.styled";
 import { useNavigate } from "react-router-dom";
-
-const handleLogout = () => {
-  signOut();
-};
 
 function HomePage() {
   const navigate = useNavigate();
@@ -25,7 +20,7 @@ function HomePage() {
       </nav>
       <div className="header">
         <h1 className="header-title">여행 목록</h1>
-        <div className="profile">
+        <div className="profile" onClick={() => navigate("/profile")}>
           {profile?.image ? (
             <img src={profile.image} alt="profile" />
           ) : (
@@ -34,7 +29,6 @@ function HomePage() {
         </div>
       </div>
       <Triplist />
-      <button onClick={handleLogout}>로그아웃</button>
     </Container>
   );
 }

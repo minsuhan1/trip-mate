@@ -6,6 +6,7 @@ import { PURGE } from "redux-persist";
 export interface IProfile {
   id: string;
   nickname: string;
+  description: string;
   image?: string;
   created_at: number; // timestamp
   updated_at: number; // timestamp
@@ -36,6 +37,14 @@ export const updateProfileInfo = createAsyncThunk(
   "UPDATE_PROFILE_INFO",
   async (args: { uid: string; data: IProfile }, thunkAPI) => {
     return ProfileAPI.update(args.uid, args.data);
+  }
+);
+
+// 회원 탈퇴 thunk
+export const deleteAccount = createAsyncThunk(
+  "DELETE_ACCOUNT",
+  async (args: { uid: string; tripIDs: string[] }, thunkAPI) => {
+    return ProfileAPI.deleteAccount(args.uid, args.tripIDs);
   }
 );
 

@@ -12,8 +12,17 @@ import Form from "../../common/Form/Form";
 import ErrorMessage from "../../common/Form/ErrorMessage";
 import { compressImage } from "../../../utils/common";
 import { useLoadingState } from "../../../contexts/loading-context";
+import { useNavigate } from "react-router-dom";
 
-function ProfileEditForm({ profile }: { profile: IProfileState }) {
+function ProfileEditForm({
+  profile,
+  edit,
+}: {
+  profile: IProfileState;
+  edit: boolean;
+}) {
+  const navigate = useNavigate();
+
   // 프로필 이미지 상태
   const [imageSrc, setImageSrc]: any = useState(profile.state?.image || null);
   const imgRef = useRef<HTMLInputElement>(null);
@@ -80,6 +89,7 @@ function ProfileEditForm({ profile }: { profile: IProfileState }) {
         })
       ).then(() => {
         setLoading(false);
+        edit && navigate(-1);
       });
     }
   };
@@ -87,7 +97,10 @@ function ProfileEditForm({ profile }: { profile: IProfileState }) {
   return (
     <Form
       props={{
-        initialValues: { nickname: "", description: "" },
+        initialValues: {
+          nickname: profile.state?.nickname || "",
+          description: profile.state?.description || "",
+        },
         validate: validate,
         onSubmit: handleSubmit,
       }}
