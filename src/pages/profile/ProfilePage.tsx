@@ -40,7 +40,7 @@ function ProfilePage() {
   return (
     <Container>
       <nav>
-        <ChevronLeftIcon width={25} onClick={() => navigate("..")} />
+        <ChevronLeftIcon width={25} onClick={() => navigate("/home")} />
         <EditIcon
           width={18}
           onClick={() => navigate(`/profile/edit?mode=edit`)}
