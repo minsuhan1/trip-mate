@@ -2,7 +2,6 @@ import { styled } from "styled-components";
 
 export const StyledNavBar = styled.div`
   width: 100%;
-  height: 50px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -10,14 +9,16 @@ export const StyledNavBar = styled.div`
 
   button,
   div {
+    svg {
+      padding-top: 1px;
+    }
     display: flex;
     align-items: center;
-    padding: 12px 12px;
     font-size: 1.6rem;
+    font-weight: 500;
   }
 
   button {
-    width: 80px;
     color: var(--primary-color);
 
     &:active {
@@ -25,8 +26,12 @@ export const StyledNavBar = styled.div`
     }
   }
 
-  .bold {
-    font-weight: bold;
+  .title {
+    font-weight: 600;
+    /* nav bar의 중앙에 정렬 */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .done-item {

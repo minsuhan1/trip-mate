@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const Background = styled.div`
-  width: 100vw;
+  position: fixed;
+  width: 100%;
   // 100vh를 브라우저 상하단 메뉴를 제외한 화면 크기를 기준으로 함
-  height: calc(var(--vh, 1vh) * 100);
+  height: 100%;
+  overflow: hidden;
   background-image: url("images/login-bg/1.jpg");
   background-size: cover;
   background-repeat: no-repeat;

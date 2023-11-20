@@ -20,7 +20,7 @@ export const Container = styled.div`
     display: grid;
     row-gap: 5px;
     column-gap: 15px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: auto auto;
 
     & .label {
       display: flex;

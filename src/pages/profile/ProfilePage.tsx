@@ -9,6 +9,9 @@ import { signOut } from "../../utils/auth/firebase";
 import { useAuthState } from "../../contexts/auth-context";
 import { useLoadingState } from "../../contexts/loading-context";
 import { deleteAccount } from "../../store/profileReducer";
+import { PageWrapperPadding15 } from "../../styles/page-wrap-padding-15";
+import NavBarWithIcons from "../../components/common/NavBarWithIcons/NavBarWithIcons";
+import Button from "../../components/common/Button/Button";
 
 function ProfilePage() {
   const trips = useAppSelector((state) => state.triplistReducer.state);
@@ -38,31 +41,44 @@ function ProfilePage() {
   };
 
   return (
-    <Container>
-      <nav>
-        <ChevronLeftIcon width={25} onClick={() => navigate("/home")} />
-        <EditIcon
-          width={18}
-          onClick={() => navigate(`/profile/edit?mode=edit`)}
-        />
-      </nav>
+    <PageWrapperPadding15>
+      <NavBarWithIcons
+        left={<ChevronLeftIcon width={25} onClick={() => navigate("/home")} />}
+        right={[
+          <EditIcon
+            width={18}
+            onClick={() => navigate(`/profile/edit?mode=edit`)}
+          />,
+        ]}
+      />
 
-      <div className="profile">
-        <img
-          src={profile!.image ? profile!.image : ProfileIcon}
-          alt="profile-img"
-        />
-        <Spacing size={10} />
-        <h1>{profile!.nickname}</h1>
-        <Spacing size={5} />
-        <p>{profile!.description}</p>
-      </div>
+      <Container>
+        <div className="profile">
+          <img
+            src={profile!.image ? profile!.image : ProfileIcon}
+            alt="profile-img"
+          />
+          <Spacing size={10} />
+          <h1>{profile!.nickname}</h1>
+          <Spacing size={5} />
+          <p>{profile!.description}</p>
+        </div>
 
-      <Spacing size={40} />
-      <button onClick={() => signOut()}>로그아웃</button>
-      <Spacing size={20} />
-      <button onClick={onDeleteAccount}>회원탈퇴</button>
-    </Container>
+        <Spacing size={40} />
+        <Button
+          onClick={() => signOut()}
+          title="로그아웃"
+          titleColor="#ff0000"
+        />
+        <Spacing size={20} />
+        <Button
+          onClick={onDeleteAccount}
+          title="회원탈퇴"
+          backgroundColor="#ff6565"
+          titleColor="#ffffff"
+        />
+      </Container>
+    </PageWrapperPadding15>
   );
 }
 

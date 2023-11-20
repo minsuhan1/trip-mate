@@ -15,6 +15,11 @@ export const TopNav = styled.nav`
   display: flex;
   justify-content: space-between;
   padding: 15px;
+
+  @media all and (display-mode: standalone) {
+    padding: 0 15px;
+    padding-top: env(safe-area-inset-top);
+  }
 `;
 
 function BannerTopNav() {

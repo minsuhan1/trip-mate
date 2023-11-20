@@ -22,7 +22,6 @@ export interface IFormValue {
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 20px;
 `;
 
 function Form({ children, props }: IFormProps) {

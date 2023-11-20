@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { ReactComponent as Illust } from "../../assets/illustrations/triplist-empty.svg";
 import { useNavigate } from "react-router-dom";
+import Button from "../common/Button/Button";
 
 const Container = styled.div`
   width: 100%;
@@ -29,24 +30,10 @@ const Container = styled.div`
   }
 
   .btn {
+    display: flex;
+    padding: 10px;
     width: 100%;
     height: 20%;
-    padding: 10px;
-
-    button {
-      width: 100%;
-      height: 100%;
-      background-color: var(--primary-color);
-      border-radius: 12px;
-      font-size: 1.6rem;
-      font-weight: 500;
-      color: #fff;
-
-      &:hover,
-      &:active {
-        filter: brightness(0.85);
-      }
-    }
   }
 `;
 
@@ -60,13 +47,15 @@ function Empty() {
         <p>새로운 여정을 시작해 보세요!</p>
       </div>
       <div className="btn">
-        <button
+        <Button
           onClick={() => {
             navigate("/create");
           }}
-        >
-          지금 여행 생성하기
-        </button>
+          title="지금 여행 생성하기 &nbsp; &rarr;"
+          titleColor="var(--primary-color)"
+          backgroundColor="#ecf7ff"
+          titleFontWeight={600}
+        />
       </div>
     </Container>
   );

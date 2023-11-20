@@ -9,6 +9,10 @@ export const StyledNav = styled.nav`
   align-items: center;
   box-shadow: 0px -1px 20px rgba(0, 0, 0, 0.1);
 
+  @media all and (display-mode: standalone) {
+    padding: 10px 0 env(safe-area-inset-bottom) 0;
+  }
+
   background-color: #ffffff55;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -17,7 +21,7 @@ export const StyledNav = styled.nav`
   bottom: 0;
   left: 0;
   right: 0;
-  height: 85px;
+  padding: 10px 0;
 
   // NavLink가 생성한 a 태그 스타일 제거
   a {

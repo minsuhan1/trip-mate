@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../../components/common/NavBar/NavBar";
 import TripEditForm from "../../components/forms/trip/TripEditForm";
+import { PageWrapperPadding15 } from "../../styles/page-wrap-padding-15";
 
 function TripEditPage() {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ function TripEditPage() {
   const id = new URLSearchParams(query).get("id");
 
   return (
-    <div>
+    <PageWrapperPadding15>
       <NavBar
         backItemTitle="취소"
         topItemTitle={"여행일정 " + (id ? "수정" : "생성")}
@@ -19,7 +20,7 @@ function TripEditPage() {
         }}
       />
       {id ? <TripEditForm id={id} /> : <TripEditForm />}
-    </div>
+    </PageWrapperPadding15>
   );
 }
 

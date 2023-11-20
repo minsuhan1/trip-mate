@@ -9,6 +9,9 @@ import Map from "../../components/common/MapInput/Map";
 import { useAppDispatch, useAppSelector } from "../../hooks/useApp";
 import { useAuthState } from "../../contexts/auth-context";
 import { useLoadingState } from "../../contexts/loading-context";
+import { PageWrapperPadding15 } from "../../styles/page-wrap-padding-15";
+import NavBarWithIcons from "../../components/common/NavBarWithIcons/NavBarWithIcons";
+import Button from "../../components/common/Button/Button";
 
 function ExpenseDetailPage() {
   const navigate = useNavigate();
@@ -40,46 +43,57 @@ function ExpenseDetailPage() {
   };
 
   return data ? (
-    <Container>
-      <nav>
-        <ChevronLeftIcon width={25} onClick={() => navigate("../expenses")} />
-        <EditIcon
-          width={18}
-          onClick={() => navigate(`../expenses/create?id=${id}`)}
+    <PageWrapperPadding15>
+      <NavBarWithIcons
+        left={
+          <ChevronLeftIcon width={25} onClick={() => navigate("../expenses")} />
+        }
+        right={[
+          <EditIcon
+            width={18}
+            onClick={() => navigate(`../expenses/create?id=${id}`)}
+          />,
+        ]}
+      />
+
+      <Container>
+        <div className="details">
+          <Spacing size={15} />
+          <TypeIcon type={data.type} />
+          <h1>
+            {"\uFFE6"}
+            {data.price.toLocaleString("ko-KR")}
+          </h1>
+          <p>{data.title}</p>
+          {data.map_data && <p>{data.map_data.name}</p>}
+          <p>
+            {new Date(data.datetime).toLocaleDateString("ko-KR")}
+            &nbsp;&nbsp;
+            {new Date(data.datetime).toLocaleTimeString("en-US", {
+              hour12: true,
+              hour: "numeric",
+              minute: "numeric",
+            })}
+          </p>
+
+          {data.map_data && (
+            <>
+              <Spacing size={20} />
+              <Map {...data.map_data} />
+            </>
+          )}
+        </div>
+
+        <Spacing size={50} />
+        <Button
+          onClick={onDelete}
+          title="삭제"
+          titleColor="#ff0000"
+          padding={10}
         />
-      </nav>
-
-      <div className="details">
-        <Spacing size={15} />
-        <TypeIcon type={data.type} />
-        <h1>
-          {"\uFFE6"}
-          {data.price.toLocaleString("ko-KR")}
-        </h1>
-        <p>{data.title}</p>
-        {data.map_data && <p>{data.map_data.name}</p>}
-        <p>
-          {new Date(data.datetime).toLocaleDateString("ko-KR")}
-          &nbsp;&nbsp;
-          {new Date(data.datetime).toLocaleTimeString("en-US", {
-            hour12: true,
-            hour: "numeric",
-            minute: "numeric",
-          })}
-        </p>
-
-        {data.map_data && (
-          <>
-            <Spacing size={20} />
-            <Map {...data.map_data} />
-          </>
-        )}
-      </div>
-
-      <Spacing size={50} />
-      <button onClick={onDelete}>삭제</button>
-      <Spacing size={100} />
-    </Container>
+        <Spacing size={100} />
+      </Container>
+    </PageWrapperPadding15>
   ) : (
     <div></div>
   );

@@ -2,6 +2,9 @@ import styled from "styled-components";
 import Slider from "react-slick";
 
 export const StyledSlider = styled(Slider)`
+  @media all and (display-mode: standalone) {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
   .slick-list {
     overflow: visible;
   }

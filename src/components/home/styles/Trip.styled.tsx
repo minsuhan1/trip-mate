@@ -37,6 +37,7 @@ export const Info = styled.div`
   }
 
   h1 {
+    padding-top: 10px;
     font-size: 1.6rem;
     height: 25%;
   }

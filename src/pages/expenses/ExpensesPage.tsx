@@ -6,6 +6,9 @@ import { Container } from "./ExpensesPage.styled";
 import List from "../../components/expenses/List";
 import Summary from "../../components/expenses/Summary";
 import Spacing from "../../components/common/Spacing/Spacing";
+import { PageWrapperPadding15 } from "../../styles/page-wrap-padding-15";
+import NavBarWithIcons from "../../components/common/NavBarWithIcons/NavBarWithIcons";
+import LargeTitle from "../../components/common/LargeTitle/LargeTitle";
 
 function ExpensesPage() {
   const navigate = useNavigate();
@@ -18,23 +21,26 @@ function ExpensesPage() {
   };
 
   return (
-    <Container>
-      <nav>
-        <ChevronLeftIcon width={25} onClick={() => navigate("..")} />
-        <PlusIcon width={25} onClick={onAdd} />
-      </nav>
-      <h1>여행경비</h1>
-
-      <Spacing size={10} />
-      <Summary list={[...expenseList]} />
-      <Spacing size={15} />
-
-      <List
-        list={[...expenseList].sort(
-          (a, b) => b.data.datetime - a.data.datetime
-        )}
+    <PageWrapperPadding15>
+      <NavBarWithIcons
+        left={<ChevronLeftIcon width={25} onClick={() => navigate("..")} />}
+        right={[<PlusIcon width={25} onClick={onAdd} />]}
       />
-    </Container>
+
+      <Container>
+        <LargeTitle title="여행경비" />
+
+        <Spacing size={10} />
+        <Summary list={[...expenseList]} />
+        <Spacing size={15} />
+
+        <List
+          list={[...expenseList].sort(
+            (a, b) => b.data.datetime - a.data.datetime
+          )}
+        />
+      </Container>
+    </PageWrapperPadding15>
   );
 }
 

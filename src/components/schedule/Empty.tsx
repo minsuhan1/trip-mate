@@ -15,6 +15,10 @@ const StyledDiv = styled.div`
     font-size: 1.2rem;
     color: #6f6f6f;
   }
+
+  @media all and (display-mode: standalone) {
+    padding-bottom: env(safe-area-inset-top);
+  }
 `;
 
 function Empty() {

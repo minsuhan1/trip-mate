@@ -10,12 +10,14 @@ export const StyledDiv = styled.div<{ $background: string }>`
   right: 0;
   width: 100%;
   height: 40%;
+
   background: linear-gradient(
       180deg,
       rgba(0, 0, 0, 0.45) 0%,
       rgba(0, 0, 0, 0) 100%
     ),
     url(${(props) => props.$background});
+
   background-size: cover;
 
   .info {

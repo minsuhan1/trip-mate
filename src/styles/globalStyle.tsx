@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
     --secondary-color: #D6EBF7;
     --secondary-color-lighten: #f5fbff;
     --third-color: #E07575;
+    --default-page-background-color: rgb(242, 242, 247);
   }
 
   *, *::before, *::after {
@@ -23,8 +24,9 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     font-size: 10px;
-    min-height: calc(100% + env(safe-area-inset-top));
-    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    @media all and (display-mode: standalone) {
+      min-height: calc(100% + env(safe-area-inset-top));
+    }
   }
 
   body {

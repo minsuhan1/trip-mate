@@ -8,6 +8,9 @@ import { useAppDispatch, useAppSelector } from "../../hooks/useApp";
 import { IChecklistItem, setChecklist } from "../../store/checklistReducer";
 import { useAuthState } from "../../contexts/auth-context";
 import Spacing from "../../components/common/Spacing/Spacing";
+import { PageWrapperPadding15 } from "../../styles/page-wrap-padding-15";
+import NavBarWithIcons from "../../components/common/NavBarWithIcons/NavBarWithIcons";
+import LargeTitle from "../../components/common/LargeTitle/LargeTitle";
 
 function ChecklistPage() {
   const navigate = useNavigate();
@@ -68,15 +71,21 @@ function ChecklistPage() {
   }, [authCtx.user, list, dispatch, tripId]);
 
   return (
-    <Container>
-      <nav>
-        <ChevronLeftIcon width={25} onClick={() => navigate("..")} />
-        <PlusIcon width={25} onClick={onAdd} />
-      </nav>
-      <h1>체크리스트</h1>
-      <List list={[...list]} onDelete={onDelete} onToggleDone={onToggleDone} />
-      <Spacing size={100} />
-    </Container>
+    <PageWrapperPadding15>
+      <NavBarWithIcons
+        left={<ChevronLeftIcon width={25} onClick={() => navigate("..")} />}
+        right={[<PlusIcon width={25} onClick={onAdd} />]}
+      />
+      <Container>
+        <LargeTitle title="체크리스트" />
+        <List
+          list={[...list]}
+          onDelete={onDelete}
+          onToggleDone={onToggleDone}
+        />
+        <Spacing size={100} />
+      </Container>
+    </PageWrapperPadding15>
   );
 }
 

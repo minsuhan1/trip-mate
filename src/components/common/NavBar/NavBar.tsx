@@ -1,5 +1,6 @@
 import { StyledNavBar } from "./NavBar.styled";
 import { ReactComponent as ChevronLeft } from "../../../assets/icons/chevron-left.svg";
+import Spacing from "../Spacing/Spacing";
 
 interface NavBarProps {
   backItemTitle: string;
@@ -10,21 +11,24 @@ interface NavBarProps {
 
 function NavBar(props: NavBarProps) {
   return (
-    <StyledNavBar>
-      {/* left */}
-      <button className="back-item" onClick={props.onBackHandler}>
-        <ChevronLeft width={24} strokeWidth={3} />
-        <label>{props.backItemTitle}</label>
-      </button>
+    <>
+      <StyledNavBar>
+        {/* left */}
+        <button className="back-item" onClick={props.onBackHandler}>
+          <ChevronLeft width={24} strokeWidth={2.5} />
+          <label>{props.backItemTitle}</label>
+        </button>
 
-      {/* title */}
-      <div className="bold">{props.topItemTitle}</div>
+        {/* title */}
+        <div className="title">{props.topItemTitle}</div>
 
-      {/* right */}
-      <button type="submit" form="form" className="bold done-item">
-        {props.doneItemTitle}
-      </button>
-    </StyledNavBar>
+        {/* right */}
+        <button type="submit" form="form" className="done-item">
+          {props.doneItemTitle}
+        </button>
+      </StyledNavBar>
+      <Spacing size={20} />
+    </>
   );
 }
 

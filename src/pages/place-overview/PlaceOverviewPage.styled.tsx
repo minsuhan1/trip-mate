@@ -12,6 +12,10 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media all and (display-mode: standalone) {
+    padding-top: env(safe-area-inset-top);
+  }
 `;
 
 export const Empty = styled.div`

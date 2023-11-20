@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { StyledDiv } from "./InputField.styled";
 import { FormContext } from "../../../contexts/form-context";
 
