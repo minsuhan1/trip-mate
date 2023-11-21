@@ -12,6 +12,6 @@ export const PageWrapperPadding15 = styled.div`
   overflow-x: hidden;
 
   @media all and (display-mode: standalone) {
-    padding-top: env(safe-area-inset-top);
+    padding: 0 15px 15px 15px;
   }
 `;

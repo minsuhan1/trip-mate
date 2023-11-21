@@ -9,6 +9,8 @@ interface NavBarProps {
   onBackHandler: React.MouseEventHandler;
 }
 
+/* Form 페이지에서 사용하는 상단 navbar */
+
 function NavBar(props: NavBarProps) {
   return (
     <>
@@ -27,7 +29,6 @@ function NavBar(props: NavBarProps) {
           {props.doneItemTitle}
         </button>
       </StyledNavBar>
-      <Spacing size={20} />
     </>
   );
 }

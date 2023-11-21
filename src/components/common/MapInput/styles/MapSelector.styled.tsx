@@ -11,6 +11,10 @@ export const MapContainer = styled.div`
   width: 95%;
   height: 95%;
 
+  @media all and (display-mode: standalone) {
+    height: calc(95% - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  }
+
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 0 4px #000;

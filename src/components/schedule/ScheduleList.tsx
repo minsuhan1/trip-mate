@@ -98,7 +98,12 @@ function ScheduleList() {
           if (prevScrollPos < currentScrollPos) {
             fab.style.bottom = "-100px";
           } else {
-            fab.style.bottom = "100px";
+            // detect PWA
+            if (window.matchMedia("(display-mode: standalone)").matches) {
+              fab.style.bottom = "calc(100px + env(safe-area-inset-bottom))";
+            } else {
+              fab.style.bottom = "100px";
+            }
           }
 
           prevScrollPos = currentScrollPos;

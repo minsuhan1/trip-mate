@@ -14,7 +14,7 @@ const Button = styled.button`
   bottom: 100px;
 
   @media all and (display-mode: standalone) {
-    bottom: 130px;
+    bottom: calc(100px + env(safe-area-inset-bottom));
   }
 
   right: 20px;
