@@ -1,13 +1,16 @@
 import styled from "styled-components";
 
-export const PageWrapperPadding15 = styled.div`
+export const PageWrapperPadding15 = styled.div<{ $backgroundColor?: string }>`
   display: flex;
   flex-direction: column;
   position: fixed;
   padding: 15px;
   width: 100vw;
   height: 100%;
-  background-color: var(--default-page-background-color);
+  background-color: ${(props) =>
+    props.$backgroundColor
+      ? props.$backgroundColor
+      : "var(--default-page-background-color)"};
   overflow-y: scroll;
   overflow-x: hidden;
 

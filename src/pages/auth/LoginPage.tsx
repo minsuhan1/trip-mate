@@ -21,7 +21,7 @@ function LoginPage() {
   };
 
   return authCtx.state === "loaded" && authCtx.isAuthenticated === true ? (
-    <Navigate to="/profile/edit" />
+    <Navigate to="/branding" />
   ) : (
     <>
       <S.Background>

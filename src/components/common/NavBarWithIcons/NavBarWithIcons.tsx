@@ -10,7 +10,11 @@ function NavBarWithIcons(props: Props) {
     <Container>
       {props.left ? <div className="left">{props.left}</div> : <div></div>}
       {props.right && (
-        <div className="right">{props.right.map((comp, idx) => comp)}</div>
+        <div className="right">
+          {props.right.map((comp, idx) => (
+            <div key={Date.now()}>{comp}</div>
+          ))}
+        </div>
       )}
     </Container>
   );

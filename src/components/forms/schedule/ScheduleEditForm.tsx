@@ -5,7 +5,11 @@ import { useAppDispatch, useAppSelector } from "../../../hooks/useApp";
 import { useAuthState } from "../../../contexts/auth-context";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { MILLISEC_1DAY, TIME_ZONE_KR } from "../../../constants/constants";
-import { addSchedule, updateSchedule } from "../../../store/scheduleReducer";
+import {
+  ISchedule,
+  addSchedule,
+  updateSchedule,
+} from "../../../store/scheduleReducer";
 import { useLoadingState } from "../../../contexts/loading-context";
 import usePlaceSelector from "../../../hooks/usePlaceSelector";
 import { getDifferencesBtwObjects } from "../../../utils/common";
@@ -61,6 +65,7 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
       .slice(0, 16);
   } else if (props.day && tripData) {
     /* 새 스케줄 생성 시 */
+
     // N일차 날짜 00:00
     minTime =
       initEndTime =
@@ -83,6 +88,35 @@ function ScheduleEditForm(props: { id?: string; day?: string }) {
     )
       .toISOString()
       .slice(0, 16);
+
+    if (scheduleList && scheduleList.length > 0) {
+      // N일자의 스케줄
+      const daySchedule = [...scheduleList].filter(
+        (val: ISchedule) =>
+          tripData.start_date +
+            MILLISEC_1DAY * (parseInt(props.day as string) - 1) <=
+            val.data.start_time &&
+          tripData.start_date +
+            MILLISEC_1DAY * (parseInt(props.day as string) - 1) +
+            MILLISEC_1DAY -
+            1 >=
+            val.data.start_time
+      );
+
+      // 해당일에 다른 스케줄이 존재하는 경우
+      // 해당일의 마지막 스케줄 종료시각을 추가할 스케줄의 initStartTime, initEndTime으로 세팅
+      if (daySchedule.length > 0) {
+        initStartTime = initEndTime = new Date(
+          [...daySchedule]
+            .sort(
+              (a: ISchedule, b: ISchedule) => a.data.end_time - b.data.end_time
+            )
+            .at(-1)!.data.end_time + TIME_ZONE_KR
+        )
+          .toISOString()
+          .slice(0, 16);
+      }
+    }
   }
 
   // 폼 초기값

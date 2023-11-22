@@ -32,6 +32,7 @@ import ExpensesPage from "./pages/expenses/ExpensesPage";
 import ExpenseEditPage from "./pages/expenses/ExpenseEditPage";
 import ExpenseDetailPage from "./pages/expenses/ExpenseDetailPage";
 import ProfilePage from "./pages/profile/ProfilePage";
+import BrandingPage from "./pages/branding/BrandingPage";
 
 // vh를 브라우저 상하단 메뉴를 제외한 화면 크기를 기반으로 설정
 function setScreenSize() {
@@ -155,12 +156,13 @@ function App() {
 
           {/* PrivateRoutes를 적용할 Route끼리 모은다 */}
           <Route element={<PrivateRoutes />}>
-            <Route path="/profile" element={<ProfilePage />} />
             <Route
-              path="/profile/edit"
-              element={<ProfileEditPage />}
+              path="/branding"
+              element={<BrandingPage />}
               loader={profileLoader}
             />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/profile/edit" element={<ProfileEditPage />} />
             <Route
               path="/home"
               element={<HomePage />}
