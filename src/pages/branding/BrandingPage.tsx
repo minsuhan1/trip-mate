@@ -8,7 +8,6 @@ import Branding_4 from "../../assets/branding/Branding-4.png";
 import Branding_5 from "../../assets/branding/Branding-5.png";
 import { PageWrapperPadding15 } from "../../styles/page-wrap-padding-15";
 import Button from "../../components/common/Button/Button";
-import Spacing from "../../components/common/Spacing/Spacing";
 import Slider from "react-slick";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../hooks/useApp";
@@ -36,7 +35,10 @@ function BrandingPage() {
   };
 
   return (
-    <PageWrapperPadding15 $backgroundColor="#fff">
+    <PageWrapperPadding15
+      $backgroundColor="#fff"
+      style={{ overflow: "hidden" }}
+    >
       <Container>
         <StyledSlider {...settings} ref={sliderRef}>
           <SlickItem
