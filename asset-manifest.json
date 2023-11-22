@@ -1,7 +1,12 @@
 {
   "files": {
     "main.css": "/trip-mate/static/css/main.533d7175.css",
-    "main.js": "/trip-mate/static/js/main.10bc3a32.js",
+    "main.js": "/trip-mate/static/js/main.ff4f2009.js",
+    "static/media/Branding-2.png": "/trip-mate/static/media/Branding-2.c9822f89e463fa5454e2.png",
+    "static/media/Branding-3.png": "/trip-mate/static/media/Branding-3.89995ded04247e57415f.png",
+    "static/media/Branding-1.png": "/trip-mate/static/media/Branding-1.57ae267959d7419574b3.png",
+    "static/media/Branding-5.png": "/trip-mate/static/media/Branding-5.e04732a32ebabb66e04a.png",
+    "static/media/Branding-4.png": "/trip-mate/static/media/Branding-4.d6a709670fed579a50a1.png",
     "static/media/map-empty.svg": "/trip-mate/static/media/map-empty.61a4ea09fb5da357d6abb1b0f3674a67.svg",
     "service-worker.js": "/trip-mate/service-worker.js",
     "static/media/triplist-empty.svg": "/trip-mate/static/media/triplist-empty.0256a009b5a48d238a8be1952a5086ef.svg",
@@ -36,10 +41,10 @@
     "static/media/minus.svg": "/trip-mate/static/media/minus.a02b6a1b704235d042256fcd88395cf5.svg",
     "static/media/etc.svg": "/trip-mate/static/media/etc.89f67f30511c53ddead65fe92f4a21b0.svg",
     "main.533d7175.css.map": "/trip-mate/static/css/main.533d7175.css.map",
-    "main.10bc3a32.js.map": "/trip-mate/static/js/main.10bc3a32.js.map"
+    "main.ff4f2009.js.map": "/trip-mate/static/js/main.ff4f2009.js.map"
   },
   "entrypoints": [
     "static/css/main.533d7175.css",
-    "static/js/main.10bc3a32.js"
+    "static/js/main.ff4f2009.js"
   ]
 }
