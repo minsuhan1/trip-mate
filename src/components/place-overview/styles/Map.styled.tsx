@@ -21,7 +21,7 @@ export const MapContainer = styled.div`
     width: 25px;
     height: 25px;
     background-color: #ff5555;
-    border-radius: 45px;
+    border-radius: 50%;
     border: 2px solid #fff;
 
     label {

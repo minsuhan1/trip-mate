@@ -9,7 +9,7 @@ export const StyledImageUploadContainer = styled.div`
   img {
     aspect-ratio: 1 / 1;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 90px;
+    border-radius: 50%;
     width: 50%;
     object-fit: cover;
   }

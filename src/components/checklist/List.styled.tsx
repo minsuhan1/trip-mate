@@ -56,7 +56,7 @@ export const Container = styled.div`
           width: 20px;
           height: 20px;
           border: 1px solid var(--primary-color);
-          border-radius: 45px;
+          border-radius: 50%;
 
           cursor: pointer;
         }
@@ -65,7 +65,7 @@ export const Container = styled.div`
           width: 14px;
           height: 14px;
           background-color: var(--primary-color);
-          border-radius: 45px;
+          border-radius: 50%;
         }
 
         .title {
