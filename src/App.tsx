@@ -13,7 +13,6 @@ import RootPage from "./pages/RootPage";
 import LoginPage from "./pages/auth/LoginPage";
 import HomePage from "./pages/home/HomePage";
 import ProfileEditPage from "./pages/profile/ProfileEditPage";
-import NotFound from "./pages/NotFoundPage";
 import ErrorPage from "./pages/ErrorPage";
 import PrivateRoutes from "./pages/PrivateRoutes";
 import { getProfileInfo } from "./store/profileReducer";
@@ -85,9 +84,14 @@ function App() {
   // 스케줄 로더: 현재 여행id에 대한 스케줄 목록을 로드한다
   const scheduleListLoader = useCallback(
     async ({ params }: LoaderFunctionArgs) => {
-      // 새 스케줄 목록을 가져오는 조건
-      // - 현재 스케줄의 tripId와 페이지 param의 tripId가 다른 경우
-      if (authCtx.user && params && params.tripId) {
+      if (authCtx.user && params && params.tripId && triplist.state) {
+        // 존재하지 않는 여행id인 경우 뒤로가기
+        if (
+          ![...triplist.state].map((trip) => trip.id).includes(params.tripId)
+        ) {
+          window.history.back();
+          return;
+        }
         setLoading(true);
         await dispatch(
           getScheduleList({
@@ -209,7 +213,7 @@ function App() {
           </Route>
 
           {/* Not Found Page */}
-          <Route path="*" element={<NotFound />} />
+          {/* <Route path="*" element={<NotFound />} /> */}
         </>
       ),
       { basename: process.env.PUBLIC_URL }

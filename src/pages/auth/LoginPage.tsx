@@ -28,6 +28,7 @@ function LoginPage() {
     signIn();
   };
 
+  // 모바일 브라우저인 경우 OS에 따른 앱 설치 안내 모달 표시
   const { openModal } = useModal();
 
   const isMobile =

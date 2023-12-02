@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useAppSelector } from "../../hooks/useApp";
 import { StyledDiv } from "./styles/Banner.styled";
 import defaultImg from "../../assets/images/trip-default-img.webp";
