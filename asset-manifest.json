@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/trip-mate/static/css/main.533d7175.css",
-    "main.js": "/trip-mate/static/js/main.1fb4a30a.js",
+    "main.js": "/trip-mate/static/js/main.bb2fc083.js",
     "static/media/Branding-2.png": "/trip-mate/static/media/Branding-2.c9822f89e463fa5454e2.png",
     "static/media/Branding-3.png": "/trip-mate/static/media/Branding-3.89995ded04247e57415f.png",
     "static/media/Branding-1.png": "/trip-mate/static/media/Branding-1.57ae267959d7419574b3.png",
@@ -14,6 +14,7 @@
     "static/media/logo.png": "/trip-mate/static/media/logo.ebd06f4c291ae3f88b7e.png",
     "static/media/schedule-empty.svg": "/trip-mate/static/media/schedule-empty.393d412cf4f731abb15865cba3881f27.svg",
     "static/media/icon_google.svg": "/trip-mate/static/media/icon_google.40e14597c5d984a14eaf0d65dd0c7868.svg",
+    "static/media/error.svg": "/trip-mate/static/media/error.10657918030c92d7a97604ab838f2a85.svg",
     "static/media/slick.svg": "/trip-mate/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/trip-mate/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "index.html": "/trip-mate/index.html",
@@ -40,10 +41,10 @@
     "static/media/minus.svg": "/trip-mate/static/media/minus.a02b6a1b704235d042256fcd88395cf5.svg",
     "static/media/etc.svg": "/trip-mate/static/media/etc.89f67f30511c53ddead65fe92f4a21b0.svg",
     "main.533d7175.css.map": "/trip-mate/static/css/main.533d7175.css.map",
-    "main.1fb4a30a.js.map": "/trip-mate/static/js/main.1fb4a30a.js.map"
+    "main.bb2fc083.js.map": "/trip-mate/static/js/main.bb2fc083.js.map"
   },
   "entrypoints": [
     "static/css/main.533d7175.css",
-    "static/js/main.1fb4a30a.js"
+    "static/js/main.bb2fc083.js"
   ]
 }
