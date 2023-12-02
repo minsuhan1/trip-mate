@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/trip-mate/static/css/main.533d7175.css",
-    "main.js": "/trip-mate/static/js/main.e6910dc9.js",
+    "main.js": "/trip-mate/static/js/main.1fb4a30a.js",
     "static/media/Branding-2.png": "/trip-mate/static/media/Branding-2.c9822f89e463fa5454e2.png",
     "static/media/Branding-3.png": "/trip-mate/static/media/Branding-3.89995ded04247e57415f.png",
     "static/media/Branding-1.png": "/trip-mate/static/media/Branding-1.57ae267959d7419574b3.png",
@@ -24,7 +24,6 @@
     "static/media/camera.svg": "/trip-mate/static/media/camera.4ddb2ed6e4a7a6409ce001a8e36ed141.svg",
     "static/media/room.svg": "/trip-mate/static/media/room.e9f1b0a51e60b917eb9251246f36efa8.svg",
     "static/media/transport.svg": "/trip-mate/static/media/transport.bcdad0aae75e9a29cc3e2d94df25e483.svg",
-    "static/media/icon_kakao.svg": "/trip-mate/static/media/icon_kakao.a7334f30a3963e7bf9182c66fe40e76b.svg",
     "static/media/map.svg": "/trip-mate/static/media/map.5c200e8ff1c115aca915382d8b6cc977.svg",
     "static/media/profile.svg": "/trip-mate/static/media/profile.03ce053981169a696ff6db998c51b3b1.svg",
     "static/media/shopping.svg": "/trip-mate/static/media/shopping.faba6f6cf1a4a0af14d1916b5ad89b8f.svg",
@@ -41,10 +40,10 @@
     "static/media/minus.svg": "/trip-mate/static/media/minus.a02b6a1b704235d042256fcd88395cf5.svg",
     "static/media/etc.svg": "/trip-mate/static/media/etc.89f67f30511c53ddead65fe92f4a21b0.svg",
     "main.533d7175.css.map": "/trip-mate/static/css/main.533d7175.css.map",
-    "main.e6910dc9.js.map": "/trip-mate/static/js/main.e6910dc9.js.map"
+    "main.1fb4a30a.js.map": "/trip-mate/static/js/main.1fb4a30a.js.map"
   },
   "entrypoints": [
     "static/css/main.533d7175.css",
-    "static/js/main.e6910dc9.js"
+    "static/js/main.1fb4a30a.js"
   ]
 }
