@@ -90,7 +90,7 @@ function App() {
           ![...triplist.state].map((trip) => trip.id).includes(params.tripId)
         ) {
           window.history.back();
-          return;
+          return null;
         }
         setLoading(true);
         await dispatch(

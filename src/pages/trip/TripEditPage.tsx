@@ -16,7 +16,7 @@ function TripEditPage() {
         topItemTitle={"여행일정 " + (id ? "수정" : "생성")}
         doneItemTitle="저장"
         onBackHandler={() => {
-          navigate(-1);
+          navigate("/home");
         }}
       />
       {id ? <TripEditForm id={id} /> : <TripEditForm />}
