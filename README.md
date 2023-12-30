@@ -29,7 +29,7 @@
 ### ▪️ 기술 스택
 
 - Typescript / React / SCSS / HTML
-- Redux
+- Redux / redux-persist
 - styled-components
 - Firebase (Cloud Firestore, Authentication)
 - KakaoMap Web API
