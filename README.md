@@ -15,6 +15,7 @@
 - SPA(Single Page Application) 구현을 위한 react-router
 - Redux Middleware를 활용한 비동기 작업 처리
 - type 안정성과 유지보수 용이를 위한 Typescript
+- redux-persist를 활용한 데이터 캐싱 처리
 
 ### ▪️ 프로젝트 기간
 
