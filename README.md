@@ -151,14 +151,14 @@ React를 학습하고 진행한 첫 번째 토이 프로젝트로서, 아래 개
 <br>
 
 ## 💫 구현 기능 요약
-- Google 로그인 (Firebase Auth API, Context API)
-- 브랜딩 페이지 (useState, react-slick)
-- 프로필 추가 및 수정 기능 (Redux toolkit, redux thunk, Cloud Firestore)
-- 여행일정 추가/수정/삭제 기능 (Redux toolkit, redux thunk, Cloud Firestore)
-- 여행 스케줄 추가/수정/삭제 기능 (KakaoMap API, Redux toolkit, redux thunk, Cloud Firestore, Custom Hook)
-- 여행장소 한눈에보기 기능 (KakaoMap API, Redux toolkit, useEffect)
-- 체크리스트, 여행경비 관리 기능 (KakaoMap API, Redux toolkit, redux thunk, Cloud Firestore)
-- 모바일 앱으로 설치하여 사용할 수 있도록 PWA 적용
+- Google 로그인 `Firebase Auth API` `Context API`
+- 브랜딩 페이지 `useState` `react-slick`
+- 프로필 추가 및 수정 기능 `Redux toolkit` `redux thunk` `Cloud Firestore`
+- 여행일정 추가/수정/삭제 기능 `Redux toolkit` `redux thunk` `Cloud Firestore`
+- 여행 스케줄 추가/수정/삭제 기능 `KakaoMap API` `Redux toolkit` `redux thunk` `Cloud Firestore` `Custom Hook`
+- 여행장소 한눈에보기 기능 `KakaoMap API` `Redux toolkit` `useEffect`
+- 체크리스트, 여행경비 관리 기능 `KakaoMap API` `Redux toolkit` `redux thunk` `Cloud Firestore`
+- 모바일 앱으로 설치하여 사용할 수 있도록 `PWA` 적용
 
 <br>
 
