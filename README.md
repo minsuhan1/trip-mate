@@ -27,14 +27,14 @@
 - [📝 프로젝트 구상 기록](https://accurate-bank-c77.notion.site/f4daecd5764c4b11b6692105cf461a15?pvs=4)
 
 ### ▪️ 기술 스택
+#### FE
+<img src="https://img.shields.io/badge/Typescript-000000?style=flat-square&logo=typescript&logoColor=3178C6"/> <img src="https://img.shields.io/badge/React-000000?style=flat-square&logo=react&logoColor=61DAFB"/> <img src="https://img.shields.io/badge/Scss-000000?style=flat-square&logo=sass&logoColor=CC6699"/> <img src="https://img.shields.io/badge/HTML-000000?style=flat-square&logo=html5&logoColor=E34F26"/> <img src="https://img.shields.io/badge/Redux-000000?style=flat-square&logo=redux&logoColor=764ABC"/> <img src="https://img.shields.io/badge/styled&ndash;components-000000?style=flat-square&logo=styled-components&logoColor=DB7093"/> <img src="https://img.shields.io/badge/PWA-000000?style=flat-square&logo=pwa&logoColor=5A0FC8"/>
 
-- Typescript / React / SCSS / HTML
-- Redux / redux-persist
-- styled-components
-- Firebase (Cloud Firestore, Authentication)
-- KakaoMap Web API
-- Github Actions
-- PWA
+#### BE
+<img src="https://img.shields.io/badge/Firebase Auth-000000?style=flat-square&logo=firebase&logoColor=FFCA28"/> <img src="https://img.shields.io/badge/Cloud Firestore-000000?style=flat-square&logo=firebase&logoColor=FFCA28"/>
+
+#### CI/CD
+<img src="https://img.shields.io/badge/Github Actions-000000?style=flat-square&logo=github-actions&logoColor=2088FF"/> <img src="https://img.shields.io/badge/Github Pages-000000?style=flat-square&logo=github-pages&logoColor=ffffff"/>
 
 ### ▪️ 디렉터리 구조
 
