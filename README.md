@@ -42,6 +42,12 @@ React를 학습하고 진행한 첫 번째 토이 프로젝트로서, 아래 개
 
 <br>
 
+## 시스템 구성도
+<img width="841" alt="image" src="https://github.com/minsuhan1/trip-mate/assets/50696567/e0aa6ab0-cd85-4734-a2ba-c15e3a49f499">
+
+<br>
+<br>
+
 ## 디렉터리 구조
 <details>
     <summary>펼치기</summary>
