@@ -9,13 +9,13 @@
 
 ## 💡 제작 동기
 React를 학습하고 진행한 첫 번째 토이 프로젝트로서, 아래 개념들을 활용하여 유용한 애플리케이션을 제작하기로 계획했습니다.<br><br>
-- JSX를 이용한 컴포넌트 단위의 UI 구성
-- React에서 제공하는 다양한 Hook과 로직 재사용성을 위한 Custom Hook
-- 상태 관리를 위한 Context API와 Redux toolkit
-- SPA(Single Page Application) 구현을 위한 react-router
-- Redux Middleware를 활용한 비동기 작업 처리
-- type 안정성과 유지보수 용이를 위한 Typescript
-- redux-persist를 활용한 데이터 캐싱 처리
+- `JSX`를 이용한 `컴포넌트` 단위의 UI 구성
+- `React`에서 제공하는 다양한 `Hook`과 로직 재사용성을 위한 `Custom Hook`
+- 상태 관리를 위한 `Context API`와 `Redux toolkit`
+- `SPA(Single Page Application)` 구현을 위한 `react-router`
+- `Redux Middleware`를 활용한 비동기 작업 처리
+- type 안정성과 유지보수 용이를 위한 `Typescript`
+- `redux-persist`를 활용한 상태데이터 캐싱 처리
 
 <br>
 
