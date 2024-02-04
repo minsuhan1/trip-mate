@@ -1,13 +1,13 @@
 # ✈️ Toy Project : trip-mate
 
-## 프로젝트 소개
+## ✨ 프로젝트 소개
 ![image](https://github.com/minsuhan1/trip-mate/assets/50696567/15c46bbe-618f-4bc0-87c6-b28adc045d25)
 
 > 심플하지만 꼼꼼하게 여행을 계획하고 기록할 수 있는 모바일 웹서비스입니다
 
 <br>
 
-## 제작 동기
+## 💡 제작 동기
 React를 학습하고 진행한 첫 번째 토이 프로젝트로서, 아래 개념들을 활용하여 유용한 애플리케이션을 제작하기로 계획했습니다.<br><br>
 - JSX를 이용한 컴포넌트 단위의 UI 구성
 - React에서 제공하는 다양한 Hook과 로직 재사용성을 위한 Custom Hook
@@ -19,18 +19,18 @@ React를 학습하고 진행한 첫 번째 토이 프로젝트로서, 아래 개
 
 <br>
 
-## 프로젝트 기간
+## 🗓️ 프로젝트 기간
 2023.09.08 ~ 2023.12.03
 
 <br>
 
-## 프로젝트 개요
+## 📌 프로젝트 개요
 [➡️ trip-mate 바로가기 (모바일 환경에 최적화되어 있습니다)](https://minsuhan1.github.io/trip-mate)<br>
 [📝 프로젝트 구상 기록](https://accurate-bank-c77.notion.site/f4daecd5764c4b11b6692105cf461a15?pvs=4)
 
 <br>
 
-## 기술 스택
+## 🛠️ 기술 스택
 #### FE
 <img src="https://img.shields.io/badge/Typescript-000000?style=flat-square&logo=typescript&logoColor=3178C6"/> <img src="https://img.shields.io/badge/React-000000?style=flat-square&logo=react&logoColor=61DAFB"/> <img src="https://img.shields.io/badge/Scss-000000?style=flat-square&logo=sass&logoColor=CC6699"/> <img src="https://img.shields.io/badge/HTML-000000?style=flat-square&logo=html5&logoColor=E34F26"/> <img src="https://img.shields.io/badge/Redux-000000?style=flat-square&logo=redux&logoColor=764ABC"/> <img src="https://img.shields.io/badge/styled&ndash;components-000000?style=flat-square&logo=styled-components&logoColor=DB7093"/> <img src="https://img.shields.io/badge/PWA-000000?style=flat-square&logo=pwa&logoColor=5A0FC8"/>
 
@@ -42,13 +42,13 @@ React를 학습하고 진행한 첫 번째 토이 프로젝트로서, 아래 개
 
 <br>
 
-## 시스템 구성도
+## 🗺️ 시스템 구성도
 <img width="841" alt="image" src="https://github.com/minsuhan1/trip-mate/assets/50696567/e0aa6ab0-cd85-4734-a2ba-c15e3a49f499">
 
 <br>
 <br>
 
-## 디렉터리 구조
+## 📂 디렉터리 구조
 <details>
     <summary>펼치기</summary>
 
@@ -150,7 +150,7 @@ React를 학습하고 진행한 첫 번째 토이 프로젝트로서, 아래 개
 
 <br>
 
-## 구현 기능 요약
+## 💫 구현 기능 요약
 - Google 로그인 (Firebase Auth API, Context API)
 - 브랜딩 페이지 (useState, react-slick)
 - 프로필 추가 및 수정 기능 (Redux toolkit, redux thunk, Cloud Firestore)
@@ -170,6 +170,3 @@ React를 학습하고 진행한 첫 번째 토이 프로젝트로서, 아래 개
 | :-------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------: |
 | <img src="https://github.com/minsuhan1/trip-mate/assets/50696567/f129eb71-4d65-487e-93e3-74ab08b4333e" width="200" /> | <img src="https://github.com/minsuhan1/geulmadi/assets/50696567/79291905-e15e-4c9d-86fb-21677e881c3e" width="200" /> | <img src="https://github.com/minsuhan1/geulmadi/assets/50696567/5c244d04-fd99-433a-bd4e-1b0bb0c2c610" width="200" /> | <img src="https://github.com/minsuhan1/trip-mate/assets/50696567/952cc6ba-22e8-41a5-a563-bb46543b9e14" width="200" /> |
 
-```
-
-```
