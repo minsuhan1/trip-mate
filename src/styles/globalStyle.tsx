@@ -4,6 +4,10 @@ import "slick-carousel/slick/slick-theme.css";
 
 const GlobalStyle = createGlobalStyle`
   :root {
+    @media (min-width: 1024px) {
+    background-color: #dfdfdf;
+  }
+
     --primary-color: #75BAE0;
     --primary-color-rgb: rgba(117, 186, 224);
     --secondary-color: #D6EBF7;

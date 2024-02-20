@@ -7,6 +7,7 @@ export const Container = styled.div`
   overflow-x: scroll;
   align-items: center;
   height: 50px;
+  z-index: 1;
 
   // overflow-x: scroll로 인해 잘린 shadow 살리기
   margin: 0 -8px;

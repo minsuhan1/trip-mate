@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
   height: calc(100% - 80px);
   padding: 15px;
+  overflow: hidden;
 
   display: flex;
   flex-direction: column;
@@ -19,7 +20,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Empty = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;

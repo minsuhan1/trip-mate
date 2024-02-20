@@ -9,7 +9,9 @@ interface AuthButtonProps {
 }
 
 const StyledButton = styled.button`
-  width: 90vw;
+  position: absolute;
+  bottom: 80px;
+  width: 90%;
   border-radius: 4px;
   background-color: ${(props) => props.color};
   display: flex;

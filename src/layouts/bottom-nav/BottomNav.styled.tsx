@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const StyledNav = styled.nav`
   display: flex;
   flex-direction: row;
-  position: fixed;
+  position: absolute;
   justify-content: space-evenly;
   align-items: center;
   box-shadow: 0px -1px 20px rgba(0, 0, 0, 0.1);

@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const PageWrapperPadding15 = styled.div<{ $backgroundColor?: string }>`
   display: flex;
   flex-direction: column;
-  position: fixed;
+  position: absolute;
   padding: 15px;
-  width: 100vw;
+  width: 100%;
   height: 100%;
   background-color: ${(props) =>
     props.$backgroundColor

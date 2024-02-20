@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Background = styled.div`
-  position: fixed;
+  position: absolute;
   width: 100%;
   // 100vh를 브라우저 상하단 메뉴를 제외한 화면 크기를 기준으로 함
   height: 100%;
@@ -46,7 +46,7 @@ export const Main = styled.div`
 `;
 
 export const Logo = styled.img`
-  width: 65vw;
+  width: 65%;
   margin: 10px;
   filter: invert(1);
 `;

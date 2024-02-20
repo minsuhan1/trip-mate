@@ -55,19 +55,18 @@ function LoginPage() {
               <p>여행의 모든 순간을</p>
               <p>계획하다</p>
             </header>
-            <FlexContainer gapValue={10}>
-              <AuthButton
-                onClick={handleLogin}
-                text="구글로 로그인"
-                icon={GoogleIcon}
-                color="#FFFFFF"
-              />
-              <S.Footer>
-                <FlexContainer>
-                  {`\u00A9 ${year}. TRIP-MATE. All rights reserved.`}
-                </FlexContainer>
-              </S.Footer>
-            </FlexContainer>
+
+            <AuthButton
+              onClick={handleLogin}
+              text="구글로 로그인"
+              icon={GoogleIcon}
+              color="#FFFFFF"
+            />
+            <S.Footer>
+              <FlexContainer>
+                {`\u00A9 ${year}. TRIP-MATE. All rights reserved.`}
+              </FlexContainer>
+            </S.Footer>
           </S.Main>
         </S.Overlay>
       </S.Background>

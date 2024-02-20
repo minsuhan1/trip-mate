@@ -20,7 +20,8 @@ export function LoadingContextProvider({
 
   return (
     <LoadingContext.Provider value={{ setVisible }}>
-      {visible && createPortal(<LoadingSpinner />, document.body)}
+      {visible &&
+        createPortal(<LoadingSpinner />, document.querySelector("#spinner")!)}
       {children}
     </LoadingContext.Provider>
   );

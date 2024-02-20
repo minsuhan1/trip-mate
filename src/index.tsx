@@ -10,6 +10,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import persistStore from "redux-persist/es/persistStore";
 import { LoadingContextProvider } from "./contexts/loading-context";
 import { ModalContextProvider } from "./contexts/modal-context";
+import { WrapperContainer } from "./styles/wrapperContainer";
 
 // redux-persist persistor
 export const persistor = persistStore(store);
@@ -25,7 +26,10 @@ root.render(
       <AuthContextProvider>
         <LoadingContextProvider>
           <ModalContextProvider>
-            <App />
+            <WrapperContainer>
+              <div id="spinner"></div>
+              <App />
+            </WrapperContainer>
           </ModalContextProvider>
         </LoadingContextProvider>
       </AuthContextProvider>
