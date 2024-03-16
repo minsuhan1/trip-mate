@@ -26,7 +26,7 @@ React를 학습하고 진행한 첫 번째 토이 프로젝트로서, 아래 개
 
 ## 📌 프로젝트 개요
 [➡️ trip-mate 바로가기 (모바일 환경에 최적화되어 있습니다)](https://minsuhan1.github.io/trip-mate)<br>
-[📝 프로젝트 구상 기록](https://accurate-bank-c77.notion.site/f4daecd5764c4b11b6692105cf461a15?pvs=4)
+[📝 프로젝트 구상 기록](https://minsuhan.notion.site/f4daecd5764c4b11b6692105cf461a15?pvs=4)
 
 <br>
 
